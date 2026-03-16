@@ -2,181 +2,281 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>物件レポート｜株式会社スイートホーム</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Property Report — Sweet Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#1a2744;--navy2:#253460;--red:#c0392b;--gold:#c8a96e;--ink:#0d0d0d;--ink2:#2a2a2a;--ink3:#666;--ink4:#999;--paper:#f7f8fc;--white:#fff;--border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);--alight:#eef2fb;}
+:root{
+  --bg:#f9f7f3;--white:#fff;--ink:#0d0b08;--ink2:#2a2620;--ink3:#6b6258;--ink4:#a09890;--ink5:#c8c0b8;
+  --navy:#111827;--navy2:#1e2d47;--gold:#c4a265;--gold2:#ddc08a;--gold3:#f0ddb8;
+  --bdr:rgba(0,0,0,0.07);--bdr2:rgba(0,0,0,0.13);
+}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);font-size:14px;line-height:1.7;}
-.hdr{background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:58px;position:sticky;top:0;z-index:300;border-bottom:3px solid var(--red);}
-.hdr-logo{display:flex;align-items:center;gap:14px;}
-.hdr-box{width:36px;height:36px;background:linear-gradient(135deg,#2563b8,#1a3a7a);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;font-weight:600;}
-.hdr-co{font-size:15px;font-weight:700;letter-spacing:.04em;}
-.hdr-sub{font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;}
-.save-ind{font-size:11px;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:6px;}
-.sdot{width:5px;height:5px;border-radius:50%;background:#2ecc71;}
-.layout{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 58px);}
-.sb{background:var(--white);border-right:1px solid var(--border);padding:24px 0;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto;display:flex;flex-direction:column;}
-.sb-grp{padding:0 14px 20px;}
-.sb-lbl{font-size:9px;letter-spacing:.2em;color:var(--ink4);font-weight:700;margin-bottom:6px;padding:0 8px;text-transform:uppercase;}
-.nb{width:100%;text-align:left;background:none;border:none;padding:9px 12px;border-radius:6px;font-size:13px;font-family:inherit;color:var(--ink3);cursor:pointer;display:flex;align-items:center;gap:10px;transition:all .15s;margin-bottom:2px;}
-.nb:hover{background:var(--paper);color:var(--ink);}
-.nb.on{background:var(--alight);color:var(--navy);font-weight:500;}
-.sb-foot{margin-top:auto;padding:0 14px;}
-.btn-go{width:100%;padding:12px;background:var(--navy);color:#fff;border:none;font-family:inherit;font-size:12px;letter-spacing:.12em;cursor:pointer;border-radius:4px;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink);font-size:13px;line-height:1.8;-webkit-font-smoothing:antialiased;}
+.hdr{height:60px;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:300;border-bottom:1px solid rgba(196,162,101,.3);}
+.hdr-l{display:flex;align-items:center;gap:14px;}
+.hdr-crest{width:34px;height:34px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;color:var(--gold);}
+.hdr-brand{color:rgba(255,255,255,.88);font-size:13px;font-weight:300;letter-spacing:.2em;}
+.hdr-tagline{color:rgba(255,255,255,.28);font-size:8px;letter-spacing:.22em;text-transform:uppercase;}
+.hdr-r{font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.1em;display:flex;align-items:center;gap:6px;}
+.sdot{width:4px;height:4px;border-radius:50%;background:#6dcf9e;}
+.layout{display:grid;grid-template-columns:200px 1fr;min-height:calc(100vh - 60px);}
+.sb{background:var(--white);border-right:1px solid var(--bdr);padding:28px 0;display:flex;flex-direction:column;position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto;}
+.sb-sec{padding:0 14px 20px;}
+.sb-lbl{font-size:8px;letter-spacing:.28em;color:var(--ink5);font-weight:500;margin-bottom:8px;padding-left:10px;text-transform:uppercase;}
+.nb{width:100%;text-align:left;background:none;border:none;padding:9px 12px 9px 14px;border-radius:2px;font-size:11px;font-family:inherit;color:var(--ink4);cursor:pointer;transition:all .15s;margin-bottom:1px;letter-spacing:.05em;display:block;border-left:2px solid transparent;}
+.nb:hover{background:var(--bg);color:var(--ink2);}
+.nb.on{background:#faf6ee;color:var(--navy);font-weight:500;border-left-color:var(--gold);}
+.sb-line{height:1px;background:var(--bdr);margin:6px 14px 14px;}
+.sb-foot{margin-top:auto;padding:16px 14px 0;}
+.btn-go{width:100%;padding:13px;background:var(--navy);color:var(--gold3);border:none;font-family:inherit;font-size:10px;letter-spacing:.2em;cursor:pointer;border-radius:2px;text-transform:uppercase;}
 .btn-go:hover{background:var(--navy2);}
-.btn-rst{width:100%;padding:8px;margin-top:8px;background:none;color:var(--ink4);border:1px solid var(--border2);font-family:inherit;font-size:11px;cursor:pointer;border-radius:4px;}
-.main{padding:32px 36px;overflow-y:auto;}
+.btn-rst{width:100%;padding:8px;margin-top:8px;background:none;color:var(--ink5);border:1px solid var(--bdr2);font-family:inherit;font-size:9px;letter-spacing:.1em;cursor:pointer;border-radius:2px;text-transform:uppercase;}
+.main{overflow-y:auto;}
 .tp{display:none;}.tp.on{display:block;}
-.ph{margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--border);}
-.pt{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;letter-spacing:.04em;margin-bottom:2px;}
-.pd{font-size:12px;color:var(--ink4);}
-.card{background:var(--white);border:1px solid var(--border);border-radius:4px;margin-bottom:18px;overflow:hidden;}
-.ch{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-.ct{font-size:11px;letter-spacing:.1em;font-weight:600;color:var(--ink2);text-transform:uppercase;}
-.cb{padding:20px;}
-.fg{display:grid;gap:14px;}.g2{grid-template-columns:1fr 1fr;}.g3{grid-template-columns:1fr 1fr 1fr;}.full{grid-column:1/-1;}
+.pw{padding:40px 44px;}
+.eyebrow{font-size:8px;letter-spacing:.3em;color:var(--gold);font-weight:500;text-transform:uppercase;margin-bottom:10px;}
+.page-title{font-family:'Playfair Display',serif;font-size:30px;font-weight:400;color:var(--ink);letter-spacing:.03em;line-height:1.15;margin-bottom:5px;}
+.page-desc{font-size:11px;color:var(--ink4);letter-spacing:.04em;}
+.ph{margin-bottom:34px;padding-bottom:20px;border-bottom:1px solid var(--bdr);}
+.card{background:var(--white);border:1px solid var(--bdr);border-radius:2px;margin-bottom:18px;overflow:hidden;}
+.ch{padding:15px 22px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;}
+.ct{font-size:8px;letter-spacing:.22em;font-weight:600;color:var(--ink4);text-transform:uppercase;}
+.cb{padding:22px;}
+.fg{display:grid;gap:15px;}.g2{grid-template-columns:1fr 1fr;}.g3{grid-template-columns:1fr 1fr 1fr;}.full{grid-column:1/-1;}
 .fl{display:flex;flex-direction:column;gap:5px;}
-.fl label{font-size:11px;letter-spacing:.08em;color:var(--ink4);font-weight:500;}
-.fi,.fs,.ft{padding:10px 12px;border:1px solid var(--border2);border-radius:4px;font-size:13px;font-family:inherit;color:var(--ink);background:var(--white);transition:border-color .2s;width:100%;}
-.fi:focus,.fs:focus,.ft:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(26,39,68,.07);}
-.ft{resize:vertical;min-height:78px;}
-.fh{font-size:11px;color:var(--ink4);}
-.price-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
-.pc{padding:16px;border-radius:6px;border:1px solid var(--border);background:var(--white);position:relative;overflow:hidden;}
-.pc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;}
-.pc.std::before{background:var(--navy);}.pc.early::before{background:var(--gold);}.pc.high::before{background:var(--red);}
-.pc-lbl{font-size:10px;letter-spacing:.1em;color:var(--ink4);margin-bottom:8px;font-weight:600;}
-.pc-val{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--ink);}
-.pc-tsubo{font-size:11px;color:var(--ink4);margin-top:3px;}
-.btn{padding:9px 18px;border-radius:4px;font-size:12px;letter-spacing:.08em;font-weight:500;cursor:pointer;font-family:inherit;transition:all .2s;border:1px solid var(--border2);background:var(--white);color:var(--ink2);}
-.btn:hover{background:var(--paper);}
-.btn-p{background:var(--navy);color:#fff;border-color:var(--navy);}
+.fl label{font-size:9px;letter-spacing:.12em;color:var(--ink4);font-weight:500;text-transform:uppercase;}
+.fi,.fs,.ft{padding:10px 13px;border:1px solid var(--bdr2);border-radius:2px;font-size:12px;font-family:inherit;color:var(--ink);background:var(--white);transition:border-color .2s;width:100%;}
+.fi:focus,.fs:focus,.ft:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,162,101,.1);}
+.ft{resize:vertical;min-height:80px;}
+.fh{font-size:9px;color:var(--ink5);}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
+.pc{padding:18px;border-radius:2px;border:1px solid var(--bdr);background:var(--bg);position:relative;overflow:hidden;}
+.pc-accent{position:absolute;bottom:0;left:0;right:0;height:2px;}
+.pc.std .pc-accent{background:var(--navy);}
+.pc.early .pc-accent{background:var(--gold);}
+.pc.high .pc-accent{background:var(--ink3);}
+.pc-lbl{font-size:8px;letter-spacing:.16em;color:var(--ink4);margin-bottom:9px;font-weight:600;text-transform:uppercase;}
+.pc-val{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:400;color:var(--ink);}
+.pc-tsubo{font-size:10px;color:var(--ink4);margin-top:3px;}
+.btn{padding:9px 18px;border-radius:2px;font-size:10px;letter-spacing:.12em;font-weight:500;cursor:pointer;font-family:inherit;transition:all .2s;border:1px solid var(--bdr2);background:var(--white);color:var(--ink3);text-transform:uppercase;}
+.btn:hover{background:var(--bg);}
+.btn-p{background:var(--navy);color:var(--gold3);border-color:var(--navy);}
 .btn-p:hover{background:var(--navy2);}
-.btn-d{background:none;color:#c0392b;border-color:rgba(192,57,43,.3);font-size:11px;padding:5px 10px;}
-.btn-sm{padding:6px 12px;font-size:11px;}
-.btn-parse{background:var(--navy);color:#fff;border:none;padding:10px 20px;border-radius:4px;font-family:inherit;font-size:12px;cursor:pointer;margin-top:10px;}
-.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:22px;}
-.dt{width:100%;border-collapse:collapse;}
-.dt th{text-align:left;padding:9px 11px;background:var(--paper);font-size:10px;letter-spacing:.1em;color:var(--ink4);font-weight:600;border-bottom:1px solid var(--border);}
-.dt td{padding:7px 11px;border-bottom:1px solid var(--border);}
-.dt tr:last-child td{border-bottom:none;}
-.dt td input{border:none;background:transparent;font-size:13px;font-family:inherit;color:var(--ink);width:100%;padding:2px 0;}
-.dt td input:focus{outline:1px solid var(--navy);border-radius:2px;padding:2px 4px;background:var(--alight);}
-.paste-box{border:1px dashed var(--border2);border-radius:6px;padding:18px;background:var(--paper);margin-bottom:14px;}
-.paste-inst{font-size:12px;color:var(--ink3);margin-bottom:10px;line-height:1.9;background:var(--alight);border-radius:4px;padding:12px 14px;border-left:3px solid var(--navy);}
-.paste-inst strong{color:var(--navy);}
-.paste-ta{width:100%;min-height:120px;resize:vertical;border:1px solid var(--border2);border-radius:4px;padding:12px;font-size:12px;font-family:inherit;color:var(--ink2);background:var(--white);line-height:1.6;}
-.paste-ta:focus{outline:none;border-color:var(--navy);}
-.palette{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
+.btn-d{background:none;color:#b94040;border-color:rgba(185,64,64,.25);font-size:9px;padding:5px 10px;}
+.btn-sm{padding:5px 11px;font-size:9px;}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:26px;}
+.pdf-drop{border:1px dashed rgba(196,162,101,.45);border-radius:2px;padding:28px;background:var(--bg);text-align:center;cursor:pointer;transition:all .2s;margin-bottom:14px;position:relative;}
+.pdf-drop:hover,.pdf-drop.has-file{border-color:var(--gold);background:rgba(196,162,101,.04);}
+.pdf-drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.pdf-drop-icon{font-size:22px;margin-bottom:8px;opacity:.35;}
+.pdf-drop-title{font-size:12px;color:var(--ink3);margin-bottom:3px;font-weight:500;}
+.pdf-drop-sub{font-size:10px;color:var(--ink5);}
+.pdf-file-item{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:var(--bg);border:1px solid var(--bdr);border-radius:2px;}
+.pdf-file-l{display:flex;align-items:center;gap:11px;}
+.pdf-file-icon{width:30px;height:30px;background:var(--navy);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--gold);font-weight:700;}
+.pdf-file-name{font-size:12px;font-weight:500;color:var(--ink2);}
+.pdf-file-meta{font-size:9px;color:var(--ink5);margin-top:2px;}
+.photo-drop{border:1px dashed rgba(196,162,101,.45);border-radius:2px;padding:20px;background:var(--bg);cursor:pointer;transition:all .2s;position:relative;display:flex;align-items:center;gap:20px;}
+.photo-drop:hover,.photo-drop.has-file{border-color:var(--gold);background:rgba(196,162,101,.04);}
+.photo-drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.photo-preview{width:80px;height:100px;object-fit:cover;border-radius:2px;border:1px solid var(--bdr2);flex-shrink:0;}
+.photo-placeholder{width:80px;height:100px;background:var(--navy);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:28px;opacity:.25;flex-shrink:0;}
+.photo-drop-text{text-align:left;}
+.photo-drop-title{font-size:12px;color:var(--ink3);font-weight:500;margin-bottom:3px;}
+.photo-drop-sub{font-size:10px;color:var(--ink5);}
+.palette{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px;padding-bottom:26px;border-bottom:1px solid var(--bdr);}
 .swatch{width:38px;height:38px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:all .2s;position:relative;}
-.swatch.on{border-color:var(--ink);transform:scale(1.12);}
-.swatch::after{content:attr(title);position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--ink4);white-space:nowrap;}
-.cov-mock{border-radius:6px;overflow:hidden;border:1px solid var(--border);}
-.cov-inner{padding:28px 24px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;position:relative;overflow:hidden;}
-.cov-bar{position:absolute;top:0;left:0;right:0;height:4px;}
-.cov-g1{position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.07);}
-.cov-g2{position:absolute;right:20px;bottom:-70px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.04);}
-.cov-co{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;letter-spacing:.1em;position:relative;z-index:1;}
-.cov-co-sub{font-size:10px;opacity:.55;margin-top:2px;position:relative;z-index:1;}
-.cov-ttl{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;letter-spacing:.08em;position:relative;z-index:1;}
-.cov-catch{font-size:11px;opacity:.7;margin-top:4px;position:relative;z-index:1;}
-.cov-st{position:relative;z-index:1;}
-.cov-st-lbl{font-size:9px;opacity:.5;letter-spacing:.14em;margin-bottom:3px;}
-.cov-st-name{font-size:14px;font-weight:600;}
-.cov-st-info{font-size:10px;opacity:.65;margin-top:2px;}
-.ptbar{background:var(--navy);color:#fff;padding:12px 20px;border-radius:4px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
-.ptbar-l{font-size:12px;opacity:.65;}
+.swatch.on{border-color:var(--ink);transform:scale(1.08);}
+.swatch::after{content:attr(title);position:absolute;bottom:-17px;left:50%;transform:translateX(-50%);font-size:8px;color:var(--ink4);white-space:nowrap;}
+.cov-mock{border-radius:2px;overflow:hidden;border:1px solid var(--bdr);}
+.cov-inner{padding:28px 24px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;position:relative;overflow:hidden;}
+.cov-gold-bar{position:absolute;top:0;left:0;right:0;height:3px;}
+.cov-ga{position:absolute;right:-50px;top:-50px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.04);}
+.cov-gb{position:absolute;left:-30px;bottom:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.03);}
+.cov-co{font-family:'Playfair Display',serif;font-size:17px;letter-spacing:.1em;position:relative;z-index:1;}
+.cov-sub{font-size:8px;opacity:.4;letter-spacing:.2em;margin-top:2px;position:relative;z-index:1;text-transform:uppercase;}
+.cov-ttl{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;letter-spacing:.08em;position:relative;z-index:1;}
+.cov-catch{font-size:10px;opacity:.6;margin-top:5px;position:relative;z-index:1;}
+.cov-staff{position:relative;z-index:1;}
+.cov-staff-lbl{font-size:7px;opacity:.4;letter-spacing:.2em;text-transform:uppercase;margin-bottom:2px;}
+.cov-staff-name{font-size:14px;font-weight:500;}
+.ptbar{background:var(--navy);color:#fff;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(196,162,101,.2);}
+.ptbar-l{font-size:10px;opacity:.45;letter-spacing:.1em;}
 .ptbar-r{display:flex;gap:10px;}
-.btn-print{background:var(--red);color:#fff;border:none;padding:9px 22px;border-radius:4px;font-family:inherit;font-size:12px;cursor:pointer;}
-.btn-ref{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);padding:9px 16px;border-radius:4px;font-family:inherit;font-size:12px;cursor:pointer;}
-.stn-row{display:grid;grid-template-columns:1fr 90px 90px auto;gap:8px;align-items:center;margin-bottom:8px;}
-.rpt-wrap{max-width:840px;margin:0 auto;}
-.rpt-page{background:#fff;border:1px solid var(--border);border-radius:4px;margin-bottom:16px;overflow:hidden;}
-.rpt-cover{padding:3.5rem 3rem;min-height:400px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;position:relative;overflow:hidden;}
-.rpt-cover-bar{position:absolute;top:0;left:0;right:0;height:5px;}
-.rg1{position:absolute;right:-70px;top:-70px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.07);}
-.rg2{position:absolute;right:60px;bottom:-100px;width:440px;height:440px;border-radius:50%;background:rgba(255,255,255,.04);}
-.rg3{position:absolute;left:-30px;bottom:90px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.04);}
-.rco{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;letter-spacing:.12em;position:relative;z-index:1;}
-.rco-sub{font-size:11px;opacity:.55;margin-top:3px;position:relative;z-index:1;}
-.rcli{font-size:14px;opacity:.75;margin-bottom:8px;position:relative;z-index:1;}
-.rttl{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;letter-spacing:.06em;line-height:1.1;position:relative;z-index:1;}
-.rcatch{font-size:13px;opacity:.7;letter-spacing:.08em;margin-top:8px;position:relative;z-index:1;}
-.rbtm{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;}
-.rst-lbl{font-size:10px;opacity:.5;letter-spacing:.14em;margin-bottom:4px;}
-.rst-name{font-size:20px;font-weight:600;}
-.rst-info{font-size:11px;opacity:.65;margin-top:3px;line-height:1.7;}
-.rdate{font-size:13px;opacity:.55;text-align:right;}
-.rsec{padding:2rem 2.5rem;border-top:1px solid var(--border);}
-.rsec-ttl{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:400;letter-spacing:.06em;color:var(--ink);margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid;display:flex;align-items:center;gap:10px;}
+.btn-print{background:var(--gold);color:#fff;border:none;padding:10px 22px;border-radius:2px;font-family:inherit;font-size:10px;letter-spacing:.14em;cursor:pointer;text-transform:uppercase;}
+.btn-print:hover{background:#b08040;}
+.btn-ref{background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.13);padding:10px 16px;border-radius:2px;font-family:inherit;font-size:10px;cursor:pointer;}
+
+/* ===== REPORT ===== */
+.rpt-wrap{max-width:794px;margin:0 auto;padding:20px 0;position:relative;border-left:4px solid var(--gold);}
+.rpt-wrap::after{content:'';position:absolute;top:0;right:0;bottom:0;width:4px;background:var(--gold);pointer-events:none;}
+.rpt-page{background:var(--white);overflow:hidden;position:relative;display:flex;flex-direction:column;border-bottom:6px solid var(--bg);}
+/* Cover — new style */
+.rpt-cover{min-height:560px;overflow:hidden;display:flex;flex-direction:column;background:var(--white);}
+.rcov-top-bar{height:4px;width:100%;}
+.rpt-cover-inner{flex:1;display:flex;flex-direction:column;padding:2rem 3rem 0;}
+.rcov-logo-area{display:flex;align-items:center;gap:10px;margin-bottom:1.6rem;}
+.rcov-logo-icon{width:36px;height:36px;border:1.5px solid;border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-weight:500;}
+.rcov-logo-text{font-family:'Playfair Display',serif;font-size:14px;letter-spacing:.12em;}
+.rcov-title-area{margin-bottom:1.6rem;}
+.rcov-main-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:500;letter-spacing:.08em;margin-bottom:.6rem;}
+.rcov-cover-image{flex:1;min-height:300px;position:relative;overflow:hidden;}
+.rcov-img-geo1{position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.06);}
+.rcov-img-geo2{position:absolute;left:-40px;bottom:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.04);}
+.rcov-img-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 2.2rem;}
+.rcov-bottom-row{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;}
+.rcov-client-block{color:#fff;}
+.rcov-date-block{font-size:12px;opacity:.85;letter-spacing:.18em;margin-bottom:8px;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-style:normal;}
+.rcov-client-name2{font-family:'Noto Sans JP',sans-serif;font-size:26px;font-weight:500;letter-spacing:.06em;line-height:1.1;}
+.rcov-staff-block{color:#fff;text-align:right;}
+.rcov-st-lbl2{font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.55;margin-bottom:4px;}
+.rcov-st-name2{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;letter-spacing:.08em;line-height:1;margin-bottom:5px;}
+.rcov-st-info2{font-size:9px;opacity:.5;letter-spacing:.04em;line-height:1.7;}
+/* Section */
+.rsec{padding:1.4rem 2.4rem 1.4rem 2.8rem;}
+.rsec-hd{display:flex;align-items:baseline;gap:16px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--bdr);}
+.rsec-num{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gold);letter-spacing:.08em;font-style:italic;flex-shrink:0;}
+.rsec-ttl{font-family:'Playfair Display',serif;font-size:21px;font-weight:400;color:var(--ink);letter-spacing:.04em;}
+/* Info */
 .rit{width:100%;border-collapse:collapse;}
-.rit tr{border-bottom:1px solid rgba(0,0,0,.06);}
+.rit tr{border-bottom:1px solid rgba(0,0,0,.05);}
 .rit tr:last-child{border-bottom:none;}
-.rit td{padding:10px 0;}
-.rilbl{width:140px;font-size:11px;letter-spacing:.06em;color:var(--ink4);vertical-align:top;padding-top:12px;}
-.rival{font-size:14px;font-weight:500;padding-left:8px;}
-.rph{border-radius:6px;padding:2rem;margin-bottom:1rem;position:relative;overflow:hidden;color:#fff;}
-.rph-bg{position:absolute;right:-50px;top:-50px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.12);}
-.rph-lbl{font-size:11px;letter-spacing:.12em;opacity:.7;margin-bottom:8px;position:relative;z-index:1;}
-.rph-main{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:400;line-height:1;position:relative;z-index:1;}
-.rph-tsubo{font-size:13px;opacity:.7;margin-top:6px;position:relative;z-index:1;}
-.rplans{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;position:relative;z-index:1;}
-.rplan{background:rgba(255,255,255,.15);border-radius:4px;padding:12px;}
-.rplan-n{font-size:10px;letter-spacing:.1em;opacity:.75;margin-bottom:4px;}
-.rplan-p{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;}
-.rplan-t{font-size:10px;opacity:.65;margin-top:2px;}
-.rct{width:100%;border-collapse:collapse;font-size:12px;}
-.rct th{text-align:left;padding:8px 10px;background:var(--paper);font-size:10px;letter-spacing:.08em;color:var(--ink4);font-weight:600;border-bottom:1px solid var(--border);}
-.rct td{padding:9px 10px;border-bottom:1px solid rgba(0,0,0,.05);}
-.rct tr:last-child td{border-bottom:none;}
-.rct .no{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--ink4);}
-.rct .pr{font-weight:600;text-align:right;}
-.rct .tp{color:var(--ink3);text-align:right;font-size:11px;}
-.rsub{font-size:11px;letter-spacing:.1em;color:var(--ink4);font-weight:600;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
-.rstn-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.05);font-size:13px;}
-.rstn-item:last-child{border-bottom:none;}
-.rstn-name{font-weight:500;}
-.rstn-walk{color:var(--ink4);font-size:12px;}
-.rfac{width:100%;border-collapse:collapse;font-size:12px;}
-.rfac th{text-align:left;padding:7px 8px;background:var(--paper);font-size:10px;letter-spacing:.08em;color:var(--ink4);border-bottom:1px solid var(--border);}
-.rfac td{padding:7px 8px;border-bottom:1px solid rgba(0,0,0,.05);}
-.rfac tr:last-child td{border-bottom:none;}
-.rbadge{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:500;background:var(--alight);color:var(--navy);}
+.rit td{padding:7px 0;}
+.rilbl{width:155px;font-size:9px;letter-spacing:.1em;color:var(--ink4);vertical-align:top;padding-top:11px;text-transform:uppercase;}
+.rival{font-size:13px;color:var(--ink);padding-left:14px;font-weight:300;}
+/* Price */
+.rph{border-radius:2px;padding:1.6rem 2rem;color:#fff;position:relative;overflow:hidden;margin-bottom:14px;}
+.rph-geo{position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.07);}
+.rph-gl{position:absolute;top:0;left:0;right:0;height:3px;}
+.rph-vt{display:none;}
+.rph-ey{font-size:8px;letter-spacing:.22em;opacity:.55;margin-bottom:8px;position:relative;z-index:1;text-transform:uppercase;}
+.rph-main{display:flex;align-items:baseline;gap:4px;line-height:1;position:relative;z-index:1;}
+.rph-main-num{font-family:'Playfair Display',serif;font-size:52px;font-weight:400;letter-spacing:.02em;line-height:1;}
+.rph-main-unit{font-family:'Noto Sans JP',sans-serif;font-size:24px;font-weight:300;letter-spacing:.04em;opacity:.9;margin-left:2px;}
+.rph-tsubo{font-size:11px;opacity:.55;margin-top:7px;margin-bottom:16px;position:relative;z-index:1;letter-spacing:.06em;}
+.rph-plans{display:flex;flex-direction:column;gap:8px;position:relative;z-index:1;}
+.rplan{background:rgba(255,255,255,.09);border-radius:2px;padding:11px 18px;border:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:center;}
+.rplan-n{font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:.06em;opacity:.75;flex-shrink:0;min-width:180px;font-weight:300;}
+.rplan-body{display:flex;align-items:baseline;gap:8px;}
+.rplan-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;letter-spacing:.02em;line-height:1;}
+.rplan-unit{font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:300;opacity:.9;margin-left:1px;}
+.rplan-t{font-size:9px;opacity:.5;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;}
+.rdisc{font-size:9px;color:var(--ink5);line-height:1.9;margin-top:12px;padding:11px 16px;background:var(--bg);border-left:2px solid var(--bdr2);}
+.rcomment{margin-top:12px;font-size:12px;color:var(--ink3);line-height:1.9;padding:12px 16px;background:var(--bg);border-left:2px solid var(--gold2);}
+/* PDF embed */
+.rpt-pdf-wrap{padding:0 2.4rem 1.2rem 2.8rem;}
+.rpt-pdf-img{width:100%;display:block;margin-bottom:10px;border:1px solid var(--bdr);}
+/* Flow */
 .rflow{display:flex;flex-direction:column;}
-.rfi{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06);align-items:flex-start;}
+.rfi{display:flex;gap:14px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.05);align-items:flex-start;}
 .rfi:last-child{border-bottom:none;}
-.rfn{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:#fff;flex-shrink:0;}
-.rft{font-size:14px;font-weight:600;margin-bottom:3px;}
-.rfd{font-size:12px;color:var(--ink3);line-height:1.7;}
-.rfooter{padding:14px 2.5rem;border-top:1px solid var(--border);background:var(--paper);display:flex;align-items:center;justify-content:space-between;}
-.rfooter-copy{font-size:10px;color:var(--ink4);letter-spacing:.08em;}
-.rfooter-logo{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ink3);letter-spacing:.1em;}
-.rdisc{font-size:10px;color:var(--ink4);line-height:1.8;margin-top:12px;padding:12px;background:var(--paper);border-radius:4px;border-left:2px solid var(--border2);}
-@media print{.hdr,.sb,.main>*:not(#t-preview){display:none!important;}.layout{display:block;}body{background:#fff;}#t-preview{display:block!important;}.ptbar{display:none!important;}.rpt-page{border:none;margin:0;border-radius:0;page-break-after:always;}}
+.rfn{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:12px;color:#fff;flex-shrink:0;}
+.rft{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;}
+.rfd{font-size:11px;color:var(--ink4);line-height:1.8;}
+/* Staff page */
+.rstaff-page{display:grid;grid-template-columns:220px 1fr;min-height:320px;}
+.rstaff-left{padding:2rem 1.4rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border-right:1px solid var(--bdr);}
+.rstaff-photo{width:180px;height:150px;object-fit:cover;object-position:center top;border-radius:2px;border:1px solid var(--bdr);background:var(--bg);}
+.rstaff-photo-placeholder{width:180px;height:150px;background:var(--bg);border-radius:2px;border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:36px;opacity:.25;}
+.rstaff-co-logo{font-family:'Playfair Display',serif;font-size:11px;color:var(--ink3);letter-spacing:.12em;text-align:center;line-height:1.6;}
+.rstaff-right{padding:2rem 2.2rem 2rem 1.8rem;display:flex;flex-direction:column;justify-content:space-between;}
+.rstaff-role{font-size:9px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;}
+.rstaff-name{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:400;letter-spacing:.08em;color:var(--ink);line-height:1;margin-bottom:4px;}
+.rstaff-kana{font-size:11px;color:var(--ink4);letter-spacing:.1em;margin-bottom:16px;}
+.rstaff-bio{font-size:12px;color:var(--ink3);line-height:1.9;border-left:2px solid var(--gold2);padding-left:14px;margin-bottom:16px;}
+.rstaff-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px;}
+.rstaff-info-item{background:var(--bg);padding:9px 12px;border-radius:2px;}
+.rstaff-info-lbl{font-size:8px;letter-spacing:.16em;color:var(--ink5);text-transform:uppercase;margin-bottom:3px;}
+.rstaff-info-val{font-size:11px;color:var(--ink2);}
+.rstaff-addr{font-size:10px;color:var(--ink4);line-height:1.9;}
+.rstaff-takken{font-size:9px;color:var(--ink5);letter-spacing:.06em;margin-top:4px;}
+/* Footer */
+.rfooter{padding:10px 2.4rem 10px 2.8rem;border-top:1px solid var(--bdr);background:var(--bg);display:flex;align-items:center;justify-content:space-between;margin-top:auto;}
+.rfooter-copy{font-size:8px;color:var(--ink5);letter-spacing:.12em;}
+.rfooter-logo{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ink4);letter-spacing:.14em;font-style:italic;}
+
+/* ===== STRATEGY GUIDE PAGES ===== */
+/* 統合表紙（上半分カラー） */
+.sg-cover-half{padding:2.8rem 2.4rem 2.8rem 2.8rem;position:relative;overflow:hidden;color:#fff;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;}
+.sg-cover-half-inner{display:flex;justify-content:space-between;align-items:flex-end;white-space:nowrap;overflow:hidden;gap:16px;}
+.sg-cover{min-height:460px;display:flex;flex-direction:column;justify-content:space-between;padding:2.8rem 3rem 2.4rem;position:relative;overflow:hidden;color:#fff;}
+.sg-cover-geo1{position:absolute;right:-80px;top:-80px;width:380px;height:380px;border-radius:50%;background:rgba(255,255,255,.05);}
+.sg-cover-geo2{position:absolute;left:-50px;bottom:-50px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.04);}
+.sg-cover-geo3{position:absolute;right:100px;bottom:80px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.06);}
+.sg-cover-gold{position:absolute;top:0;left:0;right:0;height:4px;}
+.sg-cover-head{position:relative;z-index:1;}
+.sg-cover-eyebrow{font-size:9px;letter-spacing:.28em;opacity:.5;text-transform:uppercase;margin-bottom:6px;}
+.sg-cover-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;letter-spacing:.08em;line-height:1.1;margin-bottom:8px;}
+.sg-cover-sub{font-size:13px;opacity:.65;letter-spacing:.06em;}
+.sg-cover-list{position:relative;z-index:1;}
+.sg-cover-list-title{font-size:9px;letter-spacing:.2em;opacity:.5;text-transform:uppercase;margin-bottom:16px;}
+.sg-cover-items{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.sg-cover-item{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:2px;padding:12px 14px;}
+.sg-cover-item-num{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;opacity:.6;flex-shrink:0;width:22px;}
+.sg-cover-item-text{font-size:12px;letter-spacing:.04em;}
+.sg-cover-foot{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;}
+.sg-cover-tagline{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;opacity:.5;letter-spacing:.1em;}
+.sg-cover-brand{font-family:'Playfair Display',serif;font-size:14px;opacity:.6;letter-spacing:.12em;}
+/* 理念ページ */
+.sg-values{padding:1.2rem 2.4rem 1.2rem 2.8rem;}
+.sg-values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr);border-radius:2px;overflow:hidden;margin-bottom:14px;}
+.sg-value-item{background:var(--white);padding:16px 14px;}
+.sg-value-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:10px;}
+.sg-value-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:8px;letter-spacing:.04em;}
+.sg-value-desc{font-size:11px;color:var(--ink3);line-height:1.9;}
+.sg-flow-label{font-size:9px;letter-spacing:.2em;color:var(--ink5);text-transform:uppercase;margin-bottom:12px;}
+.sg-flow{display:flex;align-items:center;gap:0;}
+.sg-flow-item{flex:1;text-align:center;padding:10px 8px;background:var(--bg);position:relative;}
+.sg-flow-item:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--gold);z-index:1;}
+.sg-flow-step{font-size:8px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
+.sg-flow-name{font-size:12px;font-weight:500;color:var(--ink2);}
+/* サポートページ */
+.sg-support{padding:1.2rem 2.4rem 1.2rem 2.8rem;}
+.sg-support-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.sg-support-grid-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.sg-support-item{border:1px solid var(--bdr);border-radius:2px;overflow:hidden;}
+.sg-support-head{padding:10px 14px 8px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:10px;}
+.sg-support-num{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--gold);line-height:1;flex-shrink:0;}
+.sg-support-title{font-size:14px;font-weight:500;color:var(--ink);line-height:1.4;}
+.sg-support-body{padding:10px 14px 12px;}
+.sg-support-main{font-size:12px;color:var(--ink2);line-height:1.9;margin-bottom:8px;}
+.sg-support-note{font-size:11px;color:var(--ink4);line-height:1.8;}
+.sg-support-tag{display:inline-block;margin-top:8px;padding:3px 9px;background:var(--bg);border:1px solid var(--bdr);border-radius:20px;font-size:9px;letter-spacing:.1em;color:var(--ink4);}
+
+@media print{
+  .hdr,.sb,.main>*:not(#t-preview){display:none!important;}
+  .layout{display:block;}body{background:#fff;}
+  #t-preview{display:block!important;}
+  .ptbar{display:none!important;}
+  .rpt-page{border:none!important;border-bottom:none!important;margin:0;page-break-after:always;box-shadow:none!important;}
+  .rpt-wrap{padding:0!important;border-left:4px solid var(--gold)!important;border-right:none!important;}
+  .rpt-wrap::after{content:''!important;position:absolute!important;top:0!important;right:0!important;bottom:0!important;width:4px!important;background:var(--gold)!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+  /* 背景色・背景画像を強制出力 */
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important;}
+}
 </style>
 </head>
 <body>
 <div class="hdr">
-  <div class="hdr-logo">
-    <div class="hdr-box">S</div>
-    <div><div class="hdr-co" id="h-co">株式会社スイートホーム</div><div class="hdr-sub">PROPERTY REPORT SYSTEM</div></div>
+  <div class="hdr-l">
+    <div class="hdr-crest">S</div>
+    <div><div class="hdr-brand" id="h-co">株式会社スイートホーム</div><div class="hdr-tagline">Property Report System</div></div>
   </div>
-  <div class="save-ind"><div class="sdot" id="sdot"></div><span id="slbl">自動保存済み</span></div>
+  <div class="hdr-r"><div class="sdot" id="sdot"></div><span id="slbl">Saved</span></div>
 </div>
 <div class="layout">
 <div class="sb">
-  <div class="sb-grp">
-    <div class="sb-lbl">データ入力</div>
+  <div class="sb-sec">
+    <div class="sb-lbl">Data Input</div>
     <button class="nb on" onclick="gt('t-basic')">① 物件基本情報</button>
     <button class="nb" onclick="gt('t-price')">② 査定価格</button>
     <button class="nb" onclick="gt('t-staff')">③ 担当者・会社情報</button>
-    <button class="nb" onclick="gt('t-reins')">④ REINS事例</button>
-    <button class="nb" onclick="gt('t-area')">⑤ 周辺情報</button>
+    <button class="nb" onclick="gt('t-reins')">④ REINS 事例 PDF</button>
   </div>
-  <div class="sb-grp">
-    <div class="sb-lbl">設定・出力</div>
+  <div class="sb-line"></div>
+  <div class="sb-sec">
+    <div class="sb-lbl">Output</div>
     <button class="nb" onclick="gt('t-design')">デザイン設定</button>
     <button class="nb" onclick="gt('t-preview');buildReport();">プレビュー・印刷</button>
   </div>
@@ -187,8 +287,15 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--i
 </div>
 <div class="main">
 
-<div id="t-basic" class="tp on">
-  <div class="ph"><div class="pt">物件基本情報</div><div class="pd">査定対象物件の基本情報を入力してください</div></div>
+<!-- ① 物件基本情報 -->
+<div id="t-basic" class="tp on"><div class="pw">
+  <div class="ph"><div class="eyebrow">Step 01</div><div class="page-title">物件基本情報</div><div class="page-desc">査定対象物件の基本情報を入力してください</div></div>
+  <div class="card"><div class="ch"><span class="ct">お客様・日付</span></div><div class="cb">
+    <div class="fg g2">
+      <div class="fl"><label>お客様名</label><input class="fi" id="client" placeholder="例：篠原" oninput="sv()"></div>
+      <div class="fl"><label>日付</label><input class="fi" id="reportdate" placeholder="例：2026年3月16日" oninput="sv()"></div>
+    </div>
+  </div></div>
   <div class="card"><div class="ch"><span class="ct">物件データ</span></div><div class="cb">
     <div class="fg g2">
       <div class="fl full"><label>建物名</label><input class="fi" id="building" placeholder="例：ブリリアマーレ有明タワー＆ガーデン" oninput="sv()"></div>
@@ -199,237 +306,481 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--i
       <div class="fl"><label>総階数</label><input class="fi" id="tfloor" placeholder="例：地上33階建" oninput="sv()"></div>
       <div class="fl"><label>間取り</label><input class="fi" id="madori" placeholder="例：1LDK" oninput="sv()"></div>
       <div class="fl"><label>方位</label><select class="fs" id="houkou" onchange="sv()"><option>北西</option><option>北東</option><option>南西</option><option>南東</option><option>南</option><option>北</option><option>東</option><option>西</option></select></div>
-      <div class="fl"><label>管理費（円/月）</label><input class="fi" id="kanri" placeholder="例：14,400" oninput="sv()"></div>
-      <div class="fl"><label>修繕積立金（円/月）</label><input class="fi" id="shuzen" placeholder="例：13,950" oninput="sv()"></div>
       <div class="fl full"><label>特記事項</label><textarea class="ft" id="note" placeholder="リフォーム履歴・設備の特徴など" oninput="sv()"></textarea></div>
     </div>
   </div></div>
   <div class="nav-row"><span></span><button class="btn btn-p" onclick="gt('t-price')">次へ →</button></div>
-</div>
+</div></div>
 
-<div id="t-price" class="tp">
-  <div class="ph"><div class="pt">査定価格</div><div class="pd">3プランで売出価格をご提案します</div></div>
+<!-- ② 査定価格 -->
+<div id="t-price" class="tp"><div class="pw">
+  <div class="ph"><div class="eyebrow">Step 02</div><div class="page-title">査定価格</div><div class="page-desc">3プランで売出価格をご提案します</div></div>
   <div class="card"><div class="ch"><span class="ct">価格入力</span></div><div class="cb">
     <div class="fg g3">
       <div class="fl"><label>標準プラン（万円）</label><input class="fi" id="p_std" type="number" placeholder="8480" oninput="cp();sv();"><span class="fh" id="h_std">坪単価：—</span></div>
       <div class="fl"><label>早期成約プラン（万円）</label><input class="fi" id="p_early" type="number" placeholder="8280" oninput="cp();sv();"><span class="fh" id="h_early">坪単価：—</span></div>
       <div class="fl"><label>高値売却プラン（万円）</label><input class="fi" id="p_high" type="number" placeholder="8680" oninput="cp();sv();"><span class="fh" id="h_high">坪単価：—</span></div>
     </div>
-    <div class="price-row" id="pdisplay"></div>
-    <div class="fl" style="margin-top:16px;"><label>査定コメント（任意）</label><textarea class="ft" id="pcomment" placeholder="査定根拠・市場動向など" oninput="sv()"></textarea></div>
+    <div class="price-grid" id="pdisplay"></div>
+    <div class="fl" style="margin-top:18px;"><label>査定コメント（任意）</label><textarea class="ft" id="pcomment" placeholder="査定根拠・市場動向など" oninput="sv()"></textarea></div>
   </div></div>
   <div class="nav-row"><button class="btn" onclick="gt('t-basic')">← 戻る</button><button class="btn btn-p" onclick="gt('t-staff')">次へ →</button></div>
-</div>
+</div></div>
 
-<div id="t-staff" class="tp">
-  <div class="ph"><div class="pt">担当者・会社情報</div><div class="pd">表紙に表示される情報を入力してください</div></div>
+<!-- ③ 担当者 -->
+<div id="t-staff" class="tp"><div class="pw">
+  <div class="ph"><div class="eyebrow">Step 03</div><div class="page-title">担当者・会社情報</div><div class="page-desc">レポートに表示される情報と顔写真を設定してください</div></div>
+  <div class="card"><div class="ch"><span class="ct">顔写真</span></div><div class="cb">
+    <div class="photo-drop" id="photo-drop">
+      <input type="file" accept="image/*,application/pdf" onchange="loadPhoto(event)">
+      <div class="photo-placeholder" id="photo-placeholder">👤</div>
+      <img id="photo-preview" class="photo-preview" style="display:none;">
+      <div class="photo-drop-text">
+        <div class="photo-drop-title">顔写真をアップロード（JPG・PNG・PDF対応）</div>
+        <div class="photo-drop-sub">クリックまたはドロップ<br>名刺PDFをアップロードすると画像として使用します</div>
+      </div>
+    </div>
+  </div></div>
   <div class="card"><div class="ch"><span class="ct">会社・担当者</span></div><div class="cb">
     <div class="fg g2">
       <div class="fl"><label>会社名</label><input class="fi" id="company" value="株式会社スイートホーム" oninput="sv();document.getElementById('h-co').textContent=this.value;syncMock();"></div>
       <div class="fl"><label>担当者名</label><input class="fi" id="staffname" value="中谷 健作" oninput="sv();syncMock();"></div>
+      <div class="fl"><label>担当者名（ふりがな）</label><input class="fi" id="staffkana" value="なかや けんさく" oninput="sv()"></div>
+      <div class="fl"><label>役職</label><input class="fi" id="staffrole" value="代表取締役" oninput="sv()"></div>
       <div class="fl"><label>電話番号</label><input class="fi" id="tel" value="03-6807-6922" oninput="sv();syncMock();"></div>
-      <div class="fl"><label>FAX</label><input class="fi" id="fax" value="03-6807-6921" oninput="sv()"></div>
       <div class="fl"><label>携帯電話</label><input class="fi" id="mobile" value="080-2051-5897" oninput="sv()"></div>
+      <div class="fl"><label>FAX</label><input class="fi" id="fax" value="03-6807-6921" oninput="sv()"></div>
       <div class="fl"><label>メールアドレス</label><input class="fi" id="email" value="nakaya@sweet-home.tokyo" oninput="sv()"></div>
       <div class="fl full"><label>会社住所</label><input class="fi" id="caddr" value="〒116-0001 東京都荒川区町屋1-1-8 オリエントビル302" oninput="sv();syncMock();"></div>
       <div class="fl"><label>宅建番号</label><input class="fi" id="takken" value="東京都知事(1)107794号" oninput="sv()"></div>
       <div class="fl"><label>お客様名</label><input class="fi" id="client" placeholder="○○ 様" oninput="sv()"></div>
       <div class="fl full"><label>キャッチコピー（表紙）</label><input class="fi" id="catchcopy" value="あなたの大切な資産を、最高の価値へ。" oninput="sv();syncMock();"></div>
+      <div class="fl full"><label>担当者プロフィール</label><textarea class="ft" id="staffbio" oninput="sv()">金融機関・家業・不動産会社での経験を活かし、不動産売却やお住み替えに関するお悩みに、丁寧で現実的なご提案を心がけています。地域密着だからこそ、お引渡し後まで安心してご相談いただける対応を大切にしています。</textarea></div>
     </div>
   </div></div>
   <div class="nav-row"><button class="btn" onclick="gt('t-price')">← 戻る</button><button class="btn btn-p" onclick="gt('t-reins')">次へ →</button></div>
-</div>
+</div></div>
 
-<div id="t-reins" class="tp">
-  <div class="ph"><div class="pt">REINS 事例入力</div><div class="pd">コピー＆ペーストで事例を取り込めます</div></div>
-  <div class="card">
-    <div class="ch"><span class="ct">成約事例</span><button class="btn btn-sm btn-p" onclick="parseCase()">解析して追加</button></div>
-    <div class="cb">
-      <div class="paste-box">
-        <div class="paste-inst"><strong>【操作方法】</strong><br>① REINSの成約検索結果ページを開く<br>② ページ全体を選択（Ctrl+A）→ コピー（Ctrl+C）<br>③ 下のボックスに貼り付け（Ctrl+V）→「解析して追加」を押す<br>④ 認識できなかった場合は「手動で追加」から直接入力できます</div>
-        <textarea class="paste-ta" id="case-paste" placeholder="REINSの成約事例テキストをここに貼り付けてください..."></textarea>
-        <button class="btn-parse" onclick="parseCase()">解析して追加 →</button>
-      </div>
-      <div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="btn btn-sm" onclick="addCase({})">＋ 手動で追加</button></div>
-      <div style="overflow-x:auto;">
-        <table class="dt" id="case-tbl">
-          <thead><tr><th>No</th><th style="min-width:150px;">建物名</th><th style="min-width:70px;">面積(㎡)</th><th style="min-width:60px;">間取</th><th style="min-width:90px;">成約価格(万)</th><th style="min-width:80px;">坪単価(万/坪)</th><th style="min-width:90px;">成約日</th><th>削除</th></tr></thead>
-          <tbody id="case-body"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="ch"><span class="ct">在庫事例</span><button class="btn btn-sm btn-p" onclick="parseStock()">解析して追加</button></div>
-    <div class="cb">
-      <div class="paste-box">
-        <div class="paste-inst"><strong>【操作方法】</strong><br>① REINSの在庫検索結果ページを開く<br>② ページ全体を選択（Ctrl+A）→ コピー（Ctrl+C）<br>③ 下のボックスに貼り付け（Ctrl+V）→「解析して追加」を押す</div>
-        <textarea class="paste-ta" id="stock-paste" placeholder="REINSの在庫事例テキストをここに貼り付けてください..."></textarea>
-        <button class="btn-parse" onclick="parseStock()">解析して追加 →</button>
-      </div>
-      <div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="btn btn-sm" onclick="addStock({})">＋ 手動で追加</button></div>
-      <div style="overflow-x:auto;">
-        <table class="dt" id="stock-tbl">
-          <thead><tr><th>No</th><th style="min-width:150px;">建物名</th><th style="min-width:70px;">面積(㎡)</th><th style="min-width:60px;">間取</th><th style="min-width:90px;">売出価格(万)</th><th style="min-width:80px;">坪単価(万/坪)</th><th style="min-width:60px;">階数</th><th>削除</th></tr></thead>
-          <tbody id="stock-body"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="nav-row"><button class="btn" onclick="gt('t-staff')">← 戻る</button><button class="btn btn-p" onclick="gt('t-area')">次へ →</button></div>
-</div>
-
-<div id="t-area" class="tp">
-  <div class="ph"><div class="pt">周辺情報</div><div class="pd">交通・施設・ハザード情報を入力してください</div></div>
-  <div class="card"><div class="ch"><span class="ct">最寄り駅</span><button class="btn btn-sm" onclick="addStn()">＋ 追加</button></div><div class="cb"><div id="stn-list"></div></div></div>
-  <div class="card"><div class="ch"><span class="ct">周辺施設</span><button class="btn btn-sm" onclick="addFac()">＋ 追加</button></div>
-    <div class="cb" style="padding:0;overflow-x:auto;">
-      <table class="dt" id="fac-tbl"><thead><tr><th style="min-width:90px;">種別</th><th style="min-width:180px;">施設名</th><th style="min-width:70px;">距離</th><th style="min-width:70px;">徒歩</th><th>削除</th></tr></thead><tbody id="fac-body"></tbody></table>
-    </div>
-  </div>
-  <div class="card"><div class="ch"><span class="ct">学区</span></div><div class="cb">
-    <div class="fg g2">
-      <div class="fl"><label>小学校（学区）</label><input class="fi" id="ele-school" placeholder="例：江東区立有明西学園" oninput="sv()"></div>
-      <div class="fl"><label>中学校（学区）</label><input class="fi" id="mid-school" placeholder="例：有明中学校" oninput="sv()"></div>
-    </div>
+<!-- ④ REINS PDF -->
+<div id="t-reins" class="tp"><div class="pw">
+  <div class="ph"><div class="eyebrow">Step 04</div><div class="page-title">REINS 事例 PDF</div><div class="page-desc">PDFをアップロードするとそのままレポートに挿入されます</div></div>
+  <div class="card"><div class="ch"><span class="ct">近隣成約事例 — PDF</span></div><div class="cb">
+    <div class="pdf-drop" id="case-drop"><input type="file" accept="application/pdf" onchange="loadPDF(event,'case')">
+      <div class="pdf-drop-icon">📄</div><div class="pdf-drop-title">成約事例のPDFをドロップ</div><div class="pdf-drop-sub">またはクリックしてファイルを選択</div></div>
+    <div id="case-info"></div>
   </div></div>
-  <div class="card"><div class="ch"><span class="ct">ハザード・環境情報</span></div><div class="cb">
-    <div class="fg g2">
-      <div class="fl"><label>用途地域</label><input class="fi" id="youto" placeholder="例：準工業地域" oninput="sv()"></div>
-      <div class="fl"><label>建ぺい率 / 容積率</label><input class="fi" id="kenpei" placeholder="例：60% / 300%" oninput="sv()"></div>
-      <div class="fl"><label>地震時の揺れやすさ</label><input class="fi" id="jishin" placeholder="例：揺れやすい（埋立地：2.25）" oninput="sv()"></div>
-      <div class="fl"><label>液状化の可能性</label><input class="fi" id="ekijo" placeholder="例：高い（埋立地）" oninput="sv()"></div>
-      <div class="fl"><label>浸水想定区域</label><input class="fi" id="shinsui" placeholder="例：あり（0.5m未満）" oninput="sv()"></div>
-      <div class="fl"><label>その他ハザード情報</label><input class="fi" id="hazard_other" placeholder="例：活断層なし" oninput="sv()"></div>
-    </div>
+  <div class="card"><div class="ch"><span class="ct">現在の売出事例 — PDF</span></div><div class="cb">
+    <div class="pdf-drop" id="stock-drop"><input type="file" accept="application/pdf" onchange="loadPDF(event,'stock')">
+      <div class="pdf-drop-icon">📄</div><div class="pdf-drop-title">在庫事例のPDFをドロップ</div><div class="pdf-drop-sub">またはクリックしてファイルを選択</div></div>
+    <div id="stock-info"></div>
   </div></div>
-  <div class="nav-row"><button class="btn" onclick="gt('t-reins')">← 戻る</button><button class="btn btn-p" onclick="gt('t-design')">次へ →</button></div>
-</div>
+  <div class="nav-row"><button class="btn" onclick="gt('t-staff')">← 戻る</button><button class="btn btn-p" onclick="gt('t-design')">次へ →</button></div>
+</div></div>
 
-<div id="t-design" class="tp">
-  <div class="ph"><div class="pt">デザイン設定</div><div class="pd">表紙カラーをカスタマイズできます</div></div>
+<!-- デザイン設定 -->
+<div id="t-design" class="tp"><div class="pw">
+  <div class="ph"><div class="eyebrow">Design</div><div class="page-title">デザイン設定</div><div class="page-desc">表紙カラーをカスタマイズできます</div></div>
   <div class="card"><div class="ch"><span class="ct">カラーテーマ</span></div><div class="cb">
     <div class="palette" id="palette">
-      <div class="swatch on" style="background:linear-gradient(135deg,#1a2744,#3a5f9e);" data-c1="#1a2744" data-c2="#253460" data-bar="#c0392b" data-light="#eef2fb" title="ネイビー" onclick="setTheme(this)"></div>
-      <div class="swatch" style="background:linear-gradient(135deg,#0d0d0d,#3a3a3a);" data-c1="#0d0d0d" data-c2="#1a1a1a" data-bar="#c8a96e" data-light="#f0f0ee" title="ブラック" onclick="setTheme(this)"></div>
-      <div class="swatch" style="background:linear-gradient(135deg,#1a5c46,#2d8f6f);" data-c1="#1a5c46" data-c2="#0f4035" data-bar="#c8a96e" data-light="#eef6f2" title="グリーン" onclick="setTheme(this)"></div>
-      <div class="swatch" style="background:linear-gradient(135deg,#534AB7,#8B84DD);" data-c1="#534AB7" data-c2="#3a348a" data-bar="#e8c98e" data-light="#eeedfe" title="パープル" onclick="setTheme(this)"></div>
-      <div class="swatch" style="background:linear-gradient(135deg,#7f1d1d,#b91c1c);" data-c1="#7f1d1d" data-c2="#991b1b" data-bar="#fbbf24" data-light="#fff5f5" title="バーガンディ" onclick="setTheme(this)"></div>
-      <div class="swatch" style="background:linear-gradient(135deg,#854F0B,#c88a2e);" data-c1="#854F0B" data-c2="#633806" data-bar="#fff" data-light="#faeeda" title="アンバー" onclick="setTheme(this)"></div>
+      <div class="swatch on" style="background:linear-gradient(135deg,#111827,#2d4060);" data-c1="#111827" data-c2="#1e2d47" data-gold="#c4a265" title="ネイビー" onclick="setTheme(this)"></div>
+      <div class="swatch" style="background:linear-gradient(135deg,#0a0a0a,#2a2620);" data-c1="#0a0a0a" data-c2="#1a1612" data-gold="#c4a265" title="ブラック" onclick="setTheme(this)"></div>
+      <div class="swatch" style="background:linear-gradient(135deg,#0f2018,#1e4030);" data-c1="#0f2018" data-c2="#162e22" data-gold="#c4a265" title="フォレスト" onclick="setTheme(this)"></div>
+      <div class="swatch" style="background:linear-gradient(135deg,#2a1520,#4a2035);" data-c1="#2a1520" data-c2="#3a1828" data-gold="#ddc08a" title="バーガンディ" onclick="setTheme(this)"></div>
+      <div class="swatch" style="background:linear-gradient(135deg,#1a1430,#2e2060);" data-c1="#1a1430" data-c2="#241a48" data-gold="#ddc08a" title="ロイヤル" onclick="setTheme(this)"></div>
+      <div class="swatch" style="background:linear-gradient(135deg,#201510,#402a18);" data-c1="#201510" data-c2="#301e14" data-gold="#f0ddb8" title="セピア" onclick="setTheme(this)"></div>
     </div>
-    <div class="cov-mock"><div class="cov-inner" id="cov-inner" style="background:linear-gradient(135deg,#1a2744,#253460);">
-      <div class="cov-bar" id="cov-bar" style="background:#c0392b;"></div>
-      <div class="cov-g1"></div><div class="cov-g2"></div>
-      <div><div class="cov-co" id="mock-co">株式会社スイートホーム</div><div class="cov-co-sub">不動産売却査定レポート</div></div>
-      <div><div class="cov-ttl">物件レポート</div><div class="cov-catch" id="mock-catch">あなたの大切な資産を、最高の価値へ。</div></div>
-      <div class="cov-st"><div class="cov-st-lbl">担当者</div><div class="cov-st-name" id="mock-staff">中谷 健作</div><div class="cov-st-info" id="mock-info">03-6807-6922　nakaya@sweet-home.tokyo</div></div>
+    <div class="cov-mock"><div class="cov-inner" id="cov-inner" style="background:linear-gradient(135deg,#111827,#1e2d47);">
+      <div class="cov-gold-bar" id="cov-gold" style="background:linear-gradient(90deg,#c4a265,#ddc08a);"></div>
+      <div class="cov-ga"></div><div class="cov-gb"></div>
+      <div><div class="cov-co" id="mock-co">株式会社スイートホーム</div><div class="cov-sub">不動産査定書</div></div>
+      <div><div class="cov-ttl">不動産<br>査定書</div><div class="cov-catch" id="mock-catch">お客様名</div></div>
+      <div class="cov-staff"><div class="cov-staff-lbl">担当者</div><div class="cov-staff-name" id="mock-staff">中谷 健作</div></div>
     </div></div>
   </div></div>
-  <div class="nav-row"><button class="btn" onclick="gt('t-area')">← 戻る</button><button class="btn btn-p" onclick="gt('t-preview');buildReport();">プレビューを作成する →</button></div>
-</div>
+  <div class="nav-row"><button class="btn" onclick="gt('t-reins')">← 戻る</button><button class="btn btn-p" onclick="gt('t-preview');buildReport();">プレビューを作成する →</button></div>
+</div></div>
 
+<!-- プレビュー -->
 <div id="t-preview" class="tp">
   <div class="ptbar">
-    <div class="ptbar-l">プレビュー — 印刷ダイアログで「PDFに保存」を選択してください</div>
-    <div class="ptbar-r">
-      <button class="btn-ref" onclick="buildReport()">🔄 更新</button>
-      <button class="btn-print" onclick="window.print()">🖨️ PDF印刷・保存</button>
-    </div>
+    <div class="ptbar-l">印刷ダイアログで「PDFに保存」を選択してください</div>
+    <div class="ptbar-r"><button class="btn-ref" onclick="buildReport()">更新</button><button class="btn-print" onclick="window.print()">PDF 保存・印刷</button></div>
   </div>
   <div class="rpt-wrap" id="rpt-wrap"></div>
 </div>
 
 </div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
-var T={c1:'#1a2744',c2:'#253460',bar:'#c0392b',light:'#eef2fb'};
-function gt(id){document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('on');});document.querySelectorAll('.nb').forEach(function(b){b.classList.remove('on');});document.getElementById(id).classList.add('on');var map={'t-basic':0,'t-price':1,'t-staff':2,'t-reins':3,'t-area':4,'t-design':5,'t-preview':6};var nbs=document.querySelectorAll('.nb');if(map[id]!==undefined&&nbs[map[id]])nbs[map[id]].classList.add('on');}
-function tsp(man,area){var a=parseFloat(area);if(!a||!man)return '—';return (parseFloat(man)/(a/3.30579)).toFixed(1)+'万円/坪';}
-function fm(n){if(!n)return '—';return parseInt(n).toLocaleString()+'万円';}
-function cp(){var area=document.getElementById('area').value;['std','early','high'].forEach(function(k){var v=document.getElementById('p_'+k).value;document.getElementById('h_'+k).textContent=v?'坪単価：'+tsp(v,area):'坪単価：—';});var std=document.getElementById('p_std').value,early=document.getElementById('p_early').value,high=document.getElementById('p_high').value;var html='';if(std)html+='<div class="pc std"><div class="pc-lbl">標準プラン</div><div class="pc-val">'+fm(std)+'</div><div class="pc-tsubo">'+tsp(std,area)+'</div></div>';if(early)html+='<div class="pc early"><div class="pc-lbl">早期成約プラン</div><div class="pc-val">'+fm(early)+'</div><div class="pc-tsubo">'+tsp(early,area)+'</div></div>';if(high)html+='<div class="pc high"><div class="pc-lbl">高値売却プラン</div><div class="pc-val">'+fm(high)+'</div><div class="pc-tsubo">'+tsp(high,area)+'</div></div>';document.getElementById('pdisplay').innerHTML=html;}
-function setTheme(el){document.querySelectorAll('.swatch').forEach(function(s){s.classList.remove('on');});el.classList.add('on');T={c1:el.dataset.c1,c2:el.dataset.c2,bar:el.dataset.bar,light:el.dataset.light};document.getElementById('cov-inner').style.background='linear-gradient(135deg,'+T.c1+','+T.c2+')';document.getElementById('cov-bar').style.background=T.bar;sv();}
-function syncMock(){document.getElementById('mock-co').textContent=gv('company')||'株式会社スイートホーム';document.getElementById('mock-catch').textContent=gv('catchcopy')||'あなたの大切な資産を、最高の価値へ。';document.getElementById('mock-staff').textContent=gv('staffname')||'中谷 健作';document.getElementById('mock-info').textContent=(gv('tel')||'03-6807-6922')+'　'+(gv('email')||'nakaya@sweet-home.tokyo');}
-function addCase(d){var n=document.getElementById('case-body').rows.length+1;var tr=document.createElement('tr');tr.innerHTML='<td>'+n+'</td><td><input value="'+(d.name||'')+'" placeholder="建物名" oninput="sv()"></td><td><input value="'+(d.area||'')+'" type="number" placeholder="40.98" oninput="sv()"></td><td><input value="'+(d.madori||'')+'" placeholder="1LDK" oninput="sv()"></td><td><input value="'+(d.price||'')+'" type="number" placeholder="8380" oninput="sv()"></td><td><input value="'+(d.tsubo||'')+'" placeholder="679.0" oninput="sv()"></td><td><input value="'+(d.date||'')+'" placeholder="R8.1.30" oninput="sv()"></td><td><button class="btn btn-d" onclick="this.closest(\'tr\').remove();renum(\'case-body\');sv();">削除</button></td>';document.getElementById('case-body').appendChild(tr);}
-function addStock(d){var n=document.getElementById('stock-body').rows.length+1;var tr=document.createElement('tr');tr.innerHTML='<td>'+n+'</td><td><input value="'+(d.name||'')+'" placeholder="建物名" oninput="sv()"></td><td><input value="'+(d.area||'')+'" type="number" placeholder="45.88" oninput="sv()"></td><td><input value="'+(d.madori||'')+'" placeholder="1LDK" oninput="sv()"></td><td><input value="'+(d.price||'')+'" type="number" placeholder="8740" oninput="sv()"></td><td><input value="'+(d.tsubo||'')+'" placeholder="629.8" oninput="sv()"></td><td><input value="'+(d.floor||'')+'" placeholder="11階" oninput="sv()"></td><td><button class="btn btn-d" onclick="this.closest(\'tr\').remove();renum(\'stock-body\');sv();">削除</button></td>';document.getElementById('stock-body').appendChild(tr);}
-function renum(id){document.querySelectorAll('#'+id+' tr').forEach(function(r,i){r.cells[0].textContent=i+1;});}
-function parseREINS(txt,type){var lines=txt.split('\n').map(function(l){return l.trim();}).filter(Boolean);var found=0;var kw=/マンション|タワー|ガーデン|レジデンス|パーク|グランド|シティ|コート|ハイツ|ブリリア|プレミスト|オリゾン/;for(var i=0;i<lines.length;i++){var l=lines[i];if(kw.test(l)&&l.length>4&&l.length<60){var name=l.replace(/^\d+\s+/,'').substring(0,50);var area='',madori='',price='',tsubo='',date='',floor='';var ws=Math.max(0,i-2),we=Math.min(lines.length,i+10);for(var j=ws;j<we;j++){var lj=lines[j];if(!area){var m=lj.match(/(\d+\.\d+)\s*㎡/);if(m)area=m[1];}if(!madori){var m=lj.match(/([1-9][SLDK]+)/);if(m)madori=m[1];}if(!price){var m=lj.match(/(\d[\d,]+)\s*万円/);if(m)price=m[1].replace(/,/g,'');}if(!tsubo){var m=lj.match(/([\d.]+)\s*万円[\/／]坪/);if(m)tsubo=m[1];}if(!date){var m=lj.match(/(令和\s*\d+年\s*\d+月\s*\d+日|R\s*\d+[.\s]\d+[.\s]\d+)/);if(m)date=m[1];}if(!floor){var m=lj.match(/(\d+)\s*階/);if(m)floor=m[1]+'階';}}if(area||price){if(type==='case')addCase({name:name,area:area,madori:madori,price:price,tsubo:tsubo,date:date});else addStock({name:name,area:area,madori:madori,price:price,tsubo:tsubo,floor:floor});found++;i+=5;}}}return found;}
-function parseCase(){var txt=document.getElementById('case-paste').value;if(!txt.trim()){alert('テキストを貼り付けてください');return;}var found=parseREINS(txt,'case');if(found>0){document.getElementById('case-paste').value='';alert(found+'件の成約事例を読み込みました。\n内容を確認・修正してください。');}else{alert('事例を自動認識できませんでした。\n手動で追加ボタンをご利用ください。');}sv();}
-function parseStock(){var txt=document.getElementById('stock-paste').value;if(!txt.trim()){alert('テキストを貼り付けてください');return;}var found=parseREINS(txt,'stock');if(found>0){document.getElementById('stock-paste').value='';alert(found+'件の在庫事例を読み込みました。\n内容を確認・修正してください。');}else{alert('事例を自動認識できませんでした。\n手動で追加ボタンをご利用ください。');}sv();}
-function addStn(d){d=d||{};var div=document.createElement('div');div.className='stn-row';div.innerHTML='<input class="fi" placeholder="路線・駅名" value="'+(d.name||'')+'" oninput="sv()"><input class="fi" type="number" placeholder="徒歩（分）" value="'+(d.walk||'')+'" oninput="sv()"><input class="fi" type="number" placeholder="距離（m）" value="'+(d.dist||'')+'" oninput="sv()"><button class="btn btn-d" onclick="this.parentElement.remove();sv();">削除</button>';document.getElementById('stn-list').appendChild(div);}
-function addFac(d){d=d||{};var tr=document.createElement('tr');tr.innerHTML='<td><input value="'+(d.type||'')+'" placeholder="スーパー" oninput="sv()"></td><td><input value="'+(d.name||'')+'" placeholder="施設名" oninput="sv()"></td><td><input value="'+(d.dist||'')+'" placeholder="98m" oninput="sv()"></td><td><input value="'+(d.walk||'')+'" placeholder="約2分" oninput="sv()"></td><td><button class="btn btn-d" onclick="this.closest(\'tr\').remove();sv();">削除</button></td>';document.getElementById('fac-body').appendChild(tr);}
-var stimer;
-function sv(){clearTimeout(stimer);document.getElementById('slbl').textContent='保存中...';document.getElementById('sdot').style.background='#f39c12';stimer=setTimeout(function(){try{var d={building:gv('building'),address:gv('address'),area:gv('area'),chiku:gv('chiku'),floor:gv('floor'),tfloor:gv('tfloor'),madori:gv('madori'),houkou:gv('houkou'),kanri:gv('kanri'),shuzen:gv('shuzen'),note:gv('note'),p_std:gv('p_std'),p_early:gv('p_early'),p_high:gv('p_high'),pcomment:gv('pcomment'),company:gv('company'),staffname:gv('staffname'),tel:gv('tel'),fax:gv('fax'),mobile:gv('mobile'),email:gv('email'),caddr:gv('caddr'),takken:gv('takken'),client:gv('client'),catchcopy:gv('catchcopy'),'ele-school':gv('ele-school'),'mid-school':gv('mid-school'),youto:gv('youto'),kenpei:gv('kenpei'),jishin:gv('jishin'),ekijo:gv('ekijo'),shinsui:gv('shinsui'),hazard_other:gv('hazard_other'),theme:T,cases:getCases(),stocks:getStocks(),stns:getStns(),facs:getFacs()};localStorage.setItem('sh_satei_v3',JSON.stringify(d));document.getElementById('slbl').textContent='自動保存済み';document.getElementById('sdot').style.background='#2ecc71';}catch(e){document.getElementById('slbl').textContent='保存エラー';}},700);}
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+var T={c1:'#111827',c2:'#1e2d47',gold:'#c4a265'};
+var PD={case:{imgs:[],name:''},stock:{imgs:[],name:''}};
+var photoSrc='';
+
+function gt(id){
+  document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('.nb').forEach(function(b){b.classList.remove('on');});
+  document.getElementById(id).classList.add('on');
+  var m={'t-basic':0,'t-price':1,'t-staff':2,'t-reins':3,'t-design':4,'t-preview':5};
+  var nbs=document.querySelectorAll('.nb');
+  if(m[id]!==undefined&&nbs[m[id]])nbs[m[id]].classList.add('on');
+}
+function tsp(v,a){var f=parseFloat(a);if(!f||!v)return '—';return (parseFloat(v)/(f/3.30579)).toFixed(1)+'万円/坪';}
+function fm(n){if(!n)return '—';return '<span class="rph-main-num">'+parseInt(n).toLocaleString()+'</span><span class="rph-main-unit">万円</span>';}
+function fmPlan(n){if(!n)return '—';return '<span class="rplan-num">'+parseInt(n).toLocaleString()+'</span><span class="rplan-unit">万円</span>';}
+function cp(){
+  var a=document.getElementById('area').value;
+  ['std','early','high'].forEach(function(k){var v=document.getElementById('p_'+k).value;document.getElementById('h_'+k).textContent=v?'坪単価：'+tsp(v,a):'坪単価：—';});
+  var s=document.getElementById('p_std').value,e=document.getElementById('p_early').value,h=document.getElementById('p_high').value;
+  var html='';
+  if(s)html+='<div class="pc std"><div class="pc-accent"></div><div class="pc-lbl">標準プラン</div><div class="pc-val">'+fm(s)+'</div><div class="pc-tsubo">'+tsp(s,a)+'</div></div>';
+  if(e)html+='<div class="pc early"><div class="pc-accent"></div><div class="pc-lbl">早期成約プラン</div><div class="pc-val">'+fm(e)+'</div><div class="pc-tsubo">'+tsp(e,a)+'</div></div>';
+  if(h)html+='<div class="pc high"><div class="pc-accent"></div><div class="pc-lbl">高値売却プラン</div><div class="pc-val">'+fm(h)+'</div><div class="pc-tsubo">'+tsp(h,a)+'</div></div>';
+  document.getElementById('pdisplay').innerHTML=html;
+}
+function setTheme(el){
+  document.querySelectorAll('.swatch').forEach(function(s){s.classList.remove('on');});
+  el.classList.add('on');
+  T={c1:el.dataset.c1,c2:el.dataset.c2,gold:el.dataset.gold};
+  document.documentElement.style.setProperty('--navy', T.c1);
+  document.documentElement.style.setProperty('--navy2', T.c2);
+  document.documentElement.style.setProperty('--gold', T.gold);
+  document.getElementById('cov-inner').style.background='linear-gradient(135deg,'+T.c1+','+T.c2+')';
+  document.getElementById('cov-gold').style.background='linear-gradient(90deg,'+T.gold+',#ddc08a)';
+  sv();
+}
+function syncMock(){
+  document.getElementById('mock-co').textContent=gv('company')||'株式会社スイートホーム';
+  document.getElementById('mock-catch').textContent=gv('catchcopy')||'あなたの大切な資産を、最高の価値へ。';
+  document.getElementById('mock-staff').textContent=gv('staffname')||'中谷 健作';
+}
+function loadPhoto(event){
+  var file=event.target.files[0];if(!file)return;
+  loadPhotoFile(file);
+}
+function showPhoto(){
+  var prev=document.getElementById('photo-preview');
+  prev.src=photoSrc;prev.style.display='block';
+  document.getElementById('photo-placeholder').style.display='none';
+  document.getElementById('photo-drop').classList.add('has-file');
+  sv();
+}
+async function loadPDF(event,type){
+  var file=event.target.files[0];if(!file)return;
+  await loadPDFFile(file,type);
+}
+function clearPDF(type){
+  PD[type]={imgs:[],name:''};
+  document.getElementById(type+'-info').innerHTML='';
+  document.getElementById(type+'-drop').classList.remove('has-file');
+  sv();
+}
+
+/* ─── ドラッグ＆ドロップ初期化 ─── */
+function initDropZones(){
+  /* PDF ドロップゾーン（case / stock） */
+  ['case','stock'].forEach(function(type){
+    var zone=document.getElementById(type+'-drop');
+    if(!zone)return;
+    var inp=zone.querySelector('input[type=file]');
+    inp.style.display='none'; // inputは非表示にしてクリックをzoneで管理
+    zone.addEventListener('dragover',function(e){
+      e.preventDefault();e.stopPropagation();
+      zone.style.borderColor='var(--gold)';
+      zone.style.background='rgba(196,162,101,.08)';
+    });
+    zone.addEventListener('dragleave',function(e){
+      e.preventDefault();e.stopPropagation();
+      if(!PD[type].imgs.length){zone.style.borderColor='';zone.style.background='';}
+    });
+    zone.addEventListener('drop',function(e){
+      e.preventDefault();e.stopPropagation();
+      zone.style.borderColor='';zone.style.background='';
+      var files=e.dataTransfer.files;
+      if(files&&files.length>0){
+        // loadPDFと同じ処理をfileオブジェクト直接で実行
+        loadPDFFile(files[0],type);
+      }
+    });
+    zone.addEventListener('click',function(e){
+      if(e.target===inp)return;
+      inp.click();
+    });
+  });
+
+  /* 担当者写真ドロップゾーン */
+  var photoZone=document.getElementById('photo-drop');
+  if(photoZone){
+    var photoInp=photoZone.querySelector('input[type=file]');
+    photoInp.style.display='none';
+    photoZone.addEventListener('dragover',function(e){
+      e.preventDefault();e.stopPropagation();
+      photoZone.style.borderColor='var(--gold)';
+      photoZone.style.background='rgba(196,162,101,.08)';
+    });
+    photoZone.addEventListener('dragleave',function(e){
+      e.preventDefault();e.stopPropagation();
+      if(!photoSrc){photoZone.style.borderColor='';photoZone.style.background='';}
+    });
+    photoZone.addEventListener('drop',function(e){
+      e.preventDefault();e.stopPropagation();
+      photoZone.style.borderColor='';photoZone.style.background='';
+      var files=e.dataTransfer.files;
+      if(files&&files.length>0)loadPhotoFile(files[0]);
+    });
+    photoZone.addEventListener('click',function(e){
+      if(e.target===photoInp)return;
+      photoInp.click();
+    });
+  }
+}
+
+/* ファイルオブジェクトを直接受け取るPDF読み込み */
+async function loadPDFFile(file,type){
+  if(!file||file.type!=='application/pdf')return;
+  var info=document.getElementById(type+'-info');
+  info.innerHTML='<div style="padding:12px;font-size:11px;color:var(--ink4);">読み込み中...</div>';
+  try{
+    var buf=await file.arrayBuffer();
+    var pdf=await pdfjsLib.getDocument({data:buf}).promise;
+    var imgs=[];var cv=document.createElement('canvas');
+    for(var i=1;i<=pdf.numPages;i++){
+      var page=await pdf.getPage(i);
+      var vp=page.getViewport({scale:2.0});
+      cv.width=vp.width;cv.height=vp.height;
+      await page.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;
+      imgs.push(cv.toDataURL('image/jpeg',0.92));
+    }
+    PD[type]={imgs:imgs,name:file.name};
+    var sz=(file.size/1024/1024).toFixed(1)+' MB';
+    info.innerHTML='<div class="pdf-file-item"><div class="pdf-file-l"><div class="pdf-file-icon">PDF</div><div><div class="pdf-file-name">'+file.name+'</div><div class="pdf-file-meta">'+pdf.numPages+'ページ　'+sz+'</div></div></div><button class="btn btn-d btn-sm" onclick="clearPDF(\''+type+'\')">削除</button></div>';
+    document.getElementById(type+'-drop').classList.add('has-file');
+    sv();
+  }catch(e){info.innerHTML='<div style="padding:12px;font-size:11px;color:#b94040;">読み込みエラー。</div>';}
+}
+
+/* ファイルオブジェクトを直接受け取る写真読み込み */
+function loadPhotoFile(file){
+  if(!file)return;
+  if(file.type==='application/pdf'){
+    var reader=new FileReader();
+    reader.onload=async function(e){
+      try{
+        var pdf=await pdfjsLib.getDocument({data:e.target.result}).promise;
+        var page=await pdf.getPage(1);
+        var vp=page.getViewport({scale:3.0});
+        var cv=document.createElement('canvas');
+        cv.width=vp.width;cv.height=vp.height;
+        await page.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;
+        photoSrc=cv.toDataURL('image/jpeg',0.92);showPhoto();
+      }catch(err){alert('PDF読み込みエラー');}
+    };
+    reader.readAsArrayBuffer(file);
+  }else{
+    var reader2=new FileReader();
+    reader2.onload=function(e){photoSrc=e.target.result;showPhoto();};
+    reader2.readAsDataURL(file);
+  }
+}
+var st;
+function sv(){
+  clearTimeout(st);
+  document.getElementById('slbl').textContent='Saving...';
+  document.getElementById('sdot').style.background='#f0a040';
+  st=setTimeout(function(){
+    try{
+      var d={building:gv('building'),address:gv('address'),area:gv('area'),chiku:gv('chiku'),floor:gv('floor'),tfloor:gv('tfloor'),madori:gv('madori'),houkou:gv('houkou'),note:gv('note'),p_std:gv('p_std'),p_early:gv('p_early'),p_high:gv('p_high'),pcomment:gv('pcomment'),company:gv('company'),staffname:gv('staffname'),staffkana:gv('staffkana'),staffrole:gv('staffrole'),staffbio:gv('staffbio'),tel:gv('tel'),fax:gv('fax'),mobile:gv('mobile'),email:gv('email'),caddr:gv('caddr'),takken:gv('takken'),client:gv('client'),reportdate:gv('reportdate'),catchcopy:gv('catchcopy'),theme:T};
+      localStorage.setItem('sh_satei_v7',JSON.stringify(d));
+      document.getElementById('slbl').textContent='Saved';
+      document.getElementById('sdot').style.background='#6dcf9e';
+    }catch(e){}
+  },700);
+}
 function gv(id){var el=document.getElementById(id);return el?el.value:'';}
-function getCases(){var r=[];document.querySelectorAll('#case-body tr').forEach(function(row){var i=row.querySelectorAll('input');r.push({name:i[0]?i[0].value:'',area:i[1]?i[1].value:'',madori:i[2]?i[2].value:'',price:i[3]?i[3].value:'',tsubo:i[4]?i[4].value:'',date:i[5]?i[5].value:''});});return r;}
-function getStocks(){var r=[];document.querySelectorAll('#stock-body tr').forEach(function(row){var i=row.querySelectorAll('input');r.push({name:i[0]?i[0].value:'',area:i[1]?i[1].value:'',madori:i[2]?i[2].value:'',price:i[3]?i[3].value:'',tsubo:i[4]?i[4].value:'',floor:i[5]?i[5].value:''});});return r;}
-function getStns(){var r=[];document.querySelectorAll('.stn-row').forEach(function(row){var i=row.querySelectorAll('input');r.push({name:i[0]?i[0].value:'',walk:i[1]?i[1].value:'',dist:i[2]?i[2].value:''});});return r;}
-function getFacs(){var r=[];document.querySelectorAll('#fac-body tr').forEach(function(row){var i=row.querySelectorAll('input');r.push({type:i[0]?i[0].value:'',name:i[1]?i[1].value:'',dist:i[2]?i[2].value:'',walk:i[3]?i[3].value:''});});return r;}
-function loadData(){try{var raw=localStorage.getItem('sh_satei_v3');if(!raw)return;var d=JSON.parse(raw);['building','address','area','chiku','floor','tfloor','madori','kanri','shuzen','note','p_std','p_early','p_high','pcomment','company','staffname','tel','fax','mobile','email','caddr','takken','client','catchcopy','ele-school','mid-school','youto','kenpei','jishin','ekijo','shinsui','hazard_other'].forEach(function(f){if(d[f]!==undefined&&document.getElementById(f))document.getElementById(f).value=d[f];});if(d.houkou)document.getElementById('houkou').value=d.houkou;if(d.theme){T=d.theme;document.querySelectorAll('.swatch').forEach(function(s){s.classList.remove('on');if(s.dataset.c1===T.c1)s.classList.add('on');});document.getElementById('cov-inner').style.background='linear-gradient(135deg,'+T.c1+','+T.c2+')';document.getElementById('cov-bar').style.background=T.bar;}if(d.cases)d.cases.forEach(function(c){addCase(c);});if(d.stocks)d.stocks.forEach(function(s){addStock(s);});if(d.stns)d.stns.forEach(function(s){addStn(s);});if(d.facs)d.facs.forEach(function(f){addFac(f);});if(d.company)document.getElementById('h-co').textContent=d.company;cp();syncMock();}catch(e){}}
-function resetAll(){if(confirm('全データをリセットしますか？')){localStorage.removeItem('sh_satei_v3');location.reload();}}
-function sec(ttl,content){return '<div class="rsec"><div class="rsec-ttl" style="color:'+T.c1+';border-bottom-color:'+T.c2+';"><span style="display:inline-block;width:4px;height:18px;border-radius:2px;background:'+T.bar+';flex-shrink:0;"></span>'+ttl+'</div>'+content+'</div>';}
-function footer(co){return '<div class="rfooter"><div class="rfooter-copy">Copyright &copy; '+co+' All rights reserved.</div><div class="rfooter-logo">Sweet Home</div></div>';}
+function loadData(){
+  try{
+    var raw=localStorage.getItem('sh_satei_v7');if(!raw)return;var d=JSON.parse(raw);
+    ['building','address','area','chiku','floor','tfloor','madori','note','p_std','p_early','p_high','pcomment','company','staffname','staffkana','staffrole','staffbio','tel','fax','mobile','email','caddr','takken','client','reportdate','catchcopy'].forEach(function(f){if(d[f]!==undefined&&document.getElementById(f))document.getElementById(f).value=d[f];});
+    if(d.houkou)document.getElementById('houkou').value=d.houkou;
+    if(d.theme){T=d.theme;document.querySelectorAll('.swatch').forEach(function(s){s.classList.remove('on');if(s.dataset.c1===T.c1)s.classList.add('on');});document.getElementById('cov-inner').style.background='linear-gradient(135deg,'+T.c1+','+T.c2+')';document.getElementById('cov-gold').style.background='linear-gradient(90deg,'+T.gold+',#ddc08a)';}
+    cp();syncMock();
+  }catch(e){}
+}
+function resetAll(){if(confirm('全データをリセットしますか？')){localStorage.removeItem('sh_satei_v7');location.reload();}}
+function ft(co){return '<div class="rfooter"><div class="rfooter-copy">Copyright &copy; '+co+' All rights reserved.</div><div class="rfooter-logo">'+co+'</div></div>';}
+
 function buildReport(){
   syncMock();
+  // CSS変数にテーマカラーを反映
+  document.documentElement.style.setProperty('--navy', T.c1);
+  document.documentElement.style.setProperty('--navy2', T.c2);
+  document.documentElement.style.setProperty('--gold', T.gold);
+  document.documentElement.style.setProperty('--gold2', T.gold==='#c4a265'?'#ddc08a':'#ddc08a');
   var bg='linear-gradient(135deg,'+T.c1+','+T.c2+')';
+  var gl='linear-gradient(90deg,'+T.gold+',#ddc08a)';
   var area=parseFloat(gv('area'));
-  var tsuboArea=area?(area/3.30579).toFixed(2):'—';
-  var now=new Date();var ds=now.getFullYear()+'年'+(now.getMonth()+1)+'月'+now.getDate()+'日';
+  var tA=area?(area/3.30579).toFixed(2):'—';
+  var now=new Date();
+  var ds=now.getFullYear()+' . '+String(now.getMonth()+1).padStart(2,'0')+' . '+String(now.getDate()).padStart(2,'0');
   var co=gv('company')||'株式会社スイートホーム';
-  var staff=gv('staffname')||'中谷 健作';
+  var sn=gv('staffname')||'中谷 健作';
+  var sk=gv('staffkana')||'なかや けんさく';
+  var sr=gv('staffrole')||'代表取締役';
+  var sb=gv('staffbio')||'';
   var tel=gv('tel')||'03-6807-6922';
-  var mobile=gv('mobile')||'080-2051-5897';
-  var email=gv('email')||'nakaya@sweet-home.tokyo';
-  var caddr=gv('caddr')||'〒116-0001 東京都荒川区町屋1-1-8 オリエントビル302';
-  var client=gv('client');
+  var mob=gv('mobile')||'080-2051-5897';
+  var fax=gv('fax')||'03-6807-6921';
+  var em=gv('email')||'nakaya@sweet-home.tokyo';
+  var ca=gv('caddr')||'〒116-0001 東京都荒川区町屋1-1-8 オリエントビル302';
+  var tk=gv('takken')||'東京都知事(1)107794号';
+  var cli=gv('client');
+  var rdate=gv('reportdate')||ds;
   var catch_=gv('catchcopy')||'あなたの大切な資産を、最高の価値へ。';
   var std=gv('p_std'),early=gv('p_early'),high=gv('p_high');
   var html='';
-  html+='<div class="rpt-page"><div class="rpt-cover" style="background:'+bg+';"><div class="rpt-cover-bar" style="background:'+T.bar+';"></div><div class="rg1"></div><div class="rg2"></div><div class="rg3"></div><div><div class="rco">'+co+'</div><div class="rco-sub">不動産売却査定レポート</div></div><div>'+(client?'<div class="rcli">'+client+' 様</div>':'')+'<div class="rttl">物件レポート</div><div class="rcatch">'+catch_+'</div></div><div class="rbtm"><div><div class="rst-lbl">担当者</div><div class="rst-name">'+staff+'</div><div class="rst-info">TEL '+tel+'　携帯 '+mobile+'<br>'+email+'<br>'+caddr+'</div></div><div class="rdate">'+ds+'</div></div></div>'+footer(co)+'</div>';
-  var rows=[['建物名',gv('building')||'—'],['所在地',gv('address')||'—'],['専有面積',gv('area')?(gv('area')+'㎡（約'+tsuboArea+'坪）'):'—'],['間取り／方位',(gv('madori')||'—')+'／'+(gv('houkou')||'—')],['所在階／階数',(gv('floor')||'—')+'／'+(gv('tfloor')||'—')],['築年月',gv('chiku')||'—'],['管理費',gv('kanri')?(gv('kanri')+'円/月'):'—'],['修繕積立金',gv('shuzen')?(gv('shuzen')+'円/月'):'—']].map(function(r){return '<tr><td class="rilbl">'+r[0]+'</td><td class="rival">'+r[1]+'</td></tr>';}).join('');
-  var noteHtml=gv('note')?'<div style="margin-top:14px;background:var(--paper);border-radius:4px;padding:14px;border-left:3px solid '+T.c2+';font-size:13px;color:var(--ink3);">'+gv('note')+'</div>':'';;
-  html+='<div class="rpt-page">'+sec('調査対象物件','<table class="rit">'+rows+'</table>'+noteHtml)+footer(co)+'</div>';
+
+  /* ─── 表紙 ─── */
+  html+='<div class="rpt-page"><div class="rpt-cover">'
+    +'<div class="rcov-top-bar" style="background:'+gl+';"></div>'
+    +'<div class="rpt-cover-inner">'
+    // 上部：ロゴ＋タイトルのみ
+    +'<div class="rcov-logo-area"><div class="rcov-logo-icon" style="border-color:'+T.gold+';color:'+T.gold+';">S</div><div class="rcov-logo-text" style="color:var(--navy);">'+co+'</div></div>'
+    +'<div class="rcov-title-area">'
+    +'<div class="rcov-main-title" style="color:var(--navy);">不動産査定書</div>'
+    +'</div>'
+    // 下部カラーエリア：日付・お客様名（左）＋担当者（右）
+    +'<div class="rcov-cover-image" style="background:'+bg+';">'
+    +'<div class="rcov-img-geo1"></div><div class="rcov-img-geo2"></div>'
+    +'<div class="rcov-img-overlay" style="background:linear-gradient(180deg,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.6) 100%);">'
+    +'<div class="rcov-bottom-row">'
+    +'<div class="rcov-client-block">'
+    +'<div class="rcov-date-block">'+rdate+'</div>'
+    +(cli?'<div class="rcov-client-name2">'+cli+' 様</div>':'<div class="rcov-client-name2" style="opacity:.3;">お客様名</div>')
+    +'</div>'
+    +'<div class="rcov-staff-block"><div class="rcov-st-lbl2">担当者</div><div class="rcov-st-name2">'+sn+'</div><div class="rcov-st-info2">'+ca+'<br>'+tel+'</div></div>'
+    +'</div>'
+    +'</div>'
+    +'</div>'
+    +'</div>'
+    +ft(co)+'</div>';
+
+  /* ─── 物件情報 ─── */
+  var rows=[[gv('building')||'—','建物名'],[gv('address')||'—','所在地'],[(area?(area+'㎡（約'+tA+'坪）'):'—'),'専有面積'],[(gv('madori')||'—')+'／'+(gv('houkou')||'—'),'間取り／方位'],[(gv('floor')||'—')+'／'+(gv('tfloor')||'—'),'所在階／階数'],[gv('chiku')||'—','築年月']].map(function(r){return '<tr><td class="rilbl">'+r[1]+'</td><td class="rival">'+r[0]+'</td></tr>';}).join('');
+  var noteHtml=gv('note')?'<div style="margin-top:16px;padding:14px 18px;background:var(--bg);border-left:2px solid '+T.gold+';font-size:12px;color:var(--ink3);line-height:1.9;">'+gv('note')+'</div>':'';
+  html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">01</span><span class="rsec-ttl">調査対象物件</span></div><table class="rit">'+rows+'</table>'+noteHtml+'</div>'+ft(co)+'</div>';
+
+  /* ─── 査定価格 ─── */
+  var secN=3;
   if(std){
-    var plansHtml='';
-    if(std)plansHtml+='<div class="rplan"><div class="rplan-n">標準プラン</div><div class="rplan-p">'+fm(std)+'</div><div class="rplan-t">'+tsp(std,gv('area'))+'</div></div>';
-    if(early)plansHtml+='<div class="rplan"><div class="rplan-n">早期成約プラン</div><div class="rplan-p">'+fm(early)+'</div><div class="rplan-t">'+tsp(early,gv('area'))+'</div></div>';
-    if(high)plansHtml+='<div class="rplan"><div class="rplan-n">高値売却プラン</div><div class="rplan-p">'+fm(high)+'</div><div class="rplan-t">'+tsp(high,gv('area'))+'</div></div>';
-    var pc='<div class="rph" style="background:'+bg+';"><div class="rph-bg"></div><div class="rph-lbl">売出想定価格（標準プラン）※個別要因なし</div><div class="rph-main">'+fm(std)+'</div><div class="rph-tsubo">坪単価：'+tsp(std,gv('area'))+'</div><div class="rplans">'+plansHtml+'</div></div>';
-    var pcm=gv('pcomment')?'<div style="margin-top:14px;font-size:13px;color:var(--ink3);line-height:1.8;">'+gv('pcomment')+'</div>':'';;
-    var disc='<div class="rdisc">※本提案書は「不動産鑑定評価に関する法律」に基づいたものではなく、売却を保証するものではございません。</div>';
-    html+='<div class="rpt-page">'+sec('売出価格のご提案',pc+pcm+disc)+footer(co)+'</div>';
+    var pl='';
+    if(std)pl+='<div class="rplan"><div class="rplan-n">標準プラン　標準的な成約時期と価格</div><div class="rplan-body">'+fmPlan(std)+'<div class="rplan-t">'+tsp(std,gv('area'))+'</div></div></div>';
+    if(early)pl+='<div class="rplan"><div class="rplan-n">早期成約プラン　早期成約を優先</div><div class="rplan-body">'+fmPlan(early)+'<div class="rplan-t">'+tsp(early,gv('area'))+'</div></div></div>';
+    if(high)pl+='<div class="rplan"><div class="rplan-n">高値売却プラン　高値売却を優先</div><div class="rplan-body">'+fmPlan(high)+'<div class="rplan-t">'+tsp(high,gv('area'))+'</div></div></div>';
+    var ph='<div class="rph" style="background:'+bg+';"><div class="rph-gl" style="background:'+gl+';"></div><div class="rph-geo"></div><div class="rph-vt"></div><div class="rph-ey">売出想定価格（標準プラン）— 個別要因なし</div><div class="rph-main">'+fm(std)+'</div><div class="rph-tsubo">坪単価　'+tsp(std,gv('area'))+'</div><div class="rph-plans">'+pl+'</div></div>';
+    var pc=gv('pcomment')?'<div class="rcomment">'+gv('pcomment')+'</div>':'';
+    html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">02</span><span class="rsec-ttl">売出価格のご提案</span></div>'+ph+pc+'<div class="rdisc">※本提案書は「不動産鑑定評価に関する法律」に基づいたものではなく、売却を保証するものではございません。</div></div>'+ft(co)+'</div>';
   }
-  var crows=document.querySelectorAll('#case-body tr');
-  var cHtml='';
-  if(crows.length>0){cHtml='<table class="rct"><thead><tr><th>No</th><th>建物名</th><th>面積</th><th>間取</th><th style="text-align:right;">成約価格</th><th style="text-align:right;">坪単価</th><th>成約日</th></tr></thead><tbody>';crows.forEach(function(row,i){var inp=row.querySelectorAll('input');cHtml+='<tr><td class="no">'+(i+1)+'</td><td>'+(inp[0]?inp[0].value:'')+'</td><td>'+(inp[1]?inp[1].value:'')+'㎡</td><td>'+(inp[2]?inp[2].value:'')+'</td><td class="pr">'+(inp[3]?parseInt(inp[3].value).toLocaleString()+'万円':'')+'</td><td class="tp">'+(inp[4]?inp[4].value:'')+'万円/坪</td><td>'+(inp[5]?inp[5].value:'')+'</td></tr>';});cHtml+='</tbody></table>';}else cHtml='<p style="font-size:13px;color:var(--ink4);text-align:center;padding:20px;">事例が入力されていません</p>';
-  html+='<div class="rpt-page">'+sec('近隣成約事例（REINS）',cHtml)+footer(co)+'</div>';
-  var srows=document.querySelectorAll('#stock-body tr');
-  var sHtml='';
-  if(srows.length>0){sHtml='<table class="rct"><thead><tr><th>No</th><th>建物名</th><th>面積</th><th>間取</th><th style="text-align:right;">売出価格</th><th style="text-align:right;">坪単価</th><th>階数</th></tr></thead><tbody>';srows.forEach(function(row,i){var inp=row.querySelectorAll('input');sHtml+='<tr><td class="no">'+(i+1)+'</td><td>'+(inp[0]?inp[0].value:'')+'</td><td>'+(inp[1]?inp[1].value:'')+'㎡</td><td>'+(inp[2]?inp[2].value:'')+'</td><td class="pr">'+(inp[3]?parseInt(inp[3].value).toLocaleString()+'万円':'')+'</td><td class="tp">'+(inp[4]?inp[4].value:'')+'万円/坪</td><td>'+(inp[5]?inp[5].value:'')+'</td></tr>';});sHtml+='</tbody></table>';}else sHtml='<p style="font-size:13px;color:var(--ink4);text-align:center;padding:20px;">事例が入力されていません</p>';
-  html+='<div class="rpt-page">'+sec('現在の売出事例（REINS在庫）',sHtml)+footer(co)+'</div>';
-  var stnHtml='',facHtml='',schoolHtml='',hazHtml='';
-  document.querySelectorAll('.stn-row').forEach(function(row){var i=row.querySelectorAll('input');if(i[0]&&i[0].value)stnHtml+='<div class="rstn-item"><div class="rstn-name">'+i[0].value+'</div><div class="rstn-walk">徒歩'+i[1].value+'分　'+i[2].value+'m</div></div>';});
-  var facRows=document.querySelectorAll('#fac-body tr');
-  if(facRows.length>0){facHtml='<table class="rfac"><thead><tr><th>種別</th><th>施設名</th><th>距離</th><th>徒歩</th></tr></thead><tbody>';facRows.forEach(function(row){var i=row.querySelectorAll('input');if(i[0]&&i[0].value)facHtml+='<tr><td><span class="rbadge">'+i[0].value+'</span></td><td style="font-weight:500;">'+i[1].value+'</td><td>'+i[2].value+'</td><td>'+i[3].value+'</td></tr>';});facHtml+='</tbody></table>';}
-  if(gv('ele-school')||gv('mid-school')){schoolHtml='<div style="margin-top:18px;"><div class="rsub">学区</div>';if(gv('ele-school'))schoolHtml+='<div class="rstn-item"><div class="rstn-name">小学校</div><div class="rstn-walk">'+gv('ele-school')+'</div></div>';if(gv('mid-school'))schoolHtml+='<div class="rstn-item"><div class="rstn-name">中学校</div><div class="rstn-walk">'+gv('mid-school')+'</div></div>';schoolHtml+='</div>';}
-  var hazFields=[['用途地域',gv('youto')],['建ぺい率/容積率',gv('kenpei')],['地震時の揺れやすさ',gv('jishin')],['液状化の可能性',gv('ekijo')],['浸水想定区域',gv('shinsui')],['その他ハザード',gv('hazard_other')]];
-  if(hazFields.some(function(h){return h[1];})){hazHtml='<div style="margin-top:18px;"><div class="rsub">ハザード・環境情報</div><table style="width:100%;border-collapse:collapse;font-size:12px;">';hazFields.forEach(function(r){if(r[1])hazHtml+='<tr style="border-bottom:1px solid rgba(0,0,0,.05);"><td style="padding:7px 0;font-size:11px;color:var(--ink4);width:160px;">'+r[0]+'</td><td style="padding:7px 8px;font-size:13px;">'+r[1]+'</td></tr>';});hazHtml+='</table></div>';}
-  var areaContent='';
-  if(stnHtml)areaContent+='<div class="rsub">交通環境</div>'+stnHtml;
-  if(facHtml)areaContent+='<div style="margin-top:18px;"><div class="rsub">周辺施設</div>'+facHtml+'</div>';
-  areaContent+=schoolHtml+hazHtml;
-  if(areaContent)html+='<div class="rpt-page">'+sec('周辺情報',areaContent)+footer(co)+'</div>';
-  var flows=[['売却相談','査定価格のご説明、売出価格のご提案・諸費用のご説明、売却活動のご説明'],['販売準備','売出価格の決定、媒介契約の締結・設備表・物件状況等報告書作成・販売用図面の作成'],['販売活動','不動産流通機構レインズへの登録・不動産ポータルサイトへの登録・各種広告宣伝活動の実施'],['購入申込','買主様物件内見・購入申込・売却承諾'],['売買契約','重要事項説明書の取り交わし・売買契約の締結・手付金の受取'],['決済・引き渡し','残代金の受取・所有権移転手続き・物件のお引渡し']];
-  var flowHtml='<div class="rflow">'+flows.map(function(f,i){return '<div class="rfi"><div class="rfn" style="background:'+T.c1+';">'+(i+1)+'</div><div><div class="rft">'+f[0]+'</div><div class="rfd">'+f[1]+'</div></div></div>';}).join('')+'</div>';
-  html+='<div class="rpt-page">'+sec('売却の流れ',flowHtml)+footer(co)+'</div>';
+
+  /* ─── 成約事例 ─── */
+  if(PD.case.imgs.length>0){
+    html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">0'+secN+'</span><span class="rsec-ttl">近隣成約事例</span></div></div><div class="rpt-pdf-wrap">'+PD.case.imgs.map(function(s){return '<img class="rpt-pdf-img" src="'+s+'">';}).join('')+'</div>'+ft(co)+'</div>';
+    secN++;
+  }
+
+  /* ─── 在庫事例 ─── */
+  if(PD.stock.imgs.length>0){
+    html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">0'+secN+'</span><span class="rsec-ttl">現在の売出事例</span></div></div><div class="rpt-pdf-wrap">'+PD.stock.imgs.map(function(s){return '<img class="rpt-pdf-img" src="'+s+'">';}).join('')+'</div>'+ft(co)+'</div>';
+    secN++;
+  }
+
+  /* ─── 売却の流れ ─── */
+  var fn=String(secN).padStart(2,'0');
+  var flows=[['売却相談','査定価格のご説明・売出価格のご提案・諸費用のご説明・売却活動のご説明'],['販売準備','売出価格の決定・媒介契約の締結・設備表・物件状況等報告書作成・販売用図面の作成'],['販売活動','不動産流通機構レインズへの登録・不動産ポータルサイトへの登録・各種広告宣伝活動の実施'],['購入申込','買主様物件内見・購入申込・売却承諾'],['売買契約','重要事項説明書の取り交わし・売買契約の締結・手付金の受取'],['決済・引き渡し','残代金の受取・所有権移転手続き・物件のお引渡し']];
+  html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">'+fn+'</span><span class="rsec-ttl">売却の流れ</span></div><div class="rflow">'+flows.map(function(f,i){return '<div class="rfi"><div class="rfn" style="background:'+T.c1+';border:1px solid '+T.gold+';color:'+T.gold+';">'+String(i+1)+'</div><div><div class="rft">'+f[0]+'</div><div class="rfd">'+f[1]+'</div></div></div>';}).join('')+'</div></div>'+ft(co)+'</div>';
+  secN++;
+
+  /* ─── 戦略ガイドブック：表紙＋大切にしていること（1ページ統合） ─── */
+  var gn=String(secN).padStart(2,'0');
+  html+='<div class="rpt-page">'
+    // 上半分：カラー表紙エリア
+    +'<div class="sg-cover-half" style="background:'+bg+';">'
+    +'<div class="sg-cover-gold" style="background:'+gl+';"></div>'
+    +'<div class="sg-cover-geo1"></div><div class="sg-cover-geo2"></div>'
+    +'<div class="sg-cover-half-inner" style="position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;">'
+    +'<div>'
+    +'<div style="font-size:9px;opacity:.45;letter-spacing:.22em;text-transform:uppercase;color:#fff;margin-bottom:8px;">Sales Strategy Guide</div>'
+    +'<div style="font-family:\'Cormorant Garamond\',serif;font-size:48px;font-weight:300;letter-spacing:.06em;line-height:1;color:#fff;white-space:nowrap;">戦略ガイドブック</div>'
+    +'<div style="font-size:12px;opacity:.65;color:#fff;margin-top:12px;letter-spacing:.05em;">住み替え・ご売却・お引渡し後まで、安心してご相談いただける体制をご案内します。</div>'
+    +'</div>'
+    +'<div style="text-align:right;color:#fff;">'
+    +'<div style="font-size:9px;opacity:.4;margin-top:4px;letter-spacing:.08em;">'+gn+'</div>'
+    +'</div>'
+    +'</div>'
+    +'</div>'
+    // 下半分：大切にしていること
+    +'<div class="sg-values">'
+    +'<div class="rsec-hd" style="margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--bdr);"><span class="rsec-num" style="font-family:\'Cormorant Garamond\',serif;font-size:13px;color:var(--gold);letter-spacing:.08em;font-style:italic;">'+String(secN+0).padStart(2,'0')+'</span><span class="rsec-ttl" style="font-family:\'Playfair Display\',serif;font-size:18px;font-weight:400;color:var(--ink);letter-spacing:.04em;">スイートホームが大切にしていること</span></div>'
+    +'<div class="sg-values-grid">'
+    +'<div class="sg-value-item"><div class="sg-value-num">1</div><div class="sg-value-title">見せ方まで配慮</div><div class="sg-value-desc">室内写真はミラーレスカメラで撮影し、個人情報等はCG加工にて見えないよう配慮します。</div></div>'
+    +'<div class="sg-value-item"><div class="sg-value-num">2</div><div class="sg-value-title">費用面の安心</div><div class="sg-value-desc">設備保証や各種サービス費用を、できる限り弊社負担でご案内し、お客様の負担感を軽減します。</div></div>'
+    +'<div class="sg-value-item"><div class="sg-value-num">3</div><div class="sg-value-title">専門家との連携</div><div class="sg-value-desc">住宅ローン・法務・税務まで、提携金融機関や士業と連携し、住み替えに伴う不安を幅広く支えます。</div></div>'
+    +'</div>'
+    +'<div style="margin-top:14px;">'
+    +'<div class="sg-flow-label">ご相談から引き渡し後まで — 5ステップでサポート</div>'
+    +'<div class="sg-flow">'
+    +'<div class="sg-flow-item"><div class="sg-flow-step">Step 1</div><div class="sg-flow-name">ご相談</div></div>'
+    +'<div class="sg-flow-item"><div class="sg-flow-step">Step 2</div><div class="sg-flow-name">ご提案</div></div>'
+    +'<div class="sg-flow-item"><div class="sg-flow-step">Step 3</div><div class="sg-flow-name">ご契約</div></div>'
+    +'<div class="sg-flow-item"><div class="sg-flow-step">Step 4</div><div class="sg-flow-name">お引渡し</div></div>'
+    +'<div class="sg-flow-item"><div class="sg-flow-step">Step 5</div><div class="sg-flow-name">アフター</div></div>'
+    +'</div>'
+    +'</div>'
+    +'</div>'
+    +ft(co)+'</div>';
+  secN++;
+
+  /* ─── サポート内容 01〜06（1ページ統合） ─── */
+  var spn=String(secN).padStart(2,'0');
+  html+='<div class="rpt-page"><div class="sg-support">'
+    +'<div class="rsec-hd" style="margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--bdr);"><span class="rsec-num" style="font-family:\'Cormorant Garamond\',serif;font-size:13px;color:var(--gold);letter-spacing:.08em;font-style:italic;">'+spn+'</span><span class="rsec-ttl" style="font-family:\'Playfair Display\',serif;font-size:18px;font-weight:400;color:var(--ink);letter-spacing:.04em;">サポート内容</span></div>'
+    +'<div class="sg-support-grid-3col">'
+    // 01
+    +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">01</div><div class="sg-support-title">室内写真の撮影・CG加工</div></div><div class="sg-support-body"><div class="sg-support-main">室内写真はミラーレスカメラで撮影し、個人情報等はCG加工にて消します。</div><span class="sg-support-tag">弊社負担</span></div></div>'
+    // 02
+    +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">02</div><div class="sg-support-title">設備保証</div></div><div class="sg-support-body"><div class="sg-support-main">お引き渡し後もご安心頂く為に、弊社負担で設備保証いたします。</div><span class="sg-support-tag">弊社負担</span></div></div>'
+    // 03
+    +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">03</div><div class="sg-support-title">クリーニング費用負担</div></div><div class="sg-support-body"><div class="sg-support-main">クリーニング費用（一部有料）は弊社負担いたします。居住中のご相談も可能です。</div><span class="sg-support-tag">※対象範囲は個別条件によります</span></div></div>'
+    // 04
+    +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">04</div><div class="sg-support-title">残置物撤去サービス</div></div><div class="sg-support-body"><div class="sg-support-main">残置物撤去サービスがございます。必要に応じて一部有料で対応いたします。</div><span class="sg-support-tag">※現地状況に応じてご案内します</span></div></div>'
+    // 05
+    +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">05</div><div class="sg-support-title">住宅ローン相談</div></div><div class="sg-support-body"><div class="sg-support-main">お住み替えのお客様には、住宅ローンの提携金融機関を多数ご案内できます。</div><span class="sg-support-tag">提携金融機関多数</span></div></div>'
+    // 06
+    +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">06</div><div class="sg-support-title">法務・税務相談</div></div><div class="sg-support-body"><div class="sg-support-main">提携士業との連携により、法務・税務のご相談サービスをご利用いただけます。</div><span class="sg-support-tag">提携士業連携</span></div></div>'
+    +'</div>'
+    +'</div>'+ft(co)+'</div>';
+  secN++;
+
+  /* ─── 担当者ページ ─── */
+  var sfn=String(secN).padStart(2,'0');
+  var photoHtml=photoSrc?'<img class="rstaff-photo" src="'+photoSrc+'">':'<div class="rstaff-photo-placeholder">👤</div>';
+  var infoItems=[['TEL',tel],['携帯',mob],['FAX',fax],['Email',em]].map(function(r){return '<div class="rstaff-info-item"><div class="rstaff-info-lbl">'+r[0]+'</div><div class="rstaff-info-val">'+r[1]+'</div></div>';}).join('');
+  html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">'+sfn+'</span><span class="rsec-ttl">担当者のご紹介</span></div></div>'
+    +'<div class="rstaff-page">'
+    +'<div class="rstaff-left">'+photoHtml+'<div class="rstaff-co-logo">'+co+'</div></div>'
+    +'<div class="rstaff-right"><div>'
+    +'<div class="rstaff-name">'+sn+'</div>'
+    +'<div class="rstaff-kana">（'+sk+'）</div>'
+    +(sb?'<div class="rstaff-bio">'+sb+'</div>':'')
+    +'<div class="rstaff-info-grid">'+infoItems+'</div>'
+    +'</div>'
+    +'<div><div class="rstaff-addr">'+ca+'</div><div class="rstaff-takken">'+tk+'</div></div>'
+    +'</div>'
+    +'</div>'
+    +ft(co)+'</div>';
+
   document.getElementById('rpt-wrap').innerHTML=html;
 }
-window.onload=function(){
-  loadData();
-  if(!document.getElementById('case-body').rows.length){addCase({name:'ブリリアマーレ有明T&G',area:'61.43',madori:'2LDK',price:'12500',tsubo:'672.7',date:'R8.1.31'});addCase({name:'ブリリアマーレ有明T&G',area:'40.80',madori:'1LDK',price:'8380',tsubo:'679.0',date:'R8.1.30'});addCase({name:'ブリリアマーレ有明T&G',area:'55.68',madori:'1LDK',price:'8500',tsubo:'504.7',date:'R7.11.9'});}
-  if(!document.getElementById('stock-body').rows.length){addStock({name:'ブリリアマーレ有明T&G',area:'45.88',madori:'1LDK',price:'8740',tsubo:'629.8',floor:'11階'});addStock({name:'ブリリアマーレ有明T&G',area:'80.48',madori:'3LDK',price:'16300',tsubo:'669.6',floor:'5階'});addStock({name:'ブリリアマーレ有明T&G',area:'55.65',madori:'1LDK',price:'12000',tsubo:'712.9',floor:'19階'});}
-  if(!document.querySelectorAll('.stn-row').length){addStn({name:'ゆりかもめ 有明テニスの森',walk:'5',dist:'347'});addStn({name:'りんかい線 国際展示場',walk:'7',dist:'513'});}
-  if(!document.getElementById('fac-body').rows.length){addFac({type:'スーパー',name:'文化堂有明店',dist:'98m',walk:'約2分'});addFac({type:'コンビニ',name:'デイリーヤマザキ ブリリアマーレ有明店',dist:'47m',walk:'約1分'});addFac({type:'病院',name:'有明かぜまち内科クリニック',dist:'15m',walk:'約1分'});addFac({type:'小学校',name:'江東区立有明西学園',dist:'247m',walk:'約4分'});addFac({type:'ショッピング',name:'イオンスタイル 有明ガーデン',dist:'542m',walk:'約7分'});addFac({type:'ドラッグストア',name:'有明ファミリー薬局',dist:'20m',walk:'約1分'});}
-  cp();syncMock();
-};
+window.onload=function(){loadData();initDropZones();};
 </script>
 </body>
 </html>
