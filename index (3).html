@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Property Report — Sweet Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f9f7f3;--white:#fff;--ink:#0d0b08;--ink2:#2a2620;--ink3:#6b6258;--ink4:#a09890;--ink5:#c8c0b8;
+  --navy:#111827;--navy2:#1e2d47;--gold:#c4a265;--gold2:#ddc08a;--gold3:#f0ddb8;
+  --bdr:rgba(0,0,0,0.07);--bdr2:rgba(0,0,0,0.13);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink);font-size:13px;line-height:1.8;-webkit-font-smoothing:antialiased;}
+.hdr{height:60px;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:300;border-bottom:1px solid rgba(196,162,101,.3);}
+.hdr-l{display:flex;align-items:center;gap:14px;}
+.hdr-crest{width:34px;height:34px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;color:var(--gold);}
+.hdr-brand{color:rgba(255,255,255,.88);font-size:13px;font-weight:300;letter-spacing:.2em;}
+.hdr-tagline{color:rgba(255,255,255,.28);font-size:8px;letter-spacing:.22em;text-transform:uppercase;}
+.hdr-r{font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.1em;display:flex;align-items:center;gap:6px;}
+.sdot{width:4px;height:4px;border-radius:50%;background:#6dcf9e;}
+.layout{display:grid;grid-template-columns:200px 1fr;min-height:calc(100vh - 60px);}
+.sb{background:var(--white);border-right:1px solid var(--bdr);padding:28px 0;display:flex;flex-direction:column;position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto;}
+.sb-sec{padding:0 14px 20px;}
+.sb-lbl{font-size:8px;letter-spacing:.28em;color:var(--ink5);font-weight:500;margin-bottom:8px;padding-left:10px;text-transform:uppercase;}
+.nb{width:100%;text-align:left;background:none;border:none;padding:9px 12px 9px 14px;border-radius:2px;font-size:11px;font-family:inherit;color:var(--ink4);cursor:pointer;transition:all .15s;margin-bottom:1px;letter-spacing:.05em;display:block;border-left:2px solid transparent;}
+.nb:hover{background:var(--bg);color:var(--ink2);}
+.nb.on{background:#faf6ee;color:var(--navy);font-weight:500;border-left-color:var(--gold);}
+.sb-line{height:1px;background:var(--bdr);margin:6px 14px 14px;}
+.sb-foot{margin-top:auto;padding:16px 14px 0;}
+.btn-go{width:100%;padding:13px;background:var(--navy);color:var(--gold3);border:none;font-family:inherit;font-size:10px;letter-spacing:.2em;cursor:pointer;border-radius:2px;text-transform:uppercase;}
+.btn-go:hover{background:var(--navy2);}
+.btn-rst{width:100%;padding:8px;margin-top:8px;background:none;color:var(--ink5);border:1px solid var(--bdr2);font-family:inherit;font-size:9px;letter-spacing:.1em;cursor:pointer;border-radius:2px;text-transform:uppercase;}
+.main{overflow-y:auto;}
+.tp{display:none;}.tp.on{display:block;}
+.pw{padding:40px 44px;}
+.eyebrow{font-size:8px;letter-spacing:.3em;color:var(--gold);font-weight:500;text-transform:uppercase;margin-bottom:10px;}
+.page-title{font-family:'Playfair Display',serif;font-size:30px;font-weight:400;color:var(--ink);letter-spacing:.03em;line-height:1.15;margin-bottom:5px;}
+.page-desc{font-size:11px;color:var(--ink4);letter-spacing:.04em;}
+.ph{margin-bottom:34px;padding-bottom:20px;border-bottom:1px solid var(--bdr);}
+.card{background:var(--white);border:1px solid var(--bdr);border-radius:2px;margin-bottom:18px;overflow:hidden;}
+.ch{padding:15px 22px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;}
+.ct{font-size:8px;letter-spacing:.22em;font-weight:600;color:var(--ink4);text-transform:uppercase;}
+.cb{padding:22px;}
+.fg{display:grid;gap:15px;}.g2{grid-template-columns:1fr 1fr;}.g3{grid-template-columns:1fr 1fr 1fr;}.full{grid-column:1/-1;}
+.fl{display:flex;flex-direction:column;gap:5px;}
+.fl label{font-size:9px;letter-spacing:.12em;color:var(--ink4);font-weight:500;text-transform:uppercase;}
+.fi,.fs,.ft{padding:10px 13px;border:1px solid var(--bdr2);border-radius:2px;font-size:12px;font-family:inherit;color:var(--ink);background:var(--white);transition:border-color .2s;width:100%;}
+.fi:focus,.fs:focus,.ft:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,162,101,.1);}
+.ft{resize:vertical;min-height:80px;}
+.fh{font-size:9px;color:var(--ink5);}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
+.pc{padding:18px;border-radius:2px;border:1px solid var(--bdr);background:var(--bg);position:relative;overflow:hidden;}
+.pc-accent{position:absolute;bottom:0;left:0;right:0;height:2px;}
+.pc.std .pc-accent{background:var(--navy);}
+.pc.early .pc-accent{background:var(--gold);}
+.pc.high .pc-accent{background:var(--ink3);}
+.pc-lbl{font-size:8px;letter-spacing:.16em;color:var(--ink4);margin-bottom:9px;font-weight:600;text-transform:uppercase;}
+.pc-val{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:400;color:var(--ink);}
+.pc-tsubo{font-size:10px;color:var(--ink4);margin-top:3px;}
+.btn{padding:9px 18px;border-radius:2px;font-size:10px;letter-spacing:.12em;font-weight:500;cursor:pointer;font-family:inherit;transition:all .2s;border:1px solid var(--bdr2);background:var(--white);color:var(--ink3);text-transform:uppercase;}
+.btn:hover{background:var(--bg);}
+.btn-p{background:var(--navy);color:var(--gold3);border-color:var(--navy);}
+.btn-p:hover{background:var(--navy2);}
+.btn-d{background:none;color:#b94040;border-color:rgba(185,64,64,.25);font-size:9px;padding:5px 10px;}
+.btn-sm{padding:5px 11px;font-size:9px;}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:26px;}
+.pdf-drop{border:1px dashed rgba(196,162,101,.45);border-radius:2px;padding:28px;background:var(--bg);text-align:center;cursor:pointer;transition:all .2s;margin-bottom:14px;position:relative;}
+.pdf-drop:hover,.pdf-drop.has-file{border-color:var(--gold);background:rgba(196,162,101,.04);}
+.pdf-drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.pdf-drop-icon{font-size:22px;margin-bottom:8px;opacity:.35;}
+.pdf-drop-title{font-size:12px;color:var(--ink3);margin-bottom:3px;font-weight:500;}
+.pdf-drop-sub{font-size:10px;color:var(--ink5);}
+.pdf-file-item{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:var(--bg);border:1px solid var(--bdr);border-radius:2px;}
+.pdf-file-l{display:flex;align-items:center;gap:11px;}
+.pdf-file-icon{width:30px;height:30px;background:var(--navy);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--gold);font-weight:700;}
+.pdf-file-name{font-size:12px;font-weight:500;color:var(--ink2);}
+.pdf-file-meta{font-size:9px;color:var(--ink5);margin-top:2px;}
+.photo-drop{border:1px dashed rgba(196,162,101,.45);border-radius:2px;padding:20px;background:var(--bg);cursor:pointer;transition:all .2s;position:relative;display:flex;align-items:center;gap:20px;}
+.photo-drop:hover,.photo-drop.has-file{border-color:var(--gold);background:rgba(196,162,101,.04);}
+.photo-drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.photo-preview{width:80px;height:100px;object-fit:cover;border-radius:2px;border:1px solid var(--bdr2);flex-shrink:0;}
+.photo-placeholder{width:80px;height:100px;background:var(--navy);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:28px;opacity:.25;flex-shrink:0;}
+.photo-drop-text{text-align:left;}
+.photo-drop-title{font-size:12px;color:var(--ink3);font-weight:500;margin-bottom:3px;}
+.photo-drop-sub{font-size:10px;color:var(--ink5);}
+.palette{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px;padding-bottom:26px;border-bottom:1px solid var(--bdr);}
+.swatch{width:38px;height:38px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:all .2s;position:relative;}
+.swatch.on{border-color:var(--ink);transform:scale(1.08);}
+.swatch::after{content:attr(title);position:absolute;bottom:-17px;left:50%;transform:translateX(-50%);font-size:8px;color:var(--ink4);white-space:nowrap;}
+.cov-mock{border-radius:2px;overflow:hidden;border:1px solid var(--bdr);}
+.cov-inner{padding:28px 24px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;position:relative;overflow:hidden;}
+.cov-gold-bar{position:absolute;top:0;left:0;right:0;height:3px;}
+.cov-ga{position:absolute;right:-50px;top:-50px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.04);}
+.cov-gb{position:absolute;left:-30px;bottom:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.03);}
+.cov-co{font-family:'Playfair Display',serif;font-size:17px;letter-spacing:.1em;position:relative;z-index:1;}
+.cov-sub{font-size:8px;opacity:.4;letter-spacing:.2em;margin-top:2px;position:relative;z-index:1;text-transform:uppercase;}
+.cov-ttl{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;letter-spacing:.08em;position:relative;z-index:1;}
+.cov-catch{font-size:10px;opacity:.6;margin-top:5px;position:relative;z-index:1;}
+.cov-staff{position:relative;z-index:1;}
+.cov-staff-lbl{font-size:7px;opacity:.4;letter-spacing:.2em;text-transform:uppercase;margin-bottom:2px;}
+.cov-staff-name{font-size:14px;font-weight:500;}
+.ptbar{background:var(--navy);color:#fff;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(196,162,101,.2);}
+.ptbar-l{font-size:10px;opacity:.45;letter-spacing:.1em;}
+.ptbar-r{display:flex;gap:10px;}
+.btn-print{background:var(--gold);color:#fff;border:none;padding:10px 22px;border-radius:2px;font-family:inherit;font-size:10px;letter-spacing:.14em;cursor:pointer;text-transform:uppercase;}
+.btn-print:hover{background:#b08040;}
+.btn-ref{background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.13);padding:10px 16px;border-radius:2px;font-family:inherit;font-size:10px;cursor:pointer;}
+
+/* ===== REPORT ===== */
+.rpt-wrap{max-width:794px;margin:0 auto;padding:20px 0;position:relative;border-left:4px solid var(--gold);}
+.rpt-wrap::after{content:'';position:absolute;top:0;right:0;bottom:0;width:4px;background:var(--gold);pointer-events:none;}
+.rpt-page{background:var(--white);overflow:hidden;position:relative;display:flex;flex-direction:column;border-bottom:6px solid var(--bg);}
+/* Cover — new style */
+.rpt-cover{min-height:560px;overflow:hidden;display:flex;flex-direction:column;background:var(--white);}
+.rcov-top-bar{height:4px;width:100%;}
+.rpt-cover-inner{flex:1;display:flex;flex-direction:column;padding:2rem 3rem 0;}
+.rcov-logo-area{display:flex;align-items:center;gap:10px;margin-bottom:1.6rem;}
+.rcov-logo-icon{width:36px;height:36px;border:1.5px solid;border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-weight:500;}
+.rcov-logo-text{font-family:'Playfair Display',serif;font-size:14px;letter-spacing:.12em;}
+.rcov-title-area{margin-bottom:1.6rem;}
+.rcov-main-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:500;letter-spacing:.08em;margin-bottom:.6rem;}
+.rcov-cover-image{flex:1;min-height:300px;position:relative;overflow:hidden;}
+.rcov-img-geo1{position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.06);}
+.rcov-img-geo2{position:absolute;left:-40px;bottom:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.04);}
+.rcov-img-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 2.2rem;}
+.rcov-bottom-row{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;}
+.rcov-client-block{color:#fff;}
+.rcov-date-block{font-size:12px;opacity:.85;letter-spacing:.18em;margin-bottom:8px;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-style:normal;}
+.rcov-client-name2{font-family:'Noto Sans JP',sans-serif;font-size:26px;font-weight:500;letter-spacing:.06em;line-height:1.1;}
+.rcov-staff-block{color:#fff;text-align:right;}
+.rcov-st-lbl2{font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.55;margin-bottom:4px;}
+.rcov-st-name2{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;letter-spacing:.08em;line-height:1;margin-bottom:5px;}
+.rcov-st-info2{font-size:9px;opacity:.5;letter-spacing:.04em;line-height:1.7;}
+/* Section */
+.rsec{padding:1.4rem 2.4rem 1.4rem 2.8rem;}
+.rsec-hd{display:flex;align-items:baseline;gap:16px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--bdr);}
+.rsec-num{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gold);letter-spacing:.08em;font-style:italic;flex-shrink:0;}
+.rsec-ttl{font-family:'Playfair Display',serif;font-size:21px;font-weight:400;color:var(--ink);letter-spacing:.04em;}
+/* Info */
+.rit{width:100%;border-collapse:collapse;}
+.rit tr{border-bottom:1px solid rgba(0,0,0,.05);}
+.rit tr:last-child{border-bottom:none;}
+.rit td{padding:7px 0;}
+.rilbl{width:155px;font-size:9px;letter-spacing:.1em;color:var(--ink4);vertical-align:top;padding-top:11px;text-transform:uppercase;}
+.rival{font-size:13px;color:var(--ink);padding-left:14px;font-weight:300;}
+/* Price */
+.rph{border-radius:2px;padding:1.6rem 2rem;color:#fff;position:relative;overflow:hidden;margin-bottom:14px;}
+.rph-geo{position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.07);}
+.rph-gl{position:absolute;top:0;left:0;right:0;height:3px;}
+.rph-vt{display:none;}
+.rph-ey{font-size:8px;letter-spacing:.22em;opacity:.55;margin-bottom:8px;position:relative;z-index:1;text-transform:uppercase;}
+.rph-main{display:flex;align-items:baseline;gap:4px;line-height:1;position:relative;z-index:1;}
+.rph-main-num{font-family:'Playfair Display',serif;font-size:52px;font-weight:400;letter-spacing:.02em;line-height:1;}
+.rph-main-unit{font-family:'Noto Sans JP',sans-serif;font-size:24px;font-weight:300;letter-spacing:.04em;opacity:.9;margin-left:2px;}
+.rph-tsubo{font-size:11px;opacity:.55;margin-top:7px;margin-bottom:16px;position:relative;z-index:1;letter-spacing:.06em;}
+.rph-plans{display:flex;flex-direction:column;gap:8px;position:relative;z-index:1;}
+.rplan{background:rgba(255,255,255,.09);border-radius:2px;padding:11px 18px;border:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:center;}
+.rplan-n{font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:.06em;opacity:.75;flex-shrink:0;min-width:180px;font-weight:300;}
+.rplan-body{display:flex;align-items:baseline;gap:8px;}
+.rplan-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;letter-spacing:.02em;line-height:1;}
+.rplan-unit{font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:300;opacity:.9;margin-left:1px;}
+.rplan-t{font-size:9px;opacity:.5;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;}
+.rdisc{font-size:9px;color:var(--ink5);line-height:1.9;margin-top:12px;padding:11px 16px;background:var(--bg);border-left:2px solid var(--bdr2);}
+.rcomment{margin-top:12px;font-size:12px;color:var(--ink3);line-height:1.9;padding:12px 16px;background:var(--bg);border-left:2px solid var(--gold2);}
+/* PDF embed */
+.rpt-pdf-wrap{padding:0 2.4rem 1.2rem 2.8rem;}
+.rpt-pdf-img{width:100%;display:block;margin-bottom:10px;border:1px solid var(--bdr);}
+/* Flow */
+.rflow{display:flex;flex-direction:column;}
+.rfi{display:flex;gap:14px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.05);align-items:flex-start;}
+.rfi:last-child{border-bottom:none;}
+.rfn{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:12px;color:#fff;flex-shrink:0;}
+.rft{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;}
+.rfd{font-size:11px;color:var(--ink4);line-height:1.8;}
+/* Staff page */
+.rstaff-page{display:grid;grid-template-columns:220px 1fr;min-height:320px;}
+.rstaff-left{padding:2rem 1.4rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border-right:1px solid var(--bdr);}
+.rstaff-photo{width:180px;height:150px;object-fit:cover;object-position:center top;border-radius:2px;border:1px solid var(--bdr);background:var(--bg);}
+.rstaff-photo-placeholder{width:180px;height:150px;background:var(--bg);border-radius:2px;border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:36px;opacity:.25;}
+.rstaff-co-logo{font-family:'Playfair Display',serif;font-size:11px;color:var(--ink3);letter-spacing:.12em;text-align:center;line-height:1.6;}
+.rstaff-right{padding:2rem 2.2rem 2rem 1.8rem;display:flex;flex-direction:column;justify-content:space-between;}
+.rstaff-role{font-size:9px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;}
+.rstaff-name{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:400;letter-spacing:.08em;color:var(--ink);line-height:1;margin-bottom:4px;}
+.rstaff-kana{font-size:11px;color:var(--ink4);letter-spacing:.1em;margin-bottom:16px;}
+.rstaff-bio{font-size:12px;color:var(--ink3);line-height:1.9;border-left:2px solid var(--gold2);padding-left:14px;margin-bottom:16px;}
+.rstaff-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px;}
+.rstaff-info-item{background:var(--bg);padding:9px 12px;border-radius:2px;}
+.rstaff-info-lbl{font-size:8px;letter-spacing:.16em;color:var(--ink5);text-transform:uppercase;margin-bottom:3px;}
+.rstaff-info-val{font-size:11px;color:var(--ink2);}
+.rstaff-addr{font-size:10px;color:var(--ink4);line-height:1.9;}
+.rstaff-takken{font-size:9px;color:var(--ink5);letter-spacing:.06em;margin-top:4px;}
+/* Footer */
+.rfooter{padding:10px 2.4rem 10px 2.8rem;border-top:1px solid var(--bdr);background:var(--bg);display:flex;align-items:center;justify-content:space-between;margin-top:auto;}
+.rfooter-copy{font-size:8px;color:var(--ink5);letter-spacing:.12em;}
+.rfooter-logo{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ink4);letter-spacing:.14em;font-style:italic;}
+
+/* ===== STRATEGY GUIDE PAGES ===== */
+/* 統合表紙（上半分カラー） */
+.sg-cover-half{padding:2.8rem 2.4rem 2.8rem 2.8rem;position:relative;overflow:hidden;color:#fff;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;}
+.sg-cover-half-inner{display:flex;justify-content:space-between;align-items:flex-end;white-space:nowrap;overflow:hidden;gap:16px;}
+.sg-cover{min-height:460px;display:flex;flex-direction:column;justify-content:space-between;padding:2.8rem 3rem 2.4rem;position:relative;overflow:hidden;color:#fff;}
+.sg-cover-geo1{position:absolute;right:-80px;top:-80px;width:380px;height:380px;border-radius:50%;background:rgba(255,255,255,.05);}
+.sg-cover-geo2{position:absolute;left:-50px;bottom:-50px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.04);}
+.sg-cover-geo3{position:absolute;right:100px;bottom:80px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.06);}
+.sg-cover-gold{position:absolute;top:0;left:0;right:0;height:4px;}
+.sg-cover-head{position:relative;z-index:1;}
+.sg-cover-eyebrow{font-size:9px;letter-spacing:.28em;opacity:.5;text-transform:uppercase;margin-bottom:6px;}
+.sg-cover-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;letter-spacing:.08em;line-height:1.1;margin-bottom:8px;}
+.sg-cover-sub{font-size:13px;opacity:.65;letter-spacing:.06em;}
+.sg-cover-list{position:relative;z-index:1;}
+.sg-cover-list-title{font-size:9px;letter-spacing:.2em;opacity:.5;text-transform:uppercase;margin-bottom:16px;}
+.sg-cover-items{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.sg-cover-item{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:2px;padding:12px 14px;}
+.sg-cover-item-num{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;opacity:.6;flex-shrink:0;width:22px;}
+.sg-cover-item-text{font-size:12px;letter-spacing:.04em;}
+.sg-cover-foot{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;}
+.sg-cover-tagline{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;opacity:.5;letter-spacing:.1em;}
+.sg-cover-brand{font-family:'Playfair Display',serif;font-size:14px;opacity:.6;letter-spacing:.12em;}
+/* 理念ページ */
+.sg-values{padding:1.2rem 2.4rem 1.2rem 2.8rem;}
+.sg-values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr);border-radius:2px;overflow:hidden;margin-bottom:14px;}
+.sg-value-item{background:var(--white);padding:16px 14px;}
+.sg-value-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:10px;}
+.sg-value-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:8px;letter-spacing:.04em;}
+.sg-value-desc{font-size:11px;color:var(--ink3);line-height:1.9;}
+.sg-flow-label{font-size:9px;letter-spacing:.2em;color:var(--ink5);text-transform:uppercase;margin-bottom:12px;}
+.sg-flow{display:flex;align-items:center;gap:0;}
+.sg-flow-item{flex:1;text-align:center;padding:10px 8px;background:var(--bg);position:relative;}
+.sg-flow-item:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--gold);z-index:1;}
+.sg-flow-step{font-size:8px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
+.sg-flow-name{font-size:12px;font-weight:500;color:var(--ink2);}
+/* サポートページ */
+.sg-support{padding:1.2rem 2.4rem 1.2rem 2.8rem;}
+.sg-support-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.sg-support-grid-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.sg-support-item{border:1px solid var(--bdr);border-radius:2px;overflow:hidden;}
+.sg-support-head{padding:10px 14px 8px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:10px;}
+.sg-support-num{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--gold);line-height:1;flex-shrink:0;}
+.sg-support-title{font-size:14px;font-weight:500;color:var(--ink);line-height:1.4;}
+.sg-support-body{padding:10px 14px 12px;}
+.sg-support-main{font-size:12px;color:var(--ink2);line-height:1.9;margin-bottom:8px;}
+.sg-support-note{font-size:11px;color:var(--ink4);line-height:1.8;}
+.sg-support-tag{display:inline-block;margin-top:8px;padding:3px 9px;background:var(--bg);border:1px solid var(--bdr);border-radius:20px;font-size:9px;letter-spacing:.1em;color:var(--ink4);}
+
+@media print{
+  .hdr,.sb,.main>*:not(#t-preview){display:none!important;}
+  .layout{display:block;}body{background:#fff;}
+  #t-preview{display:block!important;}
+  .ptbar{display:none!important;}
+  .rpt-page{border:none!important;border-bottom:none!important;margin:0;page-break-after:always;box-shadow:none!important;}
+  .rpt-wrap{padding:0!important;border-left:4px solid var(--gold)!important;border-right:none!important;}
+  .rpt-wrap::after{content:''!important;position:absolute!important;top:0!important;right:0!important;bottom:0!important;width:4px!important;background:var(--gold)!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+  /* 背景色・背景画像を強制出力 */
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important;}
+}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-l">
+    <div class="hdr-crest">S</div>
+    <div><div class="hdr-brand" id="h-co">株式会社スイートホーム</div><div class="hdr-tagline">Property Report System</div></div>
+  </div>
+  <div class="hdr-r"><div class="sdot" id="sdot"></div><span id="slbl">Saved</span></div>
+</div>
+<div class="layout">
+<div class="sb">
+  <div class="sb-sec">
+    <div class="sb-lbl">Data Input</div>
+    <button class="nb on" onclick="gt('t-basic')">① 物件基本情報</button>
+    <button class="nb" onclick="gt('t-price')">② 査定価格</button>
+    <button class="nb" onclick="gt('t-staff')">③ 担当者・会社情報</button>
+    <button class="nb" onclick="gt('t-reins')">④ REINS 事例 PDF</button>
+  </div>
+  <div class="sb-line"></div>
+  <div class="sb-sec">
+    <div class="sb-lbl">Output</div>
+    <button class="nb" onclick="gt('t-design')">デザイン設定</button>
+    <button class="nb" onclick="gt('t-preview');buildReport();">プレビュー・印刷</button>
+  </div>
+  <div class="sb-foot">
+    <button class="btn-go" onclick="gt('t-preview');buildReport();">レポートを作成する</button>
+    <button class="btn-rst" onclick="resetAll()">データをリセット</button>
+  </div>
+</div>
+<div class="main">
+
+<!-- ① 物件基本情報 -->
+<div id="t-basic" class="tp on"><div class="pw">
+  <div class="ph"><div class="eyebrow">Step 01</div><div class="page-title">物件基本情報</div><div class="page-desc">査定対象物件の基本情報を入力してください</div></div>
+  <div class="card"><div class="ch"><span class="ct">お客様・日付</span></div><div class="cb">
+    <div class="fg g2">
+      <div class="fl"><label>お客様名</label><input class="fi" id="client" placeholder="例：篠原" oninput="sv()"></div>
+      <div class="fl"><label>日付</label><input class="fi" id="reportdate" placeholder="例：2026年3月16日" oninput="sv()"></div>
+    </div>
+  </div></div>
+  <div class="card"><div class="ch"><span class="ct">物件データ</span></div><div class="cb">
+    <div class="fg g2">
+      <div class="fl full"><label>建物名</label><input class="fi" id="building" placeholder="例：ブリリアマーレ有明タワー＆ガーデン" oninput="sv()"></div>
+      <div class="fl full"><label>所在地</label><input class="fi" id="address" placeholder="例：東京都江東区有明一丁目４－１１" oninput="sv()"></div>
+      <div class="fl"><label>専有面積（㎡）</label><input class="fi" id="area" type="number" step="0.01" placeholder="40.98" oninput="sv();cp();"></div>
+      <div class="fl"><label>築年月</label><input class="fi" id="chiku" placeholder="例：2008年12月" oninput="sv()"></div>
+      <div class="fl"><label>所在階</label><input class="fi" id="floor" placeholder="例：12階" oninput="sv()"></div>
+      <div class="fl"><label>総階数</label><input class="fi" id="tfloor" placeholder="例：地上33階建" oninput="sv()"></div>
+      <div class="fl"><label>間取り</label><input class="fi" id="madori" placeholder="例：1LDK" oninput="sv()"></div>
+      <div class="fl"><label>方位</label><select class="fs" id="houkou" onchange="sv()"><option>北西</option><option>北東</option><option>南西</option><option>南東</option><option>南</option><option>北</option><option>東</option><option>西</option></select></div>
+      <div class="fl full"><label>特記事項</label><textarea class="ft" id="note" placeholder="リフォーム履歴・設備の特徴など" oninput="sv()"></textarea></div>
+    </div>
+  </div></div>
+  <div class="nav-row"><span></span><button class="btn btn-p" onclick="gt('t-price')">次へ →</button></div>
+</div></div>
+
+<!-- ② 査定価格 -->
+<div id="t-price" class="tp"><div class="pw">
+  <div class="ph"><div class="eyebrow">Step 02</div><div class="page-title">査定価格</div><div class="page-desc">3プランで売出価格をご提案します</div></div>
+  <div class="card"><div class="ch"><span class="ct">価格入力</span></div><div class="cb">
+    <div class="fg g3">
+      <div class="fl"><label>標準プラン（万円）</label><input class="fi" id="p_std" type="number" placeholder="8480" oninput="cp();sv();"><span class="fh" id="h_std">坪単価：—</span></div>
+      <div class="fl"><label>早期成約プラン（万円）</label><input class="fi" id="p_early" type="number" placeholder="8280" oninput="cp();sv();"><span class="fh" id="h_early">坪単価：—</span></div>
+      <div class="fl"><label>高値売却プラン（万円）</label><input class="fi" id="p_high" type="number" placeholder="8680" oninput="cp();sv();"><span class="fh" id="h_high">坪単価：—</span></div>
+    </div>
+    <div class="price-grid" id="pdisplay"></div>
+    <div class="fl" style="margin-top:18px;"><label>査定コメント（任意）</label><textarea class="ft" id="pcomment" placeholder="査定根拠・市場動向など" oninput="sv()"></textarea></div>
+  </div></div>
+  <div class="nav-row"><button class="btn" onclick="gt('t-basic')">← 戻る</button><button class="btn btn-p" onclick="gt('t-staff')">次へ →</button></div>
+</div></div>
+
+<!-- ③ 担当者 -->
+<div id="t-staff" class="tp"><div class="pw">
+  <div class="ph"><div class="eyebrow">Step 03</div><div class="page-title">担当者・会社情報</div><div class="page-desc">レポートに表示される情報と顔写真を設定してください</div></div>
+  <div class="card"><div class="ch"><span class="ct">顔写真</span></div><div class="cb">
+    <div class="photo-drop" id="photo-drop">
+      <input type="file" accept="image/*,application/pdf" onchange="loadPhoto(event)">
+      <div class="photo-placeholder" id="photo-placeholder">👤</div>
+      <img id="photo-preview" class="photo-preview" style="display:none;">
+      <div class="photo-drop-text">
+        <div class="photo-drop-title">顔写真をアップロード（JPG・PNG・PDF対応）</div>
+        <div class="photo-drop-sub">クリックまたはドロップ<br>名刺PDFをアップロードすると画像として使用します</div>
+      </div>
+    </div>
+  </div></div>
+  <div class="card"><div class="ch"><span class="ct">会社・担当者</span></div><div class="cb">
+    <div class="fg g2">
+      <div class="fl"><label>会社名</label><input class="fi" id="company" value="株式会社スイートホーム" oninput="sv();document.getElementById('h-co').textContent=this.value;syncMock();"></div>
+      <div class="fl"><label>担当者名</label><input class="fi" id="staffname" value="中谷 健作" oninput="sv();syncMock();"></div>
+      <div class="fl"><label>担当者名（ふりがな）</label><input class="fi" id="staffkana" value="なかや けんさく" oninput="sv()"></div>
+      <div class="fl"><label>役職</label><input class="fi" id="staffrole" value="代表取締役" oninput="sv()"></div>
+      <div class="fl"><label>電話番号</label><input class="fi" id="tel" value="03-6807-6922" oninput="sv();syncMock();"></div>
+      <div class="fl"><label>携帯電話</label><input class="fi" id="mobile" value="080-2051-5897" oninput="sv()"></div>
+      <div class="fl"><label>FAX</label><input class="fi" id="fax" value="03-6807-6921" oninput="sv()"></div>
+      <div class="fl"><label>メールアドレス</label><input class="fi" id="email" value="nakaya@sweet-home.tokyo" oninput="sv()"></div>
+      <div class="fl full"><label>会社住所</label><input class="fi" id="caddr" value="〒116-0001 東京都荒川区町屋1-1-8 オリエントビル302" oninput="sv();syncMock();"></div>
+      <div class="fl"><label>宅建番号</label><input class="fi" id="takken" value="東京都知事(1)107794号" oninput="sv()"></div>
+      <div class="fl"><label>お客様名</label><input class="fi" id="client" placeholder="○○ 様" oninput="sv()"></div>
+      <div class="fl full"><label>キャッチコピー（表紙）</label><input class="fi" id="catchcopy" value="あなたの大切な資産を、最高の価値へ。" oninput="sv();syncMock();"></div>
+      <div class="fl full"><label>担当者プロフィール</label><textarea class="ft" id="staffbio" oninput="sv()">金融機関・家業・不動産会社での経験を活かし、不動産売却やお住み替えに関するお悩みに、丁寧で現実的なご提案を心がけています。地域密着だからこそ、お引渡し後まで安心してご相談いただける対応を大切にしています。</textarea></div>
+    </div>
+  </div></div>
+  <div class="nav-row"><button class="btn" onclick="gt('t-price')">← 戻る</button><button class="btn btn-p" onclick="gt('t-reins')">次へ →</button></div>
+</div></div>
+
+<!-- ④ REINS PDF -->
+<div id="t-reins" class="tp"><div class="pw">
+  <div class="ph"><div class="eyebrow">Step 04</div><div class="page-title">REINS 事例 PDF</div><div class="page-desc">PDFをアップロードするとそのままレポートに挿入されます</div></div>
+  <div class="card"><div class="ch"><span class="ct">近隣成約事例 — PDF</span></div><div class="cb">
+    <div class="pdf-drop" id="case-drop"><input type="file" accept="application/pdf" onchange="loadPDF(event,'case')">
+      <div class="pdf-drop-icon">📄</div><div class="pdf-drop-title">成約事例のPDFをドロップ</div><div class="pdf-drop-sub">またはクリックしてファイルを選択</div></div>
+    <div id="case-info"></div>
+  </div></div>
+  <div class="card"><div class="ch"><span class="ct">現在の売出事例 — PDF</span></div><div class="cb">
+    <div class="pdf-drop" id="stock-drop"><input type="file" accept="application/pdf" onchange="loadPDF(event,'stock')">
+      <div class="pdf-drop-icon">📄</div><div class="pdf-drop-title">在庫事例のPDFをドロップ</div><div class="pdf-drop-sub">またはクリックしてファイルを選択</div></div>
+    <div id="stock-info"></div>
+  </div></div>
+  <div class="nav-row"><button class="btn" onclick="gt('t-staff')">← 戻る</button><button class="btn btn-p" onclick="gt('t-design')">次へ →</button></div>
+</div></div>
+
+<!-- デザイン設定 -->
+<div id="t-design" class="tp"><div class="pw">
+  <div class="ph"><div class="eyebrow">Design</div><div class="page-title">デザイン設定</div><div class="page-desc">表紙カラーをカスタマイズできます</div></div>
+  <div class="card"><div class="ch"><span class="ct">カラーテーマ</span></div><div class="cb">
+    <div class="palette" id="palette">
+      <div class="swatch on" style="background:linear-gradient(135deg,#111827,#2d4060);" data-c1="#111827" data-c2="#1e2d47" data-gold="#c4a265" title="ネイビー" onclick="setTheme(this)"></div>
+      <div class="swatch" style="background:linear-gradient(135deg,#0a0a0a,#2a2620);" data-c1="#0a0a0a" data-c2="#1a1612" data-gold="#c4a265" title="ブラック" onclick="setTheme(this)"></div>
+      <div class="swatch" style="background:linear-gradient(135deg,#0f2018,#1e4030);" data-c1="#0f2018" data-c2="#162e22" data-gold="#c4a265" title="フォレスト" onclick="setTheme(this)"></div>
+      <div class="swatch" style="background:linear-gradient(135deg,#2a1520,#4a2035);" data-c1="#2a1520" data-c2="#3a1828" data-gold="#ddc08a" title="バーガンディ" onclick="setTheme(this)"></div>
+      <div class="swatch" style="background:linear-gradient(135deg,#1a1430,#2e2060);" data-c1="#1a1430" data-c2="#241a48" data-gold="#ddc08a" title="ロイヤル" onclick="setTheme(this)"></div>
+      <div class="swatch" style="background:linear-gradient(135deg,#201510,#402a18);" data-c1="#201510" data-c2="#301e14" data-gold="#f0ddb8" title="セピア" onclick="setTheme(this)"></div>
+    </div>
+    <div class="cov-mock"><div class="cov-inner" id="cov-inner" style="background:linear-gradient(135deg,#111827,#1e2d47);">
+      <div class="cov-gold-bar" id="cov-gold" style="background:linear-gradient(90deg,#c4a265,#ddc08a);"></div>
+      <div class="cov-ga"></div><div class="cov-gb"></div>
+      <div><div class="cov-co" id="mock-co">株式会社スイートホーム</div><div class="cov-sub">不動産査定書</div></div>
+      <div><div class="cov-ttl">不動産<br>査定書</div><div class="cov-catch" id="mock-catch">お客様名</div></div>
+      <div class="cov-staff"><div class="cov-staff-lbl">担当者</div><div class="cov-staff-name" id="mock-staff">中谷 健作</div></div>
+    </div></div>
+  </div></div>
+  <div class="nav-row"><button class="btn" onclick="gt('t-reins')">← 戻る</button><button class="btn btn-p" onclick="gt('t-preview');buildReport();">プレビューを作成する →</button></div>
+</div></div>
+
+<!-- プレビュー -->
+<div id="t-preview" class="tp">
+  <div class="ptbar">
+    <div class="ptbar-l">印刷ダイアログで「PDFに保存」を選択してください</div>
+    <div class="ptbar-r"><button class="btn-ref" onclick="buildReport()">更新</button><button class="btn-print" onclick="window.print()">PDF 保存・印刷</button></div>
+  </div>
+  <div class="rpt-wrap" id="rpt-wrap"></div>
+</div>
+
+</div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+var T={c1:'#111827',c2:'#1e2d47',gold:'#c4a265'};
+var PD={case:{imgs:[],name:''},stock:{imgs:[],name:''}};
+var photoSrc='';
+
+function gt(id){
+  document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('.nb').forEach(function(b){b.classList.remove('on');});
+  document.getElementById(id).classList.add('on');
+  var m={'t-basic':0,'t-price':1,'t-staff':2,'t-reins':3,'t-design':4,'t-preview':5};
+  var nbs=document.querySelectorAll('.nb');
+  if(m[id]!==undefined&&nbs[m[id]])nbs[m[id]].classList.add('on');
+}
+function tsp(v,a){var f=parseFloat(a);if(!f||!v)return '—';return (parseFloat(v)/(f/3.30579)).toFixed(1)+'万円/坪';}
+function fm(n){if(!n)return '—';return '<span class="rph-main-num">'+parseInt(n).toLocaleString()+'</span><span class="rph-main-unit">万円</span>';}
+function fmPlan(n){if(!n)return '—';return '<span class="rplan-num">'+parseInt(n).toLocaleString()+'</span><span class="rplan-unit">万円</span>';}
+function cp(){
+  var a=document.getElementById('area').value;
+  ['std','early','high'].forEach(function(k){var v=document.getElementById('p_'+k).value;document.getElementById('h_'+k).textContent=v?'坪単価：'+tsp(v,a):'坪単価：—';});
+  var s=document.getElementById('p_std').value,e=document.getElementById('p_early').value,h=document.getElementById('p_high').value;
+  var html='';
+  if(s)html+='<div class="pc std"><div class="pc-accent"></div><div class="pc-lbl">標準プラン</div><div class="pc-val">'+fm(s)+'</div><div class="pc-tsubo">'+tsp(s,a)+'</div></div>';
+  if(e)html+='<div class="pc early"><div class="pc-accent"></div><div class="pc-lbl">早期成約プラン</div><div class="pc-val">'+fm(e)+'</div><div class="pc-tsubo">'+tsp(e,a)+'</div></div>';
+  if(h)html+='<div class="pc high"><div class="pc-accent"></div><div class="pc-lbl">高値売却プラン</div><div class="pc-val">'+fm(h)+'</div><div class="pc-tsubo">'+tsp(h,a)+'</div></div>';
+  document.getElementById('pdisplay').innerHTML=html;
+}
+function setTheme(el){
+  document.querySelectorAll('.swatch').forEach(function(s){s.classList.remove('on');});
+  el.classList.add('on');
+  T={c1:el.dataset.c1,c2:el.dataset.c2,gold:el.dataset.gold};
+  document.documentElement.style.setProperty('--navy', T.c1);
+  document.documentElement.style.setProperty('--navy2', T.c2);
+  document.documentElement.style.setProperty('--gold', T.gold);
+  document.getElementById('cov-inner').style.background='linear-gradient(135deg,'+T.c1+','+T.c2+')';
+  document.getElementById('cov-gold').style.background='linear-gradient(90deg,'+T.gold+',#ddc08a)';
+  sv();
+}
+function syncMock(){
+  document.getElementById('mock-co').textContent=gv('company')||'株式会社スイートホーム';
+  document.getElementById('mock-catch').textContent=gv('catchcopy')||'あなたの大切な資産を、最高の価値へ。';
+  document.getElementById('mock-staff').textContent=gv('staffname')||'中谷 健作';
+}
+function loadPhoto(event){
+  var file=event.target.files[0];if(!file)return;
+  loadPhotoFile(file);
+}
+function showPhoto(){
+  var prev=document.getElementById('photo-preview');
+  prev.src=photoSrc;prev.style.display='block';
+  document.getElementById('photo-placeholder').style.display='none';
+  document.getElementById('photo-drop').classList.add('has-file');
+  sv();
+}
+async function loadPDF(event,type){
+  var file=event.target.files[0];if(!file)return;
+  await loadPDFFile(file,type);
+}
+function clearPDF(type){
+  PD[type]={imgs:[],name:''};
+  document.getElementById(type+'-info').innerHTML='';
+  document.getElementById(type+'-drop').classList.remove('has-file');
+  sv();
+}
+
+/* ─── ドラッグ＆ドロップ初期化 ─── */
+function initDropZones(){
+  /* PDF ドロップゾーン（case / stock） */
+  ['case','stock'].forEach(function(type){
+    var zone=document.getElementById(type+'-drop');
+    if(!zone)return;
+    var inp=zone.querySelector('input[type=file]');
+    inp.style.display='none'; // inputは非表示にしてクリックをzoneで管理
+    zone.addEventListener('dragover',function(e){
+      e.preventDefault();e.stopPropagation();
+      zone.style.borderColor='var(--gold)';
+      zone.style.background='rgba(196,162,101,.08)';
+    });
+    zone.addEventListener('dragleave',function(e){
+      e.preventDefault();e.stopPropagation();
+      if(!PD[type].imgs.length){zone.style.borderColor='';zone.style.background='';}
+    });
+    zone.addEventListener('drop',function(e){
+      e.preventDefault();e.stopPropagation();
+      zone.style.borderColor='';zone.style.background='';
+      var files=e.dataTransfer.files;
+      if(files&&files.length>0){
+        // loadPDFと同じ処理をfileオブジェクト直接で実行
+        loadPDFFile(files[0],type);
+      }
+    });
+    zone.addEventListener('click',function(e){
+      if(e.target===inp)return;
+      inp.click();
+    });
+  });
+
+  /* 担当者写真ドロップゾーン */
+  var photoZone=document.getElementById('photo-drop');
+  if(photoZone){
+    var photoInp=photoZone.querySelector('input[type=file]');
+    photoInp.style.display='none';
+    photoZone.addEventListener('dragover',function(e){
+      e.preventDefault();e.stopPropagation();
+      photoZone.style.borderColor='var(--gold)';
+      photoZone.style.background='rgba(196,162,101,.08)';
+    });
+    photoZone.addEventListener('dragleave',function(e){
+      e.preventDefault();e.stopPropagation();
+      if(!photoSrc){photoZone.style.borderColor='';photoZone.style.background='';}
+    });
+    photoZone.addEventListener('drop',function(e){
+      e.preventDefault();e.stopPropagation();
+      photoZone.style.borderColor='';photoZone.style.background='';
+      var files=e.dataTransfer.files;
+      if(files&&files.length>0)loadPhotoFile(files[0]);
+    });
+    photoZone.addEventListener('click',function(e){
+      if(e.target===photoInp)return;
+      photoInp.click();
+    });
+  }
+}
+
+/* ファイルオブジェクトを直接受け取るPDF読み込み */
+async function loadPDFFile(file,type){
+  if(!file||file.type!=='application/pdf')return;
+  var info=document.getElementById(type+'-info');
+  info.innerHTML='<div style="padding:12px;font-size:11px;color:var(--ink4);">読み込み中...</div>';
+  try{
+    var buf=await file.arrayBuffer();
+    var pdf=await pdfjsLib.getDocument({data:buf}).promise;
+    var imgs=[];var cv=document.createElement('canvas');
+    for(var i=1;i<=pdf.numPages;i++){
+      var page=await pdf.getPage(i);
+      var vp=page.getViewport({scale:2.0});
+      cv.width=vp.width;cv.height=vp.height;
+      await page.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;
+      imgs.push(cv.toDataURL('image/jpeg',0.92));
+    }
+    PD[type]={imgs:imgs,name:file.name};
+    var sz=(file.size/1024/1024).toFixed(1)+' MB';
+    info.innerHTML='<div class="pdf-file-item"><div class="pdf-file-l"><div class="pdf-file-icon">PDF</div><div><div class="pdf-file-name">'+file.name+'</div><div class="pdf-file-meta">'+pdf.numPages+'ページ　'+sz+'</div></div></div><button class="btn btn-d btn-sm" onclick="clearPDF(\''+type+'\')">削除</button></div>';
+    document.getElementById(type+'-drop').classList.add('has-file');
+    sv();
+  }catch(e){info.innerHTML='<div style="padding:12px;font-size:11px;color:#b94040;">読み込みエラー。</div>';}
+}
+
+/* ファイルオブジェクトを直接受け取る写真読み込み */
+function loadPhotoFile(file){
+  if(!file)return;
+  if(file.type==='application/pdf'){
+    var reader=new FileReader();
+    reader.onload=async function(e){
+      try{
+        var pdf=await pdfjsLib.getDocument({data:e.target.result}).promise;
+        var page=await pdf.getPage(1);
+        var vp=page.getViewport({scale:3.0});
+        var cv=document.createElement('canvas');
+        cv.width=vp.width;cv.height=vp.height;
+        await page.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;
+        photoSrc=cv.toDataURL('image/jpeg',0.92);showPhoto();
+      }catch(err){alert('PDF読み込みエラー');}
+    };
+    reader.readAsArrayBuffer(file);
+  }else{
+    var reader2=new FileReader();
+    reader2.onload=function(e){photoSrc=e.target.result;showPhoto();};
+    reader2.readAsDataURL(file);
+  }
+}
+var st;
+function sv(){
+  clearTimeout(st);
+  document.getElementById('slbl').textContent='Saving...';
+  document.getElementById('sdot').style.background='#f0a040';
+  st=setTimeout(function(){
+    try{
+      var d={building:gv('building'),address:gv('address'),area:gv('area'),chiku:gv('chiku'),floor:gv('floor'),tfloor:gv('tfloor'),madori:gv('madori'),houkou:gv('houkou'),note:gv('note'),p_std:gv('p_std'),p_early:gv('p_early'),p_high:gv('p_high'),pcomment:gv('pcomment'),company:gv('company'),staffname:gv('staffname'),staffkana:gv('staffkana'),staffrole:gv('staffrole'),staffbio:gv('staffbio'),tel:gv('tel'),fax:gv('fax'),mobile:gv('mobile'),email:gv('email'),caddr:gv('caddr'),takken:gv('takken'),client:gv('client'),reportdate:gv('reportdate'),catchcopy:gv('catchcopy'),theme:T};
+      localStorage.setItem('sh_satei_v7',JSON.stringify(d));
+      document.getElementById('slbl').textContent='Saved';
+      document.getElementById('sdot').style.background='#6dcf9e';
+    }catch(e){}
+  },700);
+}
+function gv(id){var el=document.getElementById(id);return el?el.value:'';}
+function loadData(){
+  try{
+    var raw=localStorage.getItem('sh_satei_v7');if(!raw)return;var d=JSON.parse(raw);
+    ['building','address','area','chiku','floor','tfloor','madori','note','p_std','p_early','p_high','pcomment','company','staffname','staffkana','staffrole','staffbio','tel','fax','mobile','email','caddr','takken','client','reportdate','catchcopy'].forEach(function(f){if(d[f]!==undefined&&document.getElementById(f))document.getElementById(f).value=d[f];});
+    if(d.houkou)document.getElementById('houkou').value=d.houkou;
+    if(d.theme){T=d.theme;document.querySelectorAll('.swatch').forEach(function(s){s.classList.remove('on');if(s.dataset.c1===T.c1)s.classList.add('on');});document.getElementById('cov-inner').style.background='linear-gradient(135deg,'+T.c1+','+T.c2+')';document.getElementById('cov-gold').style.background='linear-gradient(90deg,'+T.gold+',#ddc08a)';}
+    cp();syncMock();
+  }catch(e){}
+}
+function resetAll(){if(confirm('全データをリセットしますか？')){localStorage.removeItem('sh_satei_v7');location.reload();}}
+function ft(co){return '<div class="rfooter"><div class="rfooter-copy">Copyright &copy; '+co+' All rights reserved.</div><div class="rfooter-logo">'+co+'</div></div>';}
+
+function buildReport(){
+  syncMock();
+  // CSS変数にテーマカラーを反映
+  document.documentElement.style.setProperty('--navy', T.c1);
+  document.documentElement.style.setProperty('--navy2', T.c2);
+  document.documentElement.style.setProperty('--gold', T.gold);
+  document.documentElement.style.setProperty('--gold2', T.gold==='#c4a265'?'#ddc08a':'#ddc08a');
+  var bg='linear-gradient(135deg,'+T.c1+','+T.c2+')';
+  var gl='linear-gradient(90deg,'+T.gold+',#ddc08a)';
+  var area=parseFloat(gv('area'));
+  var tA=area?(area/3.30579).toFixed(2):'—';
+  var now=new Date();
+  var ds=now.getFullYear()+' . '+String(now.getMonth()+1).padStart(2,'0')+' . '+String(now.getDate()).padStart(2,'0');
+  var co=gv('company')||'株式会社スイートホーム';
+  var sn=gv('staffname')||'中谷 健作';
+  var sk=gv('staffkana')||'なかや けんさく';
+  var sr=gv('staffrole')||'代表取締役';
+  var sb=gv('staffbio')||'';
+  var tel=gv('tel')||'03-6807-6922';
+  var mob=gv('mobile')||'080-2051-5897';
+  var fax=gv('fax')||'03-6807-6921';
+  var em=gv('email')||'nakaya@sweet-home.tokyo';
+  var ca=gv('caddr')||'〒116-0001 東京都荒川区町屋1-1-8 オリエントビル302';
+  var tk=gv('takken')||'東京都知事(1)107794号';
+  var cli=gv('client');
+  var rdate=gv('reportdate')||ds;
+  var catch_=gv('catchcopy')||'あなたの大切な資産を、最高の価値へ。';
+  var std=gv('p_std'),early=gv('p_early'),high=gv('p_high');
+  var html='';
+
+  /* ─── 表紙 ─── */
+  html+='<div class="rpt-page"><div class="rpt-cover">'
+    +'<div class="rcov-top-bar" style="background:'+gl+';"></div>'
+    +'<div class="rpt-cover-inner">'
+    // 上部：ロゴ＋タイトルのみ
+    +'<div class="rcov-logo-area"><div class="rcov-logo-icon" style="border-color:'+T.gold+';color:'+T.gold+';">S</div><div class="rcov-logo-text" style="color:var(--navy);">'+co+'</div></div>'
+    +'<div class="rcov-title-area">'
+    +'<div class="rcov-main-title" style="color:var(--navy);">不動産査定書</div>'
+    +'</div>'
+    // 下部カラーエリア：日付・お客様名（左）＋担当者（右）
+    +'<div class="rcov-cover-image" style="background:'+bg+';">'
+    +'<div class="rcov-img-geo1"></div><div class="rcov-img-geo2"></div>'
+    +'<div class="rcov-img-overlay" style="background:linear-gradient(180deg,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.6) 100%);">'
+    +'<div class="rcov-bottom-row">'
+    +'<div class="rcov-client-block">'
+    +'<div class="rcov-date-block">'+rdate+'</div>'
+    +(cli?'<div class="rcov-client-name2">'+cli+' 様</div>':'<div class="rcov-client-name2" style="opacity:.3;">お客様名</div>')
+    +'</div>'
+    +'<div class="rcov-staff-block"><div class="rcov-st-lbl2">担当者</div><div class="rcov-st-name2">'+sn+'</div><div class="rcov-st-info2">'+ca+'<br>'+tel+'</div></div>'
+    +'</div>'
+    +'</div>'
+    +'</div>'
+    +'</div>'
+    +ft(co)+'</div>';
+
+  /* ─── 物件情報 ─── */
+  var rows=[[gv('building')||'—','建物名'],[gv('address')||'—','所在地'],[(area?(area+'㎡（約'+tA+'坪）'):'—'),'専有面積'],[(gv('madori')||'—')+'／'+(gv('houkou')||'—'),'間取り／方位'],[(gv('floor')||'—')+'／'+(gv('tfloor')||'—'),'所在階／階数'],[gv('chiku')||'—','築年月']].map(function(r){return '<tr><td class="rilbl">'+r[1]+'</td><td class="rival">'+r[0]+'</td></tr>';}).join('');
+  var noteHtml=gv('note')?'<div style="margin-top:16px;padding:14px 18px;background:var(--bg);border-left:2px solid '+T.gold+';font-size:12px;color:var(--ink3);line-height:1.9;">'+gv('note')+'</div>':'';
+  html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">01</span><span class="rsec-ttl">調査対象物件</span></div><table class="rit">'+rows+'</table>'+noteHtml+'</div>'+ft(co)+'</div>';
+
+  /* ─── 査定価格 ─── */
+  var secN=3;
+  if(std){
+    var pl='';
+    if(std)pl+='<div class="rplan"><div class="rplan-n">標準プラン　標準的な成約時期と価格</div><div class="rplan-body">'+fmPlan(std)+'<div class="rplan-t">'+tsp(std,gv('area'))+'</div></div></div>';
+    if(early)pl+='<div class="rplan"><div class="rplan-n">早期成約プラン　早期成約を優先</div><div class="rplan-body">'+fmPlan(early)+'<div class="rplan-t">'+tsp(early,gv('area'))+'</div></div></div>';
+    if(high)pl+='<div class="rplan"><div class="rplan-n">高値売却プラン　高値売却を優先</div><div class="rplan-body">'+fmPlan(high)+'<div class="rplan-t">'+tsp(high,gv('area'))+'</div></div></div>';
+    var ph='<div class="rph" style="background:'+bg+';"><div class="rph-gl" style="background:'+gl+';"></div><div class="rph-geo"></div><div class="rph-vt"></div><div class="rph-ey">売出想定価格（標準プラン）— 個別要因なし</div><div class="rph-main">'+fm(std)+'</div><div class="rph-tsubo">坪単価　'+tsp(std,gv('area'))+'</div><div class="rph-plans">'+pl+'</div></div>';
+    var pc=gv('pcomment')?'<div class="rcomment">'+gv('pcomment')+'</div>':'';
+    html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">02</span><span class="rsec-ttl">売出価格のご提案</span></div>'+ph+pc+'<div class="rdisc">※本提案書は「不動産鑑定評価に関する法律」に基づいたものではなく、売却を保証するものではございません。</div></div>'+ft(co)+'</div>';
+  }
+
+  /* ─── 成約事例 ─── */
+  if(PD.case.imgs.length>0){
+    html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">0'+secN+'</span><span class="rsec-ttl">近隣成約事例</span></div></div><div class="rpt-pdf-wrap">'+PD.case.imgs.map(function(s){return '<img class="rpt-pdf-img" src="'+s+'">';}).join('')+'</div>'+ft(co)+'</div>';
+    secN++;
+  }
+
+  /* ─── 在庫事例 ─── */
+  if(PD.stock.imgs.length>0){
+    html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">0'+secN+'</span><span class="rsec-ttl">現在の売出事例</span></div></div><div class="rpt-pdf-wrap">'+PD.stock.imgs.map(function(s){return '<img class="rpt-pdf-img" src="'+s+'">';}).join('')+'</div>'+ft(co)+'</div>';
+    secN++;
+  }
+
+  /* ─── 売却の流れ ─── */
+  var fn=String(secN).padStart(2,'0');
+  var flows=[['売却相談','査定価格のご説明・売出価格のご提案・諸費用のご説明・売却活動のご説明'],['販売準備','売出価格の決定・媒介契約の締結・設備表・物件状況等報告書作成・販売用図面の作成'],['販売活動','不動産流通機構レインズへの登録・不動産ポータルサイトへの登録・各種広告宣伝活動の実施'],['購入申込','買主様物件内見・購入申込・売却承諾'],['売買契約','重要事項説明書の取り交わし・売買契約の締結・手付金の受取'],['決済・引き渡し','残代金の受取・所有権移転手続き・物件のお引渡し']];
+  html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">'+fn+'</span><span class="rsec-ttl">売却の流れ</span></div><div class="rflow">'+flows.map(function(f,i){return '<div class="rfi"><div class="rfn" style="background:'+T.c1+';border:1px solid '+T.gold+';color:'+T.gold+';">'+String(i+1)+'</div><div><div class="rft">'+f[0]+'</div><div class="rfd">'+f[1]+'</div></div></div>';}).join('')+'</div></div>'+ft(co)+'</div>';
+  secN++;
+
+  /* ─── 戦略ガイドブック：表紙＋大切にしていること（1ページ統合） ─── */
+  var gn=String(secN).padStart(2,'0');
+  html+='<div class="rpt-page">'
+    // 上半分：カラー表紙エリア
+    +'<div class="sg-cover-half" style="background:'+bg+';">'
+    +'<div class="sg-cover-gold" style="background:'+gl+';"></div>'
+    +'<div class="sg-cover-geo1"></div><div class="sg-cover-geo2"></div>'
+    +'<div class="sg-cover-half-inner" style="position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;">'
+    +'<div>'
+    +'<div style="font-size:9px;opacity:.45;letter-spacing:.22em;text-transform:uppercase;color:#fff;margin-bottom:8px;">Sales Strategy Guide</div>'
+    +'<div style="font-family:\'Cormorant Garamond\',serif;font-size:48px;font-weight:300;letter-spacing:.06em;line-height:1;color:#fff;white-space:nowrap;">戦略ガイドブック</div>'
+    +'<div style="font-size:12px;opacity:.65;color:#fff;margin-top:12px;letter-spacing:.05em;">住み替え・ご売却・お引渡し後まで、安心してご相談いただける体制をご案内します。</div>'
+    +'</div>'
+    +'<div style="text-align:right;color:#fff;">'
+    +'<div style="font-size:9px;opacity:.4;margin-top:4px;letter-spacing:.08em;">'+gn+'</div>'
+    +'</div>'
+    +'</div>'
+    +'</div>'
+    // 下半分：大切にしていること
+    +'<div class="sg-values">'
+    +'<div class="rsec-hd" style="margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--bdr);"><span class="rsec-num" style="font-family:\'Cormorant Garamond\',serif;font-size:13px;color:var(--gold);letter-spacing:.08em;font-style:italic;">'+String(secN+0).padStart(2,'0')+'</span><span class="rsec-ttl" style="font-family:\'Playfair Display\',serif;font-size:18px;font-weight:400;color:var(--ink);letter-spacing:.04em;">スイートホームが大切にしていること</span></div>'
+    +'<div class="sg-values-grid">'
+    +'<div class="sg-value-item"><div class="sg-value-num">1</div><div class="sg-value-title">見せ方まで配慮</div><div class="sg-value-desc">室内写真はミラーレスカメラで撮影し、個人情報等はCG加工にて見えないよう配慮します。</div></div>'
+    +'<div class="sg-value-item"><div class="sg-value-num">2</div><div class="sg-value-title">費用面の安心</div><div class="sg-value-desc">設備保証や各種サービス費用を、できる限り弊社負担でご案内し、お客様の負担感を軽減します。</div></div>'
+    +'<div class="sg-value-item"><div class="sg-value-num">3</div><div class="sg-value-title">専門家との連携</div><div class="sg-value-desc">住宅ローン・法務・税務まで、提携金融機関や士業と連携し、住み替えに伴う不安を幅広く支えます。</div></div>'
+    +'</div>'
+    +'<div style="margin-top:14px;">'
+    +'<div class="sg-flow-label">ご相談から引き渡し後まで — 5ステップでサポート</div>'
+    +'<div class="sg-flow">'
+    +'<div class="sg-flow-item"><div class="sg-flow-step">Step 1</div><div class="sg-flow-name">ご相談</div></div>'
+    +'<div class="sg-flow-item"><div class="sg-flow-step">Step 2</div><div class="sg-flow-name">ご提案</div></div>'
+    +'<div class="sg-flow-item"><div class="sg-flow-step">Step 3</div><div class="sg-flow-name">ご契約</div></div>'
+    +'<div class="sg-flow-item"><div class="sg-flow-step">Step 4</div><div class="sg-flow-name">お引渡し</div></div>'
+    +'<div class="sg-flow-item"><div class="sg-flow-step">Step 5</div><div class="sg-flow-name">アフター</div></div>'
+    +'</div>'
+    +'</div>'
+    +'</div>'
+    +ft(co)+'</div>';
+  secN++;
+
+  /* ─── サポート内容 01〜06（1ページ統合） ─── */
+  var spn=String(secN).padStart(2,'0');
+  html+='<div class="rpt-page"><div class="sg-support">'
+    +'<div class="rsec-hd" style="margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--bdr);"><span class="rsec-num" style="font-family:\'Cormorant Garamond\',serif;font-size:13px;color:var(--gold);letter-spacing:.08em;font-style:italic;">'+spn+'</span><span class="rsec-ttl" style="font-family:\'Playfair Display\',serif;font-size:18px;font-weight:400;color:var(--ink);letter-spacing:.04em;">サポート内容</span></div>'
+    +'<div class="sg-support-grid-3col">'
+    // 01
+    +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">01</div><div class="sg-support-title">室内写真の撮影・CG加工</div></div><div class="sg-support-body"><div class="sg-support-main">室内写真はミラーレスカメラで撮影し、個人情報等はCG加工にて消します。</div><span class="sg-support-tag">弊社負担</span></div></div>'
+    // 02
+    +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">02</div><div class="sg-support-title">設備保証</div></div><div class="sg-support-body"><div class="sg-support-main">お引き渡し後もご安心頂く為に、弊社負担で設備保証いたします。</div><span class="sg-support-tag">弊社負担</span></div></div>'
+    // 03
+    +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">03</div><div class="sg-support-title">クリーニング費用負担</div></div><div class="sg-support-body"><div class="sg-support-main">クリーニング費用（一部有料）は弊社負担いたします。居住中のご相談も可能です。</div><span class="sg-support-tag">※対象範囲は個別条件によります</span></div></div>'
+    // 04
+    +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">04</div><div class="sg-support-title">残置物撤去サービス</div></div><div class="sg-support-body"><div class="sg-support-main">残置物撤去サービスがございます。必要に応じて一部有料で対応いたします。</div><span class="sg-support-tag">※現地状況に応じてご案内します</span></div></div>'
+    // 05
+    +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">05</div><div class="sg-support-title">住宅ローン相談</div></div><div class="sg-support-body"><div class="sg-support-main">お住み替えのお客様には、住宅ローンの提携金融機関を多数ご案内できます。</div><span class="sg-support-tag">提携金融機関多数</span></div></div>'
+    // 06
+    +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">06</div><div class="sg-support-title">法務・税務相談</div></div><div class="sg-support-body"><div class="sg-support-main">提携士業との連携により、法務・税務のご相談サービスをご利用いただけます。</div><span class="sg-support-tag">提携士業連携</span></div></div>'
+    +'</div>'
+    +'</div>'+ft(co)+'</div>';
+  secN++;
+
+  /* ─── 担当者ページ ─── */
+  var sfn=String(secN).padStart(2,'0');
+  var photoHtml=photoSrc?'<img class="rstaff-photo" src="'+photoSrc+'">':'<div class="rstaff-photo-placeholder">👤</div>';
+  var infoItems=[['TEL',tel],['携帯',mob],['FAX',fax],['Email',em]].map(function(r){return '<div class="rstaff-info-item"><div class="rstaff-info-lbl">'+r[0]+'</div><div class="rstaff-info-val">'+r[1]+'</div></div>';}).join('');
+  html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">'+sfn+'</span><span class="rsec-ttl">担当者のご紹介</span></div></div>'
+    +'<div class="rstaff-page">'
+    +'<div class="rstaff-left">'+photoHtml+'<div class="rstaff-co-logo">'+co+'</div></div>'
+    +'<div class="rstaff-right"><div>'
+    +'<div class="rstaff-name">'+sn+'</div>'
+    +'<div class="rstaff-kana">（'+sk+'）</div>'
+    +(sb?'<div class="rstaff-bio">'+sb+'</div>':'')
+    +'<div class="rstaff-info-grid">'+infoItems+'</div>'
+    +'</div>'
+    +'<div><div class="rstaff-addr">'+ca+'</div><div class="rstaff-takken">'+tk+'</div></div>'
+    +'</div>'
+    +'</div>'
+    +ft(co)+'</div>';
+
+  document.getElementById('rpt-wrap').innerHTML=html;
+}
+window.onload=function(){loadData();initDropZones();};
+</script>
+</body>
+</html>
