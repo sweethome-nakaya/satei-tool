@@ -713,13 +713,13 @@ function buildReport(){
 
   /* ─── 成約事例（単独ページ） ─── */
   if(PD.case.imgs.length>0){
-    html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">0'+secN+'</span><span class="rsec-ttl">近隣成約事例</span></div></div><div class="rpt-pdf-wrap">'+PD.case.imgs.map(function(s){return '<img class="rpt-pdf-img" src="'+s+'">';}).join('')+'</div>'+ft(co)+'</div>';
+    html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">0'+secN+'</span><span class="rsec-ttl">近隣成約事例</span></div></div><div class="rpt-pdf-wrap">'+PD.case.imgs.map(function(s){return '<img class="rpt-pdf-img" src="'+s+'">';}).join('')+'</div></div>';
     secN++;
   }
 
   /* ─── 在庫事例（単独ページ） ─── */
   if(PD.stock.imgs.length>0){
-    html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">0'+secN+'</span><span class="rsec-ttl">現在の売出事例</span></div></div><div class="rpt-pdf-wrap">'+PD.stock.imgs.map(function(s){return '<img class="rpt-pdf-img" src="'+s+'">';}).join('')+'</div>'+ft(co)+'</div>';
+    html+='<div class="rpt-page"><div class="rsec"><div class="rsec-hd"><span class="rsec-num">0'+secN+'</span><span class="rsec-ttl">現在の売出事例</span></div></div><div class="rpt-pdf-wrap">'+PD.stock.imgs.map(function(s){return '<img class="rpt-pdf-img" src="'+s+'">';}).join('')+'</div></div>';
     secN++;
   }
 
