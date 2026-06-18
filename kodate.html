@@ -704,14 +704,15 @@ function buildReport(){
     +'</div>'
     +'</div>';
 
-  /* ─── PAGE 1：物件情報 ＋ 査定価格 ─── */
+  /* ─── PAGE 1：物件情報 ─── */
   var rows=[[gv('building')||'—','物件名'],[gv('address')||'—','所在地'],[(landarea?(landarea+'㎡（約'+tA+'坪）'):'—'),'土地面積'],[(bldgarea?(bldgarea+'㎡（約'+tB+'坪）'):'—'),'建物面積'],[(gv('kozo')||'—')+'／'+(gv('kaidate')||'—'),'構造／階建'],[(gv('madori')||'—')+'／'+(gv('houkou')||'—'),'間取り／方位'],[gv('chiku')||'—','築年月'],[gv('youto')||'—','用途地域'],[gv('setsudo')||'—','接道状況']].map(function(r){return '<tr><td class="rilbl">'+r[1]+'</td><td class="rival">'+r[0]+'</td></tr>';}).join('');
   var noteHtml=gv('note')?'<div style="margin-top:12px;padding:12px 16px;background:var(--bg);border-left:2px solid '+T.gold+';font-size:12px;color:var(--ink3);line-height:1.9;">'+gv('note')+'</div>':'';
   var page1Html='<div class="rpt-page">';
   page1Html+='<div class="rsec"><div class="rsec-hd"><span class="rsec-num">01</span><span class="rsec-ttl">調査対象物件</span></div><table class="rit">'+rows+'</table>'+noteHtml+'</div>';
-  // セパレーター
-  page1Html+='<div style="height:1px;background:var(--bdr);margin:0 2.8rem;"></div>';
-  // 査定価格
+  page1Html+='</div>';
+  html+=page1Html;
+
+  /* ─── PAGE 1-B：査定価格（情報量が多いため別ページに分離） ─── */
   var secN=3;
   if(std){
     var pl='';
@@ -720,10 +721,11 @@ function buildReport(){
     if(high)pl+='<div class="rplan"><div class="rplan-n">高値売却プラン　高値売却を優先</div><div class="rplan-body">'+fmPlan(high)+'<div class="rplan-t">'+tsp(high,gv('landarea'))+'</div></div></div>';
     var ph='<div class="rph" style="background:'+bg+';"><div class="rph-gl" style="background:'+gl+';"></div><div class="rph-geo"></div><div class="rph-vt"></div><div class="rph-ey">売出想定価格（標準プラン）— 個別要因なし</div><div class="rph-main">'+fm(std)+'</div><div class="rph-tsubo">坪単価　'+tsp(std,gv('landarea'))+'</div><div class="rph-plans">'+pl+'</div></div>';
     var pc=gv('pcomment')?'<div class="rcomment">'+gv('pcomment')+'</div>':'';
-    page1Html+='<div class="rsec"><div class="rsec-hd"><span class="rsec-num">02</span><span class="rsec-ttl">売出価格のご提案</span></div>'+ph+pc+'<div class="rdisc">※本提案書は「不動産鑑定評価に関する法律」に基づいたものではなく、売却を保証するものではございません。</div></div>';
+    var page1bHtml='<div class="rpt-page">';
+    page1bHtml+='<div class="rsec"><div class="rsec-hd"><span class="rsec-num">02</span><span class="rsec-ttl">売出価格のご提案</span></div>'+ph+pc+'<div class="rdisc">※本提案書は「不動産鑑定評価に関する法律」に基づいたものではなく、売却を保証するものではございません。</div></div>';
+    page1bHtml+='</div>';
+    html+=page1bHtml;
   }
-  page1Html+='</div>';
-  html+=page1Html;
 
   /* ─── 成約事例（単独ページ） ─── */
   if(PD.case.imgs.length>0){
