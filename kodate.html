@@ -142,28 +142,28 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink)
 .rit{width:100%;border-collapse:collapse;}
 .rit tr{border-bottom:1px solid rgba(0,0,0,.05);}
 .rit tr:last-child{border-bottom:none;}
-.rit td{padding:5px 0;}
-.rilbl{width:155px;font-size:9px;letter-spacing:.1em;color:var(--ink2);vertical-align:top;padding-top:11px;text-transform:uppercase;}
-.rival{font-size:13px;color:var(--ink);padding-left:14px;font-weight:300;}
+.rit td{padding:3px 0;}
+.rilbl{width:155px;font-size:9px;letter-spacing:.1em;color:var(--ink2);vertical-align:top;padding-top:6px;text-transform:uppercase;}
+.rival{font-size:12px;line-height:1.5;color:var(--ink);padding-left:14px;font-weight:300;}
 /* Price */
-.rph{border-radius:2px;padding:.9rem 1.4rem;color:#fff;position:relative;overflow:hidden;margin-bottom:10px;}
+.rph{border-radius:2px;padding:.7rem 1.3rem;color:#fff;position:relative;overflow:hidden;margin-bottom:8px;}
 .rph-geo{position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.07);}
 .rph-gl{position:absolute;top:0;left:0;right:0;height:3px;}
 .rph-vt{display:none;}
-.rph-ey{font-size:8px;letter-spacing:.22em;opacity:.55;margin-bottom:6px;position:relative;z-index:1;text-transform:uppercase;}
+.rph-ey{font-size:8px;letter-spacing:.22em;opacity:.55;margin-bottom:4px;position:relative;z-index:1;text-transform:uppercase;}
 .rph-main{display:flex;align-items:baseline;gap:4px;line-height:1;position:relative;z-index:1;}
 .rph-main-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:400;letter-spacing:.02em;line-height:1;}
 .rph-main-unit{font-family:'Noto Sans JP',sans-serif;font-size:20px;font-weight:300;letter-spacing:.04em;opacity:.9;margin-left:2px;}
-.rph-tsubo{font-size:10px;opacity:.55;margin-top:4px;margin-bottom:7px;position:relative;z-index:1;letter-spacing:.06em;}
-.rph-plans{display:flex;flex-direction:column;gap:4px;position:relative;z-index:1;}
-.rplan{background:rgba(255,255,255,.09);border-radius:2px;padding:6px 12px;border:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:center;}
+.rph-tsubo{font-size:10px;opacity:.55;margin-top:3px;margin-bottom:5px;position:relative;z-index:1;letter-spacing:.06em;}
+.rph-plans{display:flex;flex-direction:column;gap:3px;position:relative;z-index:1;}
+.rplan{background:rgba(255,255,255,.09);border-radius:2px;padding:5px 10px;border:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:center;}
 .rplan-n{font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:.06em;opacity:.75;flex-shrink:0;min-width:180px;font-weight:300;}
 .rplan-body{display:flex;align-items:baseline;gap:8px;}
 .rplan-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:400;letter-spacing:.02em;line-height:1;}
 .rplan-unit{font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:300;opacity:.9;margin-left:1px;}
 .rplan-t{font-size:9px;opacity:.5;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;}
-.rdisc{font-size:9px;color:var(--ink5);line-height:1.9;margin-top:12px;padding:11px 16px;background:var(--bg);border-left:2px solid var(--bdr2);}
-.rcomment{margin-top:12px;font-size:12px;color:var(--ink3);line-height:1.9;padding:12px 16px;background:var(--bg);border-left:2px solid var(--gold2);}
+.rdisc{font-size:9px;color:var(--ink5);line-height:1.6;margin-top:8px;padding:8px 14px;background:var(--bg);border-left:2px solid var(--bdr2);}
+.rcomment{margin-top:8px;font-size:12px;color:var(--ink3);line-height:1.6;padding:9px 14px;background:var(--bg);border-left:2px solid var(--gold2);}
 /* PDF embed */
 .rpt-pdf-wrap{padding:0 2.4rem 1.2rem 2.8rem;}
 .rpt-pdf-img{width:100%;display:block;margin-bottom:10px;border:1px solid var(--bdr);}
@@ -704,15 +704,15 @@ function buildReport(){
     +'</div>'
     +'</div>';
 
-  /* ─── PAGE 1：物件情報 ─── */
-  var rows=[[gv('building')||'—','物件名'],[gv('address')||'—','所在地'],[(landarea?(landarea+'㎡（約'+tA+'坪）'):'—'),'土地面積'],[(bldgarea?(bldgarea+'㎡（約'+tB+'坪）'):'—'),'建物面積'],[(gv('kozo')||'—')+'／'+(gv('kaidate')||'—'),'構造／階建'],[(gv('madori')||'—')+'／'+(gv('houkou')||'—'),'間取り／方位'],[gv('chiku')||'—','築年月'],[gv('youto')||'—','用途地域'],[gv('setsudo')||'—','接道状況']].map(function(r){return '<tr><td class="rilbl">'+r[1]+'</td><td class="rival">'+r[0]+'</td></tr>';}).join('');
-  var noteHtml=gv('note')?'<div style="margin-top:12px;padding:12px 16px;background:var(--bg);border-left:2px solid '+T.gold+';font-size:12px;color:var(--ink3);line-height:1.9;">'+gv('note')+'</div>':'';
+  /* ─── PAGE 1：物件情報 ＋ 査定価格（1ページに集約） ─── */
+  var areaRow=(landarea?(landarea+'㎡（約'+tA+'坪）'):'—')+'／'+(bldgarea?(bldgarea+'㎡（約'+tB+'坪）'):'—');
+  var rows=[[gv('building')||'—','物件名'],[gv('address')||'—','所在地'],[areaRow,'面積（土地／建物）'],[(gv('kozo')||'—')+'／'+(gv('kaidate')||'—'),'構造／階建'],[(gv('madori')||'—')+'／'+(gv('houkou')||'—'),'間取り／方位'],[(gv('chiku')||'—')+'／'+(gv('youto')||'—'),'築年月／用途地域'],[gv('setsudo')||'—','接道状況']].map(function(r){return '<tr><td class="rilbl">'+r[1]+'</td><td class="rival">'+r[0]+'</td></tr>';}).join('');
+  var noteHtml=gv('note')?'<div style="margin-top:8px;padding:9px 14px;background:var(--bg);border-left:2px solid '+T.gold+';font-size:12px;color:var(--ink3);line-height:1.6;">'+gv('note')+'</div>':'';
   var page1Html='<div class="rpt-page">';
   page1Html+='<div class="rsec"><div class="rsec-hd"><span class="rsec-num">01</span><span class="rsec-ttl">調査対象物件</span></div><table class="rit">'+rows+'</table>'+noteHtml+'</div>';
-  page1Html+='</div>';
-  html+=page1Html;
-
-  /* ─── PAGE 1-B：査定価格（情報量が多いため別ページに分離） ─── */
+  // セパレーター
+  page1Html+='<div style="height:1px;background:var(--bdr);margin:0 2.8rem;"></div>';
+  // 査定価格
   var secN=3;
   if(std){
     var pl='';
@@ -721,11 +721,10 @@ function buildReport(){
     if(high)pl+='<div class="rplan"><div class="rplan-n">高値売却プラン　高値売却を優先</div><div class="rplan-body">'+fmPlan(high)+'<div class="rplan-t">'+tsp(high,gv('landarea'))+'</div></div></div>';
     var ph='<div class="rph" style="background:'+bg+';"><div class="rph-gl" style="background:'+gl+';"></div><div class="rph-geo"></div><div class="rph-vt"></div><div class="rph-ey">売出想定価格（標準プラン）— 個別要因なし</div><div class="rph-main">'+fm(std)+'</div><div class="rph-tsubo">坪単価　'+tsp(std,gv('landarea'))+'</div><div class="rph-plans">'+pl+'</div></div>';
     var pc=gv('pcomment')?'<div class="rcomment">'+gv('pcomment')+'</div>':'';
-    var page1bHtml='<div class="rpt-page">';
-    page1bHtml+='<div class="rsec"><div class="rsec-hd"><span class="rsec-num">02</span><span class="rsec-ttl">売出価格のご提案</span></div>'+ph+pc+'<div class="rdisc">※本提案書は「不動産鑑定評価に関する法律」に基づいたものではなく、売却を保証するものではございません。</div></div>';
-    page1bHtml+='</div>';
-    html+=page1bHtml;
+    page1Html+='<div class="rsec"><div class="rsec-hd"><span class="rsec-num">02</span><span class="rsec-ttl">売出価格のご提案</span></div>'+ph+pc+'<div class="rdisc">※本提案書は「不動産鑑定評価に関する法律」に基づいたものではなく、売却を保証するものではございません。</div></div>';
   }
+  page1Html+='</div>';
+  html+=page1Html;
 
   /* ─── 成約事例（単独ページ） ─── */
   if(PD.case.imgs.length>0){
