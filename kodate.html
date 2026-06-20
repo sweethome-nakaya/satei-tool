@@ -183,14 +183,14 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink)
 .rstaff-right{padding:2rem 2.2rem 2rem 1.8rem;display:flex;flex-direction:column;justify-content:space-between;}
 .rstaff-role{font-size:9px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;}
 .rstaff-name{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:400;letter-spacing:.08em;color:var(--ink);line-height:1;margin-bottom:4px;}
-.rstaff-kana{font-size:11px;color:var(--ink4);letter-spacing:.1em;margin-bottom:16px;}
-.rstaff-bio{font-size:12px;color:var(--ink3);line-height:1.9;border-left:2px solid var(--gold2);padding-left:14px;margin-bottom:16px;}
-.rstaff-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px;}
-.rstaff-info-item{background:var(--bg);padding:9px 12px;border-radius:2px;}
+.rstaff-kana{font-size:11px;color:var(--ink4);letter-spacing:.1em;margin-bottom:8px;}
+.rstaff-bio{font-size:12px;color:var(--ink3);line-height:1.6;border-left:2px solid var(--gold2);padding-left:14px;margin-bottom:8px;}
+.rstaff-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;}
+.rstaff-info-item{background:var(--bg);padding:7px 10px;border-radius:2px;}
 .rstaff-info-lbl{font-size:8px;letter-spacing:.16em;color:var(--ink5);text-transform:uppercase;margin-bottom:3px;}
 .rstaff-info-val{font-size:11px;color:var(--ink2);}
-.rstaff-addr{font-size:10px;color:var(--ink4);line-height:1.9;}
-.rstaff-takken{font-size:9px;color:var(--ink5);letter-spacing:.06em;margin-top:4px;}
+.rstaff-addr{font-size:10px;color:var(--ink4);line-height:1.5;}
+.rstaff-takken{font-size:9px;color:var(--ink5);letter-spacing:.06em;margin-top:3px;}
 /* Footer */
 .rfooter{padding:10px 2.4rem 10px 2.8rem;border-top:1px solid var(--bdr);background:var(--bg);display:flex;align-items:center;justify-content:space-between;margin-top:0;page-break-inside:avoid;break-inside:avoid;}
 .rfooter-copy{font-size:8px;color:var(--ink5);letter-spacing:.12em;}
@@ -232,17 +232,17 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink)
 .sg-flow-step{font-size:8px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
 .sg-flow-name{font-size:12px;font-weight:500;color:var(--ink2);}
 /* サポートページ */
-.sg-support{padding:1.2rem 2.4rem 1.2rem 2.8rem;}
+.sg-support{padding:.9rem 2.4rem .9rem 2.8rem;}
 .sg-support-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .sg-support-grid-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
 .sg-support-item{border:1px solid var(--bdr);border-radius:2px;overflow:hidden;}
-.sg-support-head{padding:10px 14px 8px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:10px;}
+.sg-support-head{padding:8px 14px 6px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:10px;}
 .sg-support-num{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--gold);line-height:1;flex-shrink:0;}
 .sg-support-title{font-size:14px;font-weight:500;color:var(--ink);line-height:1.4;}
-.sg-support-body{padding:10px 14px 12px;}
-.sg-support-main{font-size:12px;color:var(--ink2);line-height:1.9;margin-bottom:8px;}
-.sg-support-note{font-size:11px;color:var(--ink4);line-height:1.8;}
-.sg-support-tag{display:inline-block;margin-top:8px;padding:3px 9px;background:var(--bg);border:1px solid var(--bdr);border-radius:20px;font-size:9px;letter-spacing:.1em;color:var(--ink4);}
+.sg-support-body{padding:8px 14px 9px;}
+.sg-support-main{font-size:12px;color:var(--ink2);line-height:1.6;margin-bottom:5px;}
+.sg-support-note{font-size:11px;color:var(--ink4);line-height:1.6;}
+.sg-support-tag{display:inline-block;margin-top:5px;padding:3px 9px;background:var(--bg);border:1px solid var(--bdr);border-radius:20px;font-size:9px;letter-spacing:.1em;color:var(--ink4);}
 
 @media print{
   .hdr,.sb,.main>*:not(#t-preview){display:none!important;}
@@ -797,20 +797,20 @@ function buildReport(){
   if(hobby)extraItems.push(['趣味',hobby]);
   if(staffArea)extraItems.push(['得意エリア',staffArea]);
   var extraHtml=extraItems.length>0
-    ?'<div style="display:grid;grid-template-columns:repeat('+extraItems.length+',1fr);gap:8px;margin-top:10px;">'
-      +extraItems.map(function(e){return '<div style="background:var(--bg);border-radius:2px;padding:9px 12px;border:1px solid var(--bdr);"><div style="font-size:8px;letter-spacing:.16em;color:var(--ink5);text-transform:uppercase;margin-bottom:3px;">'+e[0]+'</div><div style="font-size:11px;color:var(--ink2);">'+e[1]+'</div></div>';}).join('')
+    ?'<div style="display:grid;grid-template-columns:repeat('+extraItems.length+',1fr);gap:6px;margin-top:6px;">'
+      +extraItems.map(function(e){return '<div style="background:var(--bg);border-radius:2px;padding:7px 10px;border:1px solid var(--bdr);"><div style="font-size:8px;letter-spacing:.16em;color:var(--ink5);text-transform:uppercase;margin-bottom:2px;">'+e[0]+'</div><div style="font-size:11px;color:var(--ink2);">'+e[1]+'</div></div>';}).join('')
       +'</div>'
     :'';
   var msgHtml=staffMsg
-    ?'<div style="margin-top:12px;padding:12px 16px;background:'+T.c1+';border-radius:2px;color:#fff;position:relative;overflow:hidden;">'
+    ?'<div style="margin-top:6px;padding:8px 14px;background:'+T.c1+';border-radius:2px;color:#fff;position:relative;overflow:hidden;">'
       +'<div style="position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,'+T.gold+',#ddc08a);"></div>'
-      +'<div style="font-size:8px;letter-spacing:.18em;color:'+T.gold+';text-transform:uppercase;margin-bottom:5px;padding-left:10px;">Message</div>'
-      +'<div style="font-size:12px;line-height:1.9;color:rgba(255,255,255,.88);padding-left:10px;">'+staffMsg+'</div>'
+      +'<div style="font-size:8px;letter-spacing:.18em;color:'+T.gold+';text-transform:uppercase;margin-bottom:3px;padding-left:10px;">Message</div>'
+      +'<div style="font-size:12px;line-height:1.5;color:rgba(255,255,255,.88);padding-left:10px;">'+staffMsg+'</div>'
       +'</div>'
     :'';
   var page3Html='<div class="rpt-page">';
   page3Html+='<div class="sg-support">'
-    +'<div class="rsec-hd" style="margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--bdr);"><span class="rsec-num" style="font-family:\'Cormorant Garamond\',serif;font-size:13px;color:var(--gold);letter-spacing:.08em;font-style:italic;">'+spn+'</span><span class="rsec-ttl" style="font-family:\'Playfair Display\',serif;font-size:18px;font-weight:400;color:var(--ink);letter-spacing:.04em;">サポート内容</span></div>'
+    +'<div class="rsec-hd" style="margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--bdr);"><span class="rsec-num" style="font-family:\'Cormorant Garamond\',serif;font-size:13px;color:var(--gold);letter-spacing:.08em;font-style:italic;">'+spn+'</span><span class="rsec-ttl" style="font-family:\'Playfair Display\',serif;font-size:18px;font-weight:400;color:var(--ink);letter-spacing:.04em;">サポート内容</span></div>'
     +'<div class="sg-support-grid-3col">'
     +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">01</div><div class="sg-support-title">室内写真の撮影・CG加工</div></div><div class="sg-support-body"><div class="sg-support-main">室内写真はミラーレスカメラで撮影し、個人情報等はCG加工にて消します。</div><span class="sg-support-tag">弊社負担</span></div></div>'
     +'<div class="sg-support-item"><div class="sg-support-head"><div class="sg-support-num">02</div><div class="sg-support-title">設備保証</div></div><div class="sg-support-body"><div class="sg-support-main">お引き渡し後もご安心頂く為に、弊社負担で設備保証いたします。</div><span class="sg-support-tag">弊社負担</span></div></div>'
@@ -824,22 +824,22 @@ function buildReport(){
   // 担当者：横並びレイアウト（写真左・情報右）
   page3Html+='<div style="display:grid;grid-template-columns:200px 1fr;">'
     // 左：写真エリア（ネイビー背景）
-    +'<div style="background:'+T.c1+';display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.6rem 1rem;gap:12px;">'
+    +'<div style="background:'+T.c1+';display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.2rem 1rem;gap:10px;">'
     +photoHtml
     +'<div style="font-family:\'Playfair Display\',serif;font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.12em;text-align:center;line-height:1.7;">'+co+'</div>'
     +'</div>'
     // 右：情報エリア
-    +'<div style="padding:1.4rem 1.8rem;display:flex;flex-direction:column;justify-content:space-between;">'
+    +'<div style="padding:1.0rem 1.8rem;display:flex;flex-direction:column;justify-content:space-between;">'
     +'<div>'
-    +'<div style="font-size:8px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:4px;">'+sfn+' 担当者のご紹介</div>'
+    +'<div style="font-size:8px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:3px;">'+sfn+' 担当者のご紹介</div>'
     +'<div class="rstaff-name" style="margin-bottom:2px;">'+sn+'</div>'
-    +'<div class="rstaff-kana" style="margin-bottom:10px;">（'+sk+'）</div>'
-    +(sb?'<div class="rstaff-bio" style="margin-bottom:10px;">'+sb+'</div>':'')
+    +'<div class="rstaff-kana" style="margin-bottom:6px;">（'+sk+'）</div>'
+    +(sb?'<div class="rstaff-bio" style="margin-bottom:6px;">'+sb+'</div>':'')
     +extraHtml
     +msgHtml
     +'</div>'
-    +'<div style="margin-top:12px;">'
-    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;">'+infoItems+'</div>'
+    +'<div style="margin-top:8px;">'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;">'+infoItems+'</div>'
     +'<div class="rstaff-addr">'+ca+'</div>'
     +'<div class="rstaff-takken">'+tk+'</div>'
     +'</div>'
