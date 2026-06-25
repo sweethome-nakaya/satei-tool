@@ -183,10 +183,10 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink)
 .rstaff-right{padding:2rem 2.2rem 2rem 1.8rem;display:flex;flex-direction:column;justify-content:space-between;}
 .rstaff-role{font-size:9px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;}
 .rstaff-name{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:400;letter-spacing:.08em;color:var(--ink);line-height:1;margin-bottom:4px;}
-.rstaff-kana{font-size:11px;color:var(--ink4);letter-spacing:.1em;margin-bottom:16px;}
-.rstaff-bio{font-size:12px;color:var(--ink3);line-height:1.9;border-left:2px solid var(--gold2);padding-left:14px;margin-bottom:16px;}
-.rstaff-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px;}
-.rstaff-info-item{background:var(--bg);padding:9px 12px;border-radius:2px;}
+.rstaff-kana{font-size:11px;color:var(--ink4);letter-spacing:.1em;margin-bottom:10px;}
+.rstaff-bio{font-size:11px;color:var(--ink3);line-height:1.6;border-left:2px solid var(--gold2);padding-left:14px;margin-bottom:10px;}
+.rstaff-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:7px;}
+.rstaff-info-item{background:var(--bg);padding:6px 12px;border-radius:2px;}
 .rstaff-info-lbl{font-size:8px;letter-spacing:.16em;color:var(--ink5);text-transform:uppercase;margin-bottom:3px;}
 .rstaff-info-val{font-size:11px;color:var(--ink2);}
 .rstaff-addr{font-size:10px;color:var(--ink4);line-height:1.9;}
@@ -700,7 +700,7 @@ function buildReport(){
 
   /* ─── PAGE 1：物件情報 ＋ 査定価格 ─── */
   var rows=[[gv('building')||'—','建物名'],[gv('address')||'—','所在地'],[(area?(area+'㎡（約'+tA+'坪）'):'—'),'専有面積'],[(gv('madori')||'—')+'／'+(gv('houkou')||'—'),'間取り／方位'],[(gv('floor')||'—')+'／'+(gv('tfloor')||'—'),'所在階／階数'],[gv('chiku')||'—','築年月']].map(function(r){return '<tr><td class="rilbl">'+r[1]+'</td><td class="rival">'+r[0]+'</td></tr>';}).join('');
-  var noteHtml=gv('note')?'<div style="margin-top:12px;padding:12px 16px;background:var(--bg);border-left:2px solid '+T.gold+';font-size:12px;color:var(--ink3);line-height:1.9;">'+gv('note')+'</div>':'';
+  var noteHtml=gv('note')?'<div style="margin-top:7px;padding:7px 14px;background:var(--bg);border-left:2px solid '+T.gold+';font-size:11px;color:var(--ink3);line-height:1.5;">'+gv('note')+'</div>':'';
   var page1Html='<div class="rpt-page">';
   page1Html+='<div class="rsec"><div class="rsec-hd"><span class="rsec-num">01</span><span class="rsec-ttl">調査対象物件</span></div><table class="rit">'+rows+'</table>'+noteHtml+'</div>';
   // セパレーター
@@ -790,15 +790,15 @@ function buildReport(){
   if(hobby)extraItems.push(['趣味',hobby]);
   if(staffArea)extraItems.push(['得意エリア',staffArea]);
   var extraHtml=extraItems.length>0
-    ?'<div style="display:grid;grid-template-columns:repeat('+extraItems.length+',1fr);gap:8px;margin-top:10px;">'
-      +extraItems.map(function(e){return '<div style="background:var(--bg);border-radius:2px;padding:9px 12px;border:1px solid var(--bdr);"><div style="font-size:8px;letter-spacing:.16em;color:var(--ink5);text-transform:uppercase;margin-bottom:3px;">'+e[0]+'</div><div style="font-size:11px;color:var(--ink2);">'+e[1]+'</div></div>';}).join('')
+    ?'<div style="display:grid;grid-template-columns:repeat('+extraItems.length+',1fr);gap:6px;margin-top:7px;">'
+      +extraItems.map(function(e){return '<div style="background:var(--bg);border-radius:2px;padding:6px 12px;border:1px solid var(--bdr);"><div style="font-size:8px;letter-spacing:.16em;color:var(--ink5);text-transform:uppercase;margin-bottom:2px;">'+e[0]+'</div><div style="font-size:11px;color:var(--ink2);">'+e[1]+'</div></div>';}).join('')
       +'</div>'
     :'';
   var msgHtml=staffMsg
-    ?'<div style="margin-top:12px;padding:12px 16px;background:'+T.c1+';border-radius:2px;color:#fff;position:relative;overflow:hidden;">'
+    ?'<div style="margin-top:7px;padding:8px 14px;background:'+T.c1+';border-radius:2px;color:#fff;position:relative;overflow:hidden;">'
       +'<div style="position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,'+T.gold+',#ddc08a);"></div>'
-      +'<div style="font-size:8px;letter-spacing:.18em;color:'+T.gold+';text-transform:uppercase;margin-bottom:5px;padding-left:10px;">Message</div>'
-      +'<div style="font-size:12px;line-height:1.9;color:rgba(255,255,255,.88);padding-left:10px;">'+staffMsg+'</div>'
+      +'<div style="font-size:8px;letter-spacing:.18em;color:'+T.gold+';text-transform:uppercase;margin-bottom:3px;padding-left:10px;">Message</div>'
+      +'<div style="font-size:11px;line-height:1.5;color:rgba(255,255,255,.88);padding-left:10px;">'+staffMsg+'</div>'
       +'</div>'
     :'';
   var page3Html='<div class="rpt-page">';
