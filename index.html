@@ -116,12 +116,12 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink)
 .rpt-cover{overflow:hidden;display:flex;flex-direction:column;background:var(--white);}
 .rcov-top-bar{height:4px;width:100%;}
 .rpt-cover-inner{flex:1;display:flex;flex-direction:column;padding:2rem 3rem 0;}
-.rcov-logo-area{display:flex;align-items:center;gap:10px;margin-bottom:1.6rem;}
+.rcov-logo-area{display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
 .rcov-logo-icon{width:36px;height:36px;border:1.5px solid;border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-weight:500;}
 .rcov-logo-text{font-family:'Playfair Display',serif;font-size:14px;letter-spacing:.12em;}
-.rcov-title-area{margin-bottom:1.6rem;}
-.rcov-main-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:500;letter-spacing:.08em;margin-bottom:.6rem;}
-.rcov-cover-image{min-height:260px;position:relative;overflow:hidden;}
+.rcov-title-area{margin-bottom:1.1rem;}
+.rcov-main-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:500;letter-spacing:.08em;margin-bottom:.4rem;}
+.rcov-cover-image{min-height:200px;position:relative;overflow:hidden;}
 .rcov-img-geo1{position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.06);}
 .rcov-img-geo2{position:absolute;left:-40px;bottom:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.04);}
 .rcov-img-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 2.2rem;}
@@ -232,19 +232,20 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink)
 .sg-flow-step{font-size:8px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
 .sg-flow-name{font-size:12px;font-weight:500;color:var(--ink2);}
 /* サポートページ */
-.sg-support{padding:1.2rem 2.4rem 1.2rem 2.8rem;}
+.sg-support{padding:.9rem 2.4rem .9rem 2.8rem;}
 .sg-support-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.sg-support-grid-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.sg-support-grid-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
 .sg-support-item{border:1px solid var(--bdr);border-radius:2px;overflow:hidden;}
-.sg-support-head{padding:10px 14px 8px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:10px;}
+.sg-support-head{padding:7px 12px 6px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:10px;}
 .sg-support-num{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--gold);line-height:1;flex-shrink:0;}
 .sg-support-title{font-size:14px;font-weight:500;color:var(--ink);line-height:1.4;}
-.sg-support-body{padding:10px 14px 12px;}
-.sg-support-main{font-size:12px;color:var(--ink2);line-height:1.9;margin-bottom:8px;}
+.sg-support-body{padding:7px 12px 9px;}
+.sg-support-main{font-size:11px;color:var(--ink2);line-height:1.55;margin-bottom:6px;}
 .sg-support-note{font-size:11px;color:var(--ink4);line-height:1.8;}
 .sg-support-tag{display:inline-block;margin-top:8px;padding:3px 9px;background:var(--bg);border:1px solid var(--bdr);border-radius:20px;font-size:9px;letter-spacing:.1em;color:var(--ink4);}
 
 @media print{
+  @page{size:A4;margin:0;}
   .hdr,.sb,.main>*:not(#t-preview){display:none!important;}
   .layout{display:block;}body{background:#fff;}
   #t-preview{display:block!important;}
@@ -817,12 +818,12 @@ function buildReport(){
   // 担当者：横並びレイアウト（写真左・情報右）
   page3Html+='<div style="display:grid;grid-template-columns:200px 1fr;">'
     // 左：写真エリア（ネイビー背景）
-    +'<div style="background:'+T.c1+';display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.6rem 1rem;gap:12px;">'
+    +'<div style="background:'+T.c1+';display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.2rem 1rem;gap:10px;">'
     +photoHtml
     +'<div style="font-family:\'Playfair Display\',serif;font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.12em;text-align:center;line-height:1.7;">'+co+'</div>'
     +'</div>'
     // 右：情報エリア
-    +'<div style="padding:1.4rem 1.8rem;display:flex;flex-direction:column;justify-content:space-between;">'
+    +'<div style="padding:1rem 1.8rem;display:flex;flex-direction:column;justify-content:space-between;">'
     +'<div>'
     +'<div style="font-size:8px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:4px;">'+sfn+' 担当者のご紹介</div>'
     +'<div class="rstaff-name" style="margin-bottom:2px;">'+sn+'</div>'
